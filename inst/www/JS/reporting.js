@@ -3,8 +3,8 @@ function reportingResults()
    
     var canvas = d3.select("#plotCanvas");
     
-    var dialogBoxHeight = plotHeight/2;
-    var dialogBoxWidth = plotWidth/2;
+    var dialogBoxHeight = plotHeight;
+    var dialogBoxWidth = plotWidth;
     
     var centerX = canvasWidth/2;
     var centerY = canvasHeight/2;
@@ -35,15 +35,26 @@ function reportingResults()
             .attr("class", "dialogBox");
             
    canvas.append("text")
-            .attr("x", centerX)
+            .attr("x", centerX - dialogBoxWidth/2)
             .attr("y", centerY - dialogBoxHeight/4)
             .attr("fill", "black")
             .attr("text-anchor", "left")
             //TODO: allgemein deklarieren
-            .attr("font-size", "8px")
-            .text("Reporting all your results and preconditions is very important so that any other researcher can repeat your study.")
+            .attr("font-size", "10px")
+            .text("Reporting all your results and preconditions is very important /nso that any other researcher can repeat your study.")
             .attr("id", "reporting")
             .attr("class", "dialogBox");
-      
+   
+   //shows current Method         
+   canvas.append("text")
+            .attr("x", centerX - dialogBoxWidth/2)
+            .attr("y", centerY - dialogBoxHeight/4)
+            .attr("fill", "black")
+            .attr("text-anchor", "left")
+            //TODO: allgemein deklarieren
+            .attr("font-size", "10px")
+            .text(testResults["method"])
+            .attr("id", "reporting")
+            .attr("class", "dialogBox");
 
 }
