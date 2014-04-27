@@ -1353,12 +1353,12 @@ function OnMouseDown(e)
             //if Button "SHOW REPORTING" is pressed the function reportingResults in reporting.js is called
             else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "reporting")
             {
-                //setup(e, target); 
-                //reportingResults();
+                
                 setup(e, target);
-                removeElementsByClassName("regression");
+                //removeElementsByClassName("regression");
         
-                drawDialogBoxToGetOutcomeVariable();
+                reportingResults();
+                //drawDialogBoxToGetOutcomeVariable();
             }
 
             else
