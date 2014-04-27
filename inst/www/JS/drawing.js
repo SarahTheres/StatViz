@@ -1177,6 +1177,8 @@ function displaySignificanceTestResults()
                     .attr("stroke-dasharray", "5,5")
                     .attr("fill", "none")
                     .attr("id", "border");
+                    
+      drawButtonInSideBar("SHOW REPORTING", "reporting", 0);
 }
 
 function displayANOVAResults()
