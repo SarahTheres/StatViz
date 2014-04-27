@@ -97,6 +97,8 @@ function resetSVGCanvas()
 {
     removeElementsByClassName("regressionPredictionDiv");
     removeElementsByClassName("dialogBox");
+    //When Canvas is reset, reporting button should be removed
+    removeElementsByClassName("reporting");
     
     if(document.getElementById("plotCanvas") != null)
         removeElementById("plotCanvas");
