@@ -153,7 +153,7 @@ function drawHelpButton()
             .attr("font-size", scaleForWindowSize(35))
             .attr("text-anchor", "middle")
             .attr("fill", "black")
-            .text("?")
+            .text("A")
             .attr("class", "helpButtonText");
     
     sideBar.append("rect")
