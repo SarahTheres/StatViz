@@ -82,7 +82,7 @@ function reportingResults()
     
      canvas.append("text")
             .attr("x", leftX)
-            .attr("y", topY + 4*stepY)
+            .attr("y", topY + 5*stepY)
             .attr("fill", "black")
             .attr("text-anchor", "left")
               //TODO: declare font size independently
@@ -94,7 +94,7 @@ function reportingResults()
     //shows effect size           
    canvas.append("text")
             .attr("x", leftX)
-            .attr("y", topY + 5*stepY)
+            .attr("y", topY + 6*stepY)
             .attr("fill", "black")
             .attr("text-anchor", "left")
               //TODO: declare font size independently
