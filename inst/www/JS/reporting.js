@@ -76,9 +76,7 @@ function reportingResults()
    
    //TODO: if-Abfrage einbauen, ob signifikant oder nicht
     var p = removeAlphabetsFromString(testResults["p"]);
-   // p = string.replace(/</g, ''); 
-    p = p.replace(/=/g, '');
-   // p = string.replace(/>/g, '');
+    p = removeOperatorsFromString(p);
     
      canvas.append("text")
             .attr("x", leftX)
@@ -87,21 +85,36 @@ function reportingResults()
             .attr("text-anchor", "left")
               //TODO: declare font size independently
             .attr("font-size", fontSizeSignificanceTestResults)
-            .text("1:" + p)
+            .text(p)
             .attr("id", "reporting")
             .attr("class", "dialogBox");
-     
-     canvas.append("text")
+
+   if (p > 0.05)
+   {
+      canvas.append("text")
             .attr("x", leftX)
             .attr("y", topY + 6*stepY)
             .attr("fill", "black")
             .attr("text-anchor", "left")
               //TODO: declare font size independently
             .attr("font-size", fontSizeSignificanceTestResults)
-            .text("2:" + output.p)
+            .text("There are no statistically significant differences);
             .attr("id", "reporting")
             .attr("class", "dialogBox");
-   
+   }
+   else
+   {
+       canvas.append("text")
+            .attr("x", leftX)
+            .attr("y", topY + 6*stepY)
+            .attr("fill", "black")
+            .attr("text-anchor", "left")
+              //TODO: declare font size independently
+            .attr("font-size", fontSizeSignificanceTestResults)
+            .text("There are statistically significant differences);
+            .attr("id", "reporting")
+            .attr("class", "dialogBox");
+   }
     //shows effect size           
    canvas.append("text")
             .attr("x", leftX)
