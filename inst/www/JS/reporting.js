@@ -9,7 +9,12 @@ function reportingResults()
     var centerX = canvasWidth/2;
     var centerY = canvasHeight/2;
     
-    //var variableList = sort(currentVariableSelection);
+    //present results in the following line which starts one step further
+    var stepY = dialogBoxHeight/12;
+    //top and left of dialog box
+    var topY = centerY - dialogBoxHeight/2;
+    var leftX = centerX - dialogBoxWidth/2
+    
     //by declaring elements as class dialogBox they are removed when calling resetSVGCanvas() 
     canvas.append("rect")
             .attr("x", centerX - dialogBoxWidth/2)
@@ -26,7 +31,7 @@ function reportingResults()
     
    canvas.append("text")
             .attr("x", centerX)
-            .attr("y", centerY - dialogBoxHeight/4)
+            .attr("y", topY)
             .attr("fill", "black")
             .attr("text-anchor", "middle")
             .attr("font-size", fontSizeVariablePanel + "px")
@@ -35,23 +40,23 @@ function reportingResults()
             .attr("class", "dialogBox");
             
    canvas.append("text")
-            .attr("x", centerX - dialogBoxWidth/2)
-            .attr("y", centerY - dialogBoxHeight/4)
+            .attr("x", leftX)
+            .attr("y", topY + stepY)
             .attr("fill", "black")
             .attr("text-anchor", "left")
-            //TODO: allgemein deklarieren
+            //TODO: declare font size independently
             .attr("font-size", "10px")
-            .text("Reporting all your results and preconditions is very important /nso that any other researcher can repeat your study.")
+            .text("Reporting all your results and preconditions is very important" + "/n" + "so that any other researcher can repeat your study.")
             .attr("id", "reporting")
             .attr("class", "dialogBox");
    
    //shows current Method         
    canvas.append("text")
-            .attr("x", centerX - dialogBoxWidth/2)
-            .attr("y", centerY - dialogBoxHeight/4)
+            .attr("x", leftX)
+            .attr("y", topY + 2*stepY)
             .attr("fill", "black")
             .attr("text-anchor", "left")
-            //TODO: allgemein deklarieren
+              //TODO: declare font size independently
             .attr("font-size", "10px")
             .text(testResults["method"])
             .attr("id", "reporting")
