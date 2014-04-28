@@ -39,14 +39,14 @@ function reportingResults()
             .attr("id", "reporting")
             .attr("class", "dialogBox");
             
-   canvas.append("textarea")
+   canvas.append("text")
             .attr("x", leftX)
             .attr("y", topY + 2*stepY)
             .attr("fill", "black")
             .attr("text-anchor", "left")
             //TODO: declare font size independently
             .attr("font-size", fontSizeSignificanceTestResults)
-            .text("Reporting all your results and preconditions is very important so that any other researcher can repeat your study.")
+            .textarea("Reporting all your results and preconditions is very important so that any other researcher can repeat your study.")
             .attr("id", "reporting")
             .attr("class", "dialogBox");
    
