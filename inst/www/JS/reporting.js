@@ -160,7 +160,7 @@ function reportingResults()
    {
       canvas.append("text")
             .attr("x", leftX)
-            .attr("y", topY + (9+i)*stepY)
+            .attr("y", topY + (9+i+1)*stepY)
             .attr("fill", "black")
             .attr("text-anchor", "left")
               //TODO: declare font size independently
@@ -169,4 +169,16 @@ function reportingResults()
             .attr("id", "reporting")
             .attr("class", "dialogBox");   
    }   
+   
+   //means 2nd try
+    canvas.append("text")
+            .attr("x", leftX)
+            .attr("y", topY + (9+i+1)*stepY)
+            .attr("fill", "black")
+            .attr("text-anchor", "left")
+              //TODO: declare font size independently
+            .attr("font-size", fontSizeSignificanceTestResults + "px")
+            .text(testResults["formula"])
+            .attr("id", "reporting")
+            .attr("class", "dialogBox");
 }
