@@ -143,7 +143,7 @@ function reportingResults()
    //shows test-value       
    canvas.append("text")
             .attr("x", leftX)
-            .attr("y", topY + 8*stepY)
+            .attr("y", topY + 9*stepY)
             .attr("fill", "black")
             .attr("text-anchor", "left")
               //TODO: declare font size independently
