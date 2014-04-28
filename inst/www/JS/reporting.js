@@ -98,7 +98,7 @@ function reportingResults()
             .attr("text-anchor", "left")
               //TODO: declare font size independently
             .attr("font-size", fontSizeSignificanceTestResults)
-            .text("There are no statistically significant differences);
+            .text("There are no statistically significant differences")
             .attr("id", "reporting")
             .attr("class", "dialogBox");
    }
@@ -111,10 +111,11 @@ function reportingResults()
             .attr("text-anchor", "left")
               //TODO: declare font size independently
             .attr("font-size", fontSizeSignificanceTestResults)
-            .text("There are statistically significant differences);
+            .text("There are statistically significant differences")
             .attr("id", "reporting")
             .attr("class", "dialogBox");
    }
+   
     //shows effect size           
    canvas.append("text")
             .attr("x", leftX)
