@@ -46,7 +46,7 @@ function reportingResults()
             .attr("text-anchor", "left")
             //TODO: declare font size independently
             .attr("font-size", fontSizeSignificanceTestResults)
-            .text("Reporting all your results and preconditions is very important" + "/n" + "so that any other researcher can repeat your study.")
+            .text("Reporting all your results and preconditions is very important so that any other researcher can repeat your study.")
             .attr("id", "reporting")
             .attr("class", "dialogBox");
    
@@ -58,7 +58,7 @@ function reportingResults()
             .attr("text-anchor", "left")
               //TODO: declare font size independently
             .attr("font-size", fontSizeSignificanceTestResults)
-            .text("The method used is" + testResults["method"])
+            .text("The method used is " + testResults["method"])
             .attr("id", "reporting")
             .attr("class", "dialogBox");
             
@@ -70,12 +70,27 @@ function reportingResults()
             .attr("text-anchor", "left")
               //TODO: declare font size independently
             .attr("font-size", fontSizeSignificanceTestResults)
-            .text("p =" + testResults["p"])
+            .text(testResults["p"])
             .attr("id", "reporting")
             .attr("class", "dialogBox");
    
    //TODO: if-Abfrage einbauen, ob signifikant oder nicht
+    var p = removeAlphabetsFromString(testResults["p"]);
+    p = string.replace(/</g, ''); 
+    p = string.replace(/=/g, '');
+    p = string.replace(/>/g, '');
     
+     canvas.append("text")
+            .attr("x", leftX)
+            .attr("y", topY + 4*stepY)
+            .attr("fill", "black")
+            .attr("text-anchor", "left")
+              //TODO: declare font size independently
+            .attr("font-size", fontSizeSignificanceTestResults)
+            .text(p)
+            .attr("id", "reporting")
+            .attr("class", "dialogBox");
+   
     //shows effect size           
    canvas.append("text")
             .attr("x", leftX)
@@ -84,7 +99,7 @@ function reportingResults()
             .attr("text-anchor", "left")
               //TODO: declare font size independently
             .attr("font-size", fontSizeSignificanceTestResults)
-            .text("The effect size is" + testResults["effect-size"])
+            .text("The effect size is " + testResults["effect-size"])
             .attr("id", "reporting")
             .attr("class", "dialogBox");
 
