@@ -148,7 +148,25 @@ function reportingResults()
             .attr("text-anchor", "left")
               //TODO: declare font size independently
             .attr("font-size", fontSizeSignificanceTestResults)
-            .text("df:" + testResults["parameter"])
+            .text("t" + testResults["parameter"])
             .attr("id", "reporting")
             .attr("class", "dialogBox");
+
+
+   //means
+   var means = document.getElementsByClassName("means");
+   
+   for(var i=0; i<means.length; i++)
+   {
+      canvas.append("text")
+            .attr("x", leftX)
+            .attr("y", topY + 9*stepY)
+            .attr("fill", "black")
+            .attr("text-anchor", "left")
+              //TODO: declare font size independently
+            .attr("font-size", fontSizeSignificanceTestResults)
+            .text("mean" + i + means[i])
+            .attr("id", "reporting")
+            .attr("class", "dialogBox");   
+   }   
 }
