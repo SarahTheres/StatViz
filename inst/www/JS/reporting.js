@@ -77,7 +77,7 @@ function reportingResults()
    //TODO: if-Abfrage einbauen, ob signifikant oder nicht
     var p = removeAlphabetsFromString(testResults["p"]);
    // p = string.replace(/</g, ''); 
-    //p = string.replace(/=/g, '');
+    p = p.replace(/=/g, '');
    // p = string.replace(/>/g, '');
     
      canvas.append("text")
