@@ -46,7 +46,7 @@ function reportingResults()
             .attr("text-anchor", "left")
             //TODO: declare font size independently
             .attr("font-size", fontSizeSignificanceTestResults)
-            .textarea("Reporting all your results and preconditions is very important so that any other researcher can repeat your study.")
+            .text("Reporting all your results and preconditions is very important so that any other researcher can repeat your study.")
             .attr("id", "reporting")
             .attr("class", "dialogBox");
    
@@ -128,4 +128,27 @@ function reportingResults()
             .attr("id", "reporting")
             .attr("class", "dialogBox");
 
+   //shows degrees of freedom        
+   canvas.append("text")
+            .attr("x", leftX)
+            .attr("y", topY + 8*stepY)
+            .attr("fill", "black")
+            .attr("text-anchor", "left")
+              //TODO: declare font size independently
+            .attr("font-size", fontSizeSignificanceTestResults)
+            .text("df:" + testResults["df"])
+            .attr("id", "reporting")
+            .attr("class", "dialogBox");
+
+   //shows test-value       
+   canvas.append("text")
+            .attr("x", leftX)
+            .attr("y", topY + 8*stepY)
+            .attr("fill", "black")
+            .attr("text-anchor", "left")
+              //TODO: declare font size independently
+            .attr("font-size", fontSizeSignificanceTestResults)
+            .text("df:" + testResults["parameter"])
+            .attr("id", "reporting")
+            .attr("class", "dialogBox");
 }
