@@ -45,7 +45,7 @@ function reportingResults()
             .attr("fill", "black")
             .attr("text-anchor", "left")
             //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults)
+            .attr("font-size", fontSizeSignificanceTestResults + "px")
             .text("Reporting all your results and preconditions is very important so that any other researcher can repeat your study.")
             .attr("id", "reporting")
             .attr("class", "dialogBox");
@@ -57,7 +57,7 @@ function reportingResults()
             .attr("fill", "black")
             .attr("text-anchor", "left")
               //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults)
+            .attr("font-size", fontSizeSignificanceTestResults + "px")
             .text("The method used is " + testResults["method"])
             .attr("id", "reporting")
             .attr("class", "dialogBox");
@@ -69,7 +69,7 @@ function reportingResults()
             .attr("fill", "black")
             .attr("text-anchor", "left")
               //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults)
+            .attr("font-size", fontSizeSignificanceTestResults + "px")
             .text(testResults["p"])
             .attr("id", "reporting")
             .attr("class", "dialogBox");
@@ -84,7 +84,7 @@ function reportingResults()
             .attr("fill", "black")
             .attr("text-anchor", "left")
               //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults)
+            .attr("font-size", fontSizeSignificanceTestResults + "px")
             .text(p)
             .attr("id", "reporting")
             .attr("class", "dialogBox");
@@ -97,7 +97,7 @@ function reportingResults()
             .attr("fill", "black")
             .attr("text-anchor", "left")
               //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults)
+            .attr("font-size", fontSizeSignificanceTestResults + "px")
             .text("There are no statistically significant differences")
             .attr("id", "reporting")
             .attr("class", "dialogBox");
@@ -110,7 +110,7 @@ function reportingResults()
             .attr("fill", "black")
             .attr("text-anchor", "left")
               //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults)
+            .attr("font-size", fontSizeSignificanceTestResults + "px")
             .text("There are statistically significant differences")
             .attr("id", "reporting")
             .attr("class", "dialogBox");
@@ -123,8 +123,8 @@ function reportingResults()
             .attr("fill", "black")
             .attr("text-anchor", "left")
               //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults)
-            .text("The effect size is " + testResults["effect-size"])
+            .attr("font-size", fontSizeSignificanceTestResults + "px")
+            .text("The effect size is " + testResults["effect-size-type"] + testResults["effect-size"])
             .attr("id", "reporting")
             .attr("class", "dialogBox");
 
@@ -135,7 +135,7 @@ function reportingResults()
             .attr("fill", "black")
             .attr("text-anchor", "left")
               //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults)
+            .attr("font-size", fontSizeSignificanceTestResults + "px")
             .text("df:" + testResults["df"])
             .attr("id", "reporting")
             .attr("class", "dialogBox");
@@ -147,8 +147,8 @@ function reportingResults()
             .attr("fill", "black")
             .attr("text-anchor", "left")
               //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults)
-            .text("t" + testResults["parameter"])
+            .attr("font-size", fontSizeSignificanceTestResults + "px")
+            .text(testResults["parameter-type"] + testResults["parameter"])
             .attr("id", "reporting")
             .attr("class", "dialogBox");
 
@@ -160,11 +160,11 @@ function reportingResults()
    {
       canvas.append("text")
             .attr("x", leftX)
-            .attr("y", topY + 9*stepY)
+            .attr("y", topY + (9+i)*stepY)
             .attr("fill", "black")
             .attr("text-anchor", "left")
               //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults)
+            .attr("font-size", fontSizeSignificanceTestResults + "px")
             .text("mean" + i + means[i])
             .attr("id", "reporting")
             .attr("class", "dialogBox");   
