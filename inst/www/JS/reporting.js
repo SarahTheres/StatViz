@@ -39,7 +39,7 @@ function reportingResults()
             .attr("id", "reporting")
             .attr("class", "dialogBox");
             
-   canvas.append("text")
+   canvas.append("textarea")
             .attr("x", leftX)
             .attr("y", topY + 2*stepY)
             .attr("fill", "black")
