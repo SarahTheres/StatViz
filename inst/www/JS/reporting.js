@@ -87,25 +87,25 @@ function reportingResults()
             .attr("text-anchor", "left")
               //TODO: declare font size independently
             .attr("font-size", fontSizeSignificanceTestResults)
-            .text(p)
+            .text("1:" + p)
             .attr("id", "reporting")
             .attr("class", "dialogBox");
      
      canvas.append("text")
-            .attr("x", leftX + 20)
-            .attr("y", topY + 5*stepY)
+            .attr("x", leftX)
+            .attr("y", topY + 6*stepY)
             .attr("fill", "black")
             .attr("text-anchor", "left")
               //TODO: declare font size independently
             .attr("font-size", fontSizeSignificanceTestResults)
-            .text(output.p)
+            .text("2:" + output.p)
             .attr("id", "reporting")
             .attr("class", "dialogBox");
    
     //shows effect size           
    canvas.append("text")
             .attr("x", leftX)
-            .attr("y", topY + 6*stepY)
+            .attr("y", topY + 7*stepY)
             .attr("fill", "black")
             .attr("text-anchor", "left")
               //TODO: declare font size independently
