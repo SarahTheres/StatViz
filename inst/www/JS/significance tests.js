@@ -55,6 +55,11 @@ function performTTest(groupA, groupB, varianceEqual, paired)
 
         testResults["effect-size"] = output.d;
         testResults["effect-size-type"] = "d";
+        //add independent variable, its level and dependent variable because it's much easier for reporting
+        testResults["independent-variable-level0"] = variableList["independent-levels"][0];
+        testResults["independent-variable-level1"] = variableList["independent-levels"][1];
+        testResults["dependent-variable"] = variableList["dependent"][0];
+        
         testResults["formula"] = variableList["independent-levels"][0] + "." + variableList["dependent"][0] + " vs " + variableList["independent-levels"][1] + "." + variableList["dependent"][0];
         //add to log
         logResult();
