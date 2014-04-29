@@ -95,7 +95,7 @@ function reportingUnpairedTTest()
     var topY = (centerY - dialogBoxHeight/2) + stepY;
     var leftX = centerX - dialogBoxWidth/2;
    
-    var mytop = centerX - dialogBoxWidth/2;
+    var mytop = height
     var myleft = centerY - dialogBoxHeight/2; 
     
    //adding a textfield
@@ -114,7 +114,9 @@ function reportingUnpairedTTest()
 
    document.body.appendChild(textfield);
    
-   console.log("ParentNode: " + textfield.parentNode);
+   console.log("topY: " + topY);
+   console.log("leftX: " + leftX);
+   console.log("displayOffsetTop:" + displayOffsetTop);
    
    //document.canvas.appendChild(textfield);
    //shows current Method         
