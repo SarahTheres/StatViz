@@ -393,14 +393,6 @@ function removeNumbersFromString(string)
     return string.replace(/[0-9]/g, '');
 }
 
-//removes =, <, > in the given string
-function removeOperatorsFromString(string)
-{
-    string = string.replace(/</g, '');
-    string = string.replace(/>/g, '');
-    string = string.replace(/=/g, '');
-    return string;
-}
 //convert numbers to strings
 function convertIntegersToStrings(numbers)
 {
