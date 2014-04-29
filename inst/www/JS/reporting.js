@@ -53,12 +53,11 @@ function reportingResults()
    reportingUnpairedTTest();
    
    //calls appropriate reporting method depending on used test method
-   getReportingMethod(testResults["method"]);
+   //getReportingMethod(testResults["method"]);
 }
 
 function getReportingMethod(method)
 {
-   
    
    if (method == "Unpaired T-test")
    {
@@ -84,6 +83,7 @@ function getReportingMethod(method)
    
 function reportingUnpairedTTest()
 {
+   var canvas = d3.select("#plotCanvas");
    
    //shows current Method         
    canvas.append("text")
