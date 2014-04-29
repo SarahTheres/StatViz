@@ -114,7 +114,7 @@ function reportingUnpairedTTest()
 
    document.body.appendChild(textfield);
    
-   console.log(textfield.parentNode);
+   console.log("ParentNode: " + textfield.parentNode);
    
    //document.canvas.appendChild(textfield);
    //shows current Method         
