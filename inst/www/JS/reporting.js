@@ -50,6 +50,38 @@ function reportingResults()
             .attr("id", "reporting")
             .attr("class", "dialogBox");
    
+   //calls appropriate reporting method depending on used test method
+   getReportingMethod(testResults["method"]);
+}
+
+function getReportingMethod(method)
+{
+   if (method == "Unpaired T-test")
+   {
+      reportingUnpairedTTest();
+   }
+   else if (method == "Paired T-test")
+   {
+      //TODO
+   }
+   else if (method == "1-way ANOVA")
+   {
+      //TODO
+   }
+   else if (method == "2-way ANOVA")
+   {
+      //TODO
+   } 
+   else if (method == "Repeated-measures ANOVA")
+   {
+      //TODO
+   }
+}
+}
+   
+function reportingUnpairedTTest()
+{
+   
    //shows current Method         
    canvas.append("text")
             .attr("x", leftX)
