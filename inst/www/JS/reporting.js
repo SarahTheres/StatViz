@@ -95,7 +95,7 @@ function reportingUnpairedTTest()
     var topY = (centerY - dialogBoxHeight/2) + stepY;
     var leftX = centerX - dialogBoxWidth/2;
    
-   var dialogBox = document.getElementById("reportingBox");
+   //var dialogBox = document.getElementById("reportingBox");
    
    //shows current Method         
   dialogBox.append("text")
@@ -106,6 +106,17 @@ function reportingUnpairedTTest()
               //TODO: declare font size independently
             .attr("font-size", fontSizeSignificanceTestResults + "px")
             .text("An Unpaired t-test has been conducted to compare the")
+            .attr("id", "reporting")
+            .attr("class", "dialogBox");
+   
+   dialogBox.append("text")
+            .attr("x", leftX)
+            .attr("y", topY + 3*stepY)
+            .attr("fill", "black")
+            .attr("text-anchor", "left")
+              //TODO: declare font size independently
+            .attr("font-size", fontSizeSignificanceTestResults + "px")
+            .text(variableList["dependent"])
             .attr("id", "reporting")
             .attr("class", "dialogBox");
             
