@@ -110,7 +110,7 @@ function reportingUnpairedTTest()
    textfield.style.left = myleft + "px";
   
   //TODO: insert correct dv and iv and mean, se
-   var text = "An Unpaired t-test has been conducted to compare the DV between IV 1 and IV 2 ";
+   var text = "An Unpaired t-test has been conducted to compare the DV between" + testResults["independent-variable-level0"] + "IV 1 and IV 2 ";
    
    //get pure p value without letter p or any operators 
    var p = getPurePValue(testResults["p"]);
@@ -130,81 +130,7 @@ function reportingUnpairedTTest()
    textfield.innerHTML = text;
    document.body.appendChild(textfield);
 
-     canvas.append("text")
-            .attr("x", leftX)
-            .attr("y", topY + 5*stepY)
-            .attr("fill", "black")
-            .attr("text-anchor", "left")
-              //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults + "px")
-            .text(p)
-            .attr("id", "reporting")
-            .attr("class", "dialogBox");
-
-   if (p > 0.05)
-   {
-      canvas.append("text")
-            .attr("x", leftX)
-            .attr("y", topY + 6*stepY)
-            .attr("fill", "black")
-            .attr("text-anchor", "left")
-              //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults + "px")
-            .text("There are no statistically significant differences")
-            .attr("id", "reporting")
-            .attr("class", "dialogBox");
-   }
-   else
-   {
-       canvas.append("text")
-            .attr("x", leftX)
-            .attr("y", topY + 6*stepY)
-            .attr("fill", "black")
-            .attr("text-anchor", "left")
-              //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults + "px")
-            .text("There are statistically significant differences")
-            .attr("id", "reporting")
-            .attr("class", "dialogBox");
-   }
-   
-    //shows effect size           
-   canvas.append("text")
-            .attr("x", leftX)
-            .attr("y", topY + 7*stepY)
-            .attr("fill", "black")
-            .attr("text-anchor", "left")
-              //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults + "px")
-            .text("The effect size is " + testResults["effect-size-type"] + testResults["effect-size"])
-            .attr("id", "reporting")
-            .attr("class", "dialogBox");
-
-   //shows degrees of freedom        
-   canvas.append("text")
-            .attr("x", leftX)
-            .attr("y", topY + 8*stepY)
-            .attr("fill", "black")
-            .attr("text-anchor", "left")
-              //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults + "px")
-            .text("df:" + testResults["df"])
-            .attr("id", "reporting")
-            .attr("class", "dialogBox");
-
-   //shows test-value       
-   canvas.append("text")
-            .attr("x", leftX)
-            .attr("y", topY + 9*stepY)
-            .attr("fill", "black")
-            .attr("text-anchor", "left")
-              //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults + "px")
-            .text(testResults["parameter-type"] + testResults["parameter"])
-            .attr("id", "reporting")
-            .attr("class", "dialogBox");
-
-
+    
    //means
    var means = document.getElementsByClassName("means");
    
