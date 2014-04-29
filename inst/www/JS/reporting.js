@@ -116,8 +116,7 @@ function reportingUnpairedTTest()
    var p = getPurePValue(testResults["p"]);
    
    //check whether p is significant
-   //if (p <= 0.05)
-   if (p > 0.05)
+   if (p <= 0.05)
    {
       //complement text and give degrees of freedom and t-value
       //TODO: transform t to always smaller than
