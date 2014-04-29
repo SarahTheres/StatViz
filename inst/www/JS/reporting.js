@@ -104,7 +104,7 @@ function reportingUnpairedTTest()
             .attr("text-anchor", "left")
               //TODO: declare font size independently
             .attr("font-size", fontSizeSignificanceTestResults + "px")
-            .text("An Unpaired t-test has been conducted to compare the" + variableList["dependent"][0])
+            .text("An Unpaired t-test has been conducted to compare the")
             .attr("id", "reporting")
             .attr("class", "dialogBox");
             
