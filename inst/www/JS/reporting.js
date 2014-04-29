@@ -113,7 +113,7 @@ function reportingUnpairedTTest()
    var text = "An Unpaired t-test has been conducted to compare the DV between IV 1 and IV 2";
    
    //get pure p value without letter p or any operators 
-   var p = getPurePValue(presult);
+   var p = getPurePValue(testResults["p"]);
    
    text += p;
    textfield.innerHTML = text;
