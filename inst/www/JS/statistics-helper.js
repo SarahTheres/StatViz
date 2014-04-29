@@ -107,6 +107,16 @@ function changePValueNotation(p)
         return "p = " + p;
 }
 
+//returns the pure p value without p or operators
+function getPurePValue(presult)
+{
+    var pValue =  removeAlphabetsFromString(presult);
+    pValue = pvalue.replace(/</g, '');
+    pValue = pvalue.replace(/>/g, '');
+    pValue = pvalue.replace(/=/g, '');
+    return pValue;
+}
+
 function getGroupsForColourBoxPlotData()
 {
     var variableList = getSelectedVariables();
