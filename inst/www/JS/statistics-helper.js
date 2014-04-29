@@ -107,6 +107,19 @@ function changePValueNotation(p)
         return "p = " + p;
 }
 
+//change p-value notation so that it is either <0.001, <0.01 or <0.05 necesarry for correct reporting
+function changePValueNotationReporting(p)
+{
+    if (p < 0.001)
+        return "p < 0.001";
+    else if (p < 0.01)
+        return "p < 0.01";
+    else if (p < 0.05)
+        return "p < 0.05";
+    else
+        return "p = " + p;
+}
+
 //returns the pure p value without p or operators
 function getPurePValue(presult)
 {
