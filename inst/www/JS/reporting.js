@@ -77,7 +77,6 @@ function getReportingMethod(method)
       //TODO
    }
 }
-}
    
 function reportingUnpairedTTest()
 {
