@@ -114,17 +114,17 @@ function reportingUnpairedTTest()
    
    //get pure p value without letter p or any operators 
    var p = getPurePValue(testResults["p"]);
+   var pResult = changePValueNotationReporting(p);
    
    //check whether p is significant
    if (p <= 0.05)
    {
       //complement text and give degrees of freedom and t-value
-      //TODO: transform t to always smaller than
-      text += "A significant difference can be reported t(" + testResults["df"] + ")=" + testResults["parameter"] + "," + testResults["p"];
+      text += "A significant difference can be reported t(" + testResults["df"] + ")=" + testResults["parameter"] + "," + pResult;
    }
    else
    {
-      text += "The descriptive difference is not significant.";
+      text += "The descriptive difference is not significant." + pResult;
    }
    
    textfield.innerHTML = text;
