@@ -95,11 +95,7 @@ function reportingUnpairedTTest()
     var topY = (centerY - dialogBoxHeight/2) + stepY;
     var leftX = centerX - dialogBoxWidth/2;
    
-   var context = canvas.getContext("2d");
-   
-   context.textBaseline = "top";
-   context.fillText("(TEST", leftX, topY);
-   
+
    //shows current Method         
    canvas.append("text")
             .attr("x", leftX)
@@ -108,7 +104,7 @@ function reportingUnpairedTTest()
             .attr("text-anchor", "left")
               //TODO: declare font size independently
             .attr("font-size", fontSizeSignificanceTestResults + "px")
-            .text("An Unpaired t-test has been conducted to compare the")
+            .text("An Unpaired t-test has been conducted to compare the" + variableList["dependent"][0])
             .attr("id", "reporting")
             .attr("class", "dialogBox");
             
