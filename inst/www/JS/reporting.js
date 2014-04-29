@@ -110,17 +110,26 @@ function reportingUnpairedTTest()
    textfield.style.left = myleft + "px";
   
   //TODO: insert correct dv and iv and mean, se
-   var text = "An Unpaired t-test has been conducted to compare the DV between IV 1 and IV 2";
+   var text = "An Unpaired t-test has been conducted to compare the DV between IV 1 and IV 2 ";
    
    //get pure p value without letter p or any operators 
    var p = getPurePValue(testResults["p"]);
    
-   text += p;
+   //check whether p is significant
+   if (p <= 0.05)
+   {
+      //complement text and give degrees of freedom and t-value
+      //TODO: transform t to always smaller than
+      text += "A significant difference can be reported t(" + testResults["df"] + ")=" + testResults["parameter"] + "," + testResults["p"];
+   }
+   else
+   {
+      text += "The descriptive difference is not significant.";
+   }
+   
    textfield.innerHTML = text;
    document.body.appendChild(textfield);
 
-   
-    
      canvas.append("text")
             .attr("x", leftX)
             .attr("y", topY + 5*stepY)
