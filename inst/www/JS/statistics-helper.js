@@ -111,9 +111,9 @@ function changePValueNotation(p)
 function getPurePValue(presult)
 {
     var pValue =  removeAlphabetsFromString(presult);
-    pValue = Pvalue.replace(/</g, '');
-    pValue = Pvalue.replace(/>/g, '');
-    pValue = Pvalue.replace(/=/g, '');
+    pValue = pValue.replace(/</g, '');
+    pValue = pValue.replace(/>/g, '');
+    pValue = pValue.replace(/=/g, '');
     return pValue;
 }
 
