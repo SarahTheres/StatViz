@@ -240,6 +240,36 @@ function drawButtonInSideBar(buttonText, className, offset)
             .attr("class", className); 
 }
 
+//draws the reportingButton on top of canvas
+function drawReportingButton()
+{
+      var canvas = d3.select("#plotCanvas");
+      var availableWidth = canvasWidth;
+     
+      canvas.append("rect")
+            .attr("x", 2*availableWidth/3 - selectionButtonWidth/2)
+            .attr("y", selectionButtonOffset)
+            .attr("height", selectionButtonHeight)
+            .attr("width", selectionButtonWidth)
+            .attr("rx", scaleForWindowSize(10) + "px")
+            .attr("ry", scaleForWindowSize(10) + "px")
+            .attr("fill", "url(#buttonFillNormal)")
+            .attr("filter", "url(#Bevel)")
+            .attr("stroke", "black")
+            .attr("id", "rect")
+            .attr("class", "reportingButton");
+                    
+      canvas.append("text")
+            .attr("x", 2*availableWidth/3)
+            .attr("y", selectionButtonOffset + selectionButtonHeight/2 + yAxisTickTextOffset)
+            .attr("fill", "black")
+            .attr("text-anchor", "middle")
+            .attr("font-size", fontSizeButtonLabel + "px")
+            .text("HOW TO REPORT RESULTS")
+            .attr("id", "text")
+            .attr("class", "reportingButton");
+}
+
 function drawDialogBoxToGetOutcomeVariable()
 {
     var canvas = d3.select("#plotCanvas");
@@ -1181,7 +1211,7 @@ function displaySignificanceTestResults()
                     .attr("id", "border");
       
       //add reporting button
-      drawButtonInSideBar("SHOW REPORTING", "reportingButton", 0);
+      drawReportingButton();
 }
 
 function displayANOVAResults()
