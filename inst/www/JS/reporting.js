@@ -96,6 +96,7 @@ function reportingUnpairedTTest()
     var leftX = centerX - dialogBoxWidth/2;
    
    //var dialogBox = document.getElementById("reportingBox");
+   document.write("Hallo Welt");
    
    //shows current Method         
    canvas.append("text")
