@@ -26,7 +26,7 @@ function reportingResults()
             .attr("fill", "white")
             .attr("stroke", "grey")
             .attr("filter", "url(#shadow)")
-            .attr("id", "reporting")
+            .attr("id", "reportingBox")
             .attr("class", "dialogBox");
     
    canvas.append("text")
@@ -95,9 +95,10 @@ function reportingUnpairedTTest()
     var topY = (centerY - dialogBoxHeight/2) + stepY;
     var leftX = centerX - dialogBoxWidth/2;
    
-
+   var dialogBox = document.getElementById("reportingBox");
+   
    //shows current Method         
-   canvas.append("text")
+  dialogBox.append("text")
             .attr("x", leftX)
             .attr("y", topY + 3*stepY)
             .attr("fill", "black")
