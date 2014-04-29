@@ -95,8 +95,8 @@ function reportingUnpairedTTest()
     var topY = (centerY - dialogBoxHeight/2) + stepY;
     var leftX = centerX - dialogBoxWidth/2;
    
-    var mytop = height
-    var myleft = centerY - dialogBoxHeight/2; 
+    var mytop = displayOffsetTop;
+    var myleft = width - canvasWidth - sideBarWidth; 
     
    //adding a textfield
    var textfield = document.createElement("reporting");
@@ -106,7 +106,7 @@ function reportingUnpairedTTest()
    textfield.style.color = "red";
    textfield.style.position = "absolute";
    textfield.style.top = mytop + "px";
-   textfield.style.left = myleft + "px";
+   textfield.style.left = myleft "px";
   
    textfield.innerHTML = "Hello";
    
