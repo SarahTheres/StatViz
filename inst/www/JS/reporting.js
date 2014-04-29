@@ -50,10 +50,8 @@ function reportingResults()
             .attr("id", "reporting")
             .attr("class", "dialogBox");
    
-   reportingUnpairedTTest();
-   
    //calls appropriate reporting method depending on used test method
-   //getReportingMethod(testResults["method"]);
+   getReportingMethod(testResults["method"]);
 }
 
 function getReportingMethod(method)
