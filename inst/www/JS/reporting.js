@@ -113,7 +113,9 @@ function reportingUnpairedTTest()
    var text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between "; 
    
    //IV in both groups with their means and standard errors are added
-   text += testResults["independent-variable-level0"] + " and " + testResults["independent-variable-level1"] + " groups.";
+   //TODO: variableName var mean1 = mean(variables[variableName][level]);
+   text += testResults["independent-variable-level0"] + "( and ";
+   text += testResults["independent-variable-level1"] + " groups.";
    
    //get pure p value without letter p or any operators 
    var p = getPurePValue(testResults["p"]);
