@@ -114,6 +114,10 @@ function reportingUnpairedTTest()
    
    //IV in both groups with their means and standard errors are added
    var variableList = getSelectedVariables();
+   console.log("variable List:" + variableList["independent"][0]);
+   console.log("dataset" + dataset);
+   console.log(variables[variableList["independent"][0]][dataset]);
+   
    var mean1 = mean(variables[variableList["independent"][0]][dataset]);
    console.log("Mean 1: " + mean1);
    text += testResults["independent-variable-level0"] + "( and ";
