@@ -107,7 +107,7 @@ function reportingUnpairedTTest()
    textfield.style.color = "red";
    textfield.style.position = "absolute";
    textfield.style.top = mytop + "px";
-   textfield.style.left = myleft "px";
+   textfield.style.left = myleft + "px";
   
    textfield.innerHTML = "Hello";
    
