@@ -110,46 +110,16 @@ function reportingUnpairedTTest()
    textfield.style.left = myleft + "px";
   
   //TODO: insert correct dv and iv and mean, se
-   var text = "An Unpaired t-test has been conducted to compare the DV between IV 1 and IV 2 ";
+   var text = "An Unpaired t-test has been conducted to compare the DV between IV 1 and IV 2";
    
-   console.log("p:" + output.p);
-   console.log("iv:" + variableList["independent-levels"][0]);
+   //get pure p value without letter p or any operators 
+   var p = getPurePValue(presult);
    
+   text += p;
    textfield.innerHTML = text;
    document.body.appendChild(textfield);
-   
-  
 
-   //document.canvas.appendChild(textfield);
-   //shows current Method         
-   canvas.append("text")
-            .attr("x", leftX)
-            .attr("y", topY + 3*stepY)
-            .attr("fill", "black")
-            .attr("text-anchor", "left")
-              //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults + "px")
-            .text("An Unpaired t-test has been conducted to compare the")
-            .attr("id", "reporting")
-            .attr("class", "dialogBox");
    
-  
-  
-   //shows p value           
-   canvas.append("text")
-            .attr("x", leftX)
-            .attr("y", topY + 4*stepY)
-            .attr("fill", "black")
-            .attr("text-anchor", "left")
-              //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults + "px")
-            .text(testResults["p"])
-            .attr("id", "reporting")
-            .attr("class", "dialogBox");
-   
-   //TODO: if-Abfrage einbauen, ob signifikant oder nicht
-    var p = removeAlphabetsFromString(testResults["p"]);
-    p = removeOperatorsFromString(p);
     
      canvas.append("text")
             .attr("x", leftX)
