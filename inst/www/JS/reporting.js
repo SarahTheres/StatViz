@@ -107,7 +107,7 @@ function reportingUnpairedTTest()
    textfield.style.position = "absolute";
    textfield.style.top = mytop + "px";
    textfield.style.left = myleft + "px";
-   textfield.class = "reporting";
+   textfield.className = "reporting";
   
   //method and DV is reported
    var text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between "; 
