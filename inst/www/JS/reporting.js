@@ -99,7 +99,7 @@ function reportingUnpairedTTest()
    var textfield = document.createElement("div");
    textfield.style.width = dialogBoxWidth;
    textfield.style.height = dialogBoxHeight;
-   textfield.style.color = red;
+   textfield.style.color = "red";
    //textfield.style.position = absolute;
    //textfield.style.top = topY;
    //textfield.style.left = leftX;
@@ -107,6 +107,15 @@ function reportingUnpairedTTest()
    textfield.innerHTML = "Hello";
 
    document.body.appendChild(textfield);
+   
+   //var div = document.createElement("div");
+   //div.style.width = "100px";
+   //div.style.height = "100px";
+   //div.style.background = "red";
+   //div.style.color = "white";
+   //div.innerHTML = "Hello";
+ 
+   document.body.appendChild(div);
 
    //shows current Method         
    canvas.append("text")
