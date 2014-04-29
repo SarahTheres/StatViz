@@ -1355,7 +1355,7 @@ function OnMouseDown(e)
             {
                 
                 setup(e, target);
-                //removeElementsByClassName("regression");
+                removeElementsByClassName("reporting");
         
                 reportingResults();
                 //drawDialogBoxToGetOutcomeVariable();
