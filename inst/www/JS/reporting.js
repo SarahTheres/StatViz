@@ -98,7 +98,7 @@ function reportingUnpairedTTest()
    //var dialogBox = document.getElementById("reportingBox");
    
    //shows current Method         
-  dialogBox.append("text")
+   canvas.append("text")
             .attr("x", leftX)
             .attr("y", topY + 3*stepY)
             .attr("fill", "black")
@@ -109,7 +109,7 @@ function reportingUnpairedTTest()
             .attr("id", "reporting")
             .attr("class", "dialogBox");
    
-   dialogBox.append("text")
+   canvas.append("text")
             .attr("x", leftX)
             .attr("y", topY + 3*stepY)
             .attr("fill", "black")
