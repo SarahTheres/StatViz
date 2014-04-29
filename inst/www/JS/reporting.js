@@ -101,12 +101,12 @@ function reportingUnpairedTTest()
    textfield.style.height = dialogBoxHeight;
    textfield.style.color = red;
    //textfield.style.position = absolute;
-   //textfield.style.top = topY;
-   //textfield.style.left = leftX;
+   textfield.style.top = topY;
+   textfield.style.left = leftX;
   
-   div.innerHTML = "Hello";
+   textfield.innerHTML = "Hello";
 
-   document.body.appendChild(div);
+   document.body.appendChild(textfield);
 
    //shows current Method         
    canvas.append("text")
