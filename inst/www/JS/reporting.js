@@ -56,6 +56,8 @@ function reportingResults()
 
 function getReportingMethod(method)
 {
+   reportingUnpairedTTest();
+   
    if (method == "Unpaired T-test")
    {
       reportingUnpairedTTest();
