@@ -96,7 +96,15 @@ function reportingUnpairedTTest()
     var leftX = centerX - dialogBoxWidth/2;
    
   
-   
+   var div = document.createElement("div");
+div.style.width = "100px";
+div.style.height = "100px";
+div.style.background = "red";
+div.style.color = "white";
+div.innerHTML = "Hello";
+
+document.body.appendChild(div);
+
    //shows current Method         
    canvas.append("text")
             .attr("x", leftX)
@@ -109,17 +117,8 @@ function reportingUnpairedTTest()
             .attr("id", "reporting")
             .attr("class", "dialogBox");
    
-   canvas.append("text")
-            .attr("x", leftX)
-            .attr("y", topY + 3*stepY)
-            .attr("fill", "black")
-            .attr("text-anchor", "left")
-              //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults + "px")
-            .text(variableList["dependent"])
-            .attr("id", "reporting")
-            .attr("class", "dialogBox");
-            
+  
+  
    //shows p value           
    canvas.append("text")
             .attr("x", leftX)
