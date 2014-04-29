@@ -26,8 +26,8 @@ function reportingResults()
             .attr("fill", "white")
             .attr("stroke", "grey")
             .attr("filter", "url(#shadow)")
-            .attr("id", "reportingBox")
-            .attr("class", "dialogBox");
+            .attr("id", "reporting")
+            .attr("class", "reporting");
     
    canvas.append("text")
             .attr("x", centerX)
@@ -37,7 +37,7 @@ function reportingResults()
             .attr("font-size", fontSizeVariablePanel + "px")
             .text("HOW TO REPORT")
             .attr("id", "reporting")
-            .attr("class", "dialogBox");
+            .attr("class", "reporting");
             
    canvas.append("text")
             .attr("x", leftX)
@@ -48,7 +48,7 @@ function reportingResults()
             .attr("font-size", fontSizeSignificanceTestResults + "px")
             .text("Reporting all your results and preconditions is very important so that any other researcher can repeat your study.")
             .attr("id", "reporting")
-            .attr("class", "dialogBox");
+            .attr("class", "reporting");
    
    //calls appropriate reporting method depending on used test method
    getReportingMethod(testResults["method"]);
@@ -97,8 +97,7 @@ function reportingUnpairedTTest()
    
     var mytop = canvasWidth/2 - dialogBoxHeight/2 + stepY;
     var myleft = getWidth() - canvasWidth - sideBarWidth + (canvasWidth - dialogBoxWidth)/2 + 3; 
-    //mytop = 25;
-    //myleft = 40;
+  
    //adding a textfield
    var textfield = document.createElement("reporting");
    textfield.style.display = "block";
@@ -108,19 +107,20 @@ function reportingUnpairedTTest()
    textfield.style.position = "absolute";
    textfield.style.top = mytop + "px";
    textfield.style.left = myleft + "px";
+   textfield.class = "reporting"
   
   //method and DV is reported
    var text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between "; 
    
    //IV in both groups with their means and standard errors are added
-   var variableList = getSelectedVariables();
-   var variableName = variableList["independent"][0];
+   //var variableList = getSelectedVariables();
+   //var variableName = variableList["independent"][0];
    
-   console.log("variable List:" + variableList["independent"][0]);
-   console.log("dataset" + dataset);
+   //console.log("variable List:" + variableList["independent"][0]);
+   //console.log("dataset" + dataset);
    
-   var mean1 = mean(variables[variableName][dataset]);
-   console.log("Mean 1: " + mean1);
+   //var mean1 = mean(variables[variableName][dataset]);
+   //console.log("Mean 1: " + mean1);
    text += testResults["independent-variable-level0"] + "( and ";
    text += testResults["independent-variable-level1"] + " groups.";
    
