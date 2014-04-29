@@ -97,9 +97,8 @@ function reportingUnpairedTTest()
    
    var context = canvas.getContext("2d");
    
-   context.fillStyle = "blue";
-   context.font = "bold 16px Arial";
-   context.fillText("Test", 100, 100);
+   context.textBaseline = "top";
+   context.fillText("(TEST", leftX, topY);
    
    //shows current Method         
    canvas.append("text")
