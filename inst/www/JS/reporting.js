@@ -99,7 +99,7 @@ function reportingUnpairedTTest()
     var myleft = centerY - dialogBoxHeight/2; 
     
    //adding a textfield
-   var textfield = document.createElement("div");
+   var textfield = document.createElement("reporting");
    textfield.style.display = "block";
    textfield.style.width = dialogBoxWidth;
    textfield.style.height = dialogBoxHeight;
@@ -112,9 +112,9 @@ function reportingUnpairedTTest()
    
    textfield.innerHTML += "Blubb";
 
-   //document.body.appendChild(textfield);
+   document.body.appendChild(textfield);
    
-   document.canvas.appendChild(textfield);
+   //document.canvas.appendChild(textfield);
    //shows current Method         
    canvas.append("text")
             .attr("x", leftX)
