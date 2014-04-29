@@ -1839,6 +1839,14 @@ function OnMouseOver(e)
             
                 d3.selectAll(".selectNone").attr("cursor", "pointer");
             }
+            
+            //if mouse moves over reporting button => pointer cursor
+            else if(target.className.baseVal == "reportingButton")
+            {
+                setup(e, target);
+            
+                d3.selectAll(".reportingButton").attr("cursor", "pointer");
+            }
         
             else if(target.className.baseVal == "assumptionsButtonFront")
             {
