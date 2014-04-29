@@ -109,16 +109,17 @@ function reportingUnpairedTTest()
    textfield.style.top = mytop + "px";
    textfield.style.left = myleft + "px";
   
-   textfield.innerHTML = "Hello";
+  //TODO: insert correct dv and iv and mean, se
+   var text = "An Unpaired t-test has been conducted to compare the DV between IV 1 and IV 2 ";
    
-   textfield.innerHTML += "Blubb";
-
+   console.log("p:" + output.p);
+   console.log("iv:" + variableList["independent-levels"][0]);
+   
+   textfield.innerHTML = text;
    document.body.appendChild(textfield);
    
-   console.log("topY: " + topY);
-   console.log("leftX: " + leftX);
-   console.log("displayOffsetTop:" + displayOffsetTop);
-   
+  
+
    //document.canvas.appendChild(textfield);
    //shows current Method         
    canvas.append("text")
