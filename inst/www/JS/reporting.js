@@ -112,8 +112,9 @@ function reportingUnpairedTTest()
    
    textfield.innerHTML += "Blubb";
 
-   document.body.appendChild(textfield);
+   //document.body.appendChild(textfield);
    
+   document.canvas.appendChild(textfield);
    //shows current Method         
    canvas.append("text")
             .attr("x", leftX)
