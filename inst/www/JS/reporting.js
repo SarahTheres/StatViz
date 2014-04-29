@@ -95,13 +95,15 @@ function reportingUnpairedTTest()
     var topY = (centerY - dialogBoxHeight/2) + stepY;
     var leftX = centerX - dialogBoxWidth/2;
    
+   //adding a textfield
+   var textfield = document.createElement("div");
+   textfield.style.width = dialogBoxWidth;
+   textfield.style.height = dialogBoxHeight;
+   textfield.style.position = absolute;
+   textfield.style.top = topY;
+   textfield.style.left = leftX;
   
-   var div = document.createElement("div");
-div.style.width = "100px";
-div.style.height = "100px";
-div.style.background = "red";
-div.style.color = "white";
-div.innerHTML = "Hello";
+   div.innerHTML = "Hello";
 
 document.body.appendChild(div);
 
