@@ -99,7 +99,7 @@ function reportingUnpairedTTest()
    var textfield = document.createElement("div");
    textfield.style.width = dialogBoxWidth;
    textfield.style.height = dialogBoxHeight;
-   textfield.style.position = absolute;
+   //textfield.style.position = absolute;
    textfield.style.top = topY;
    textfield.style.left = leftX;
   
