@@ -101,8 +101,8 @@ function reportingUnpairedTTest()
    textfield.style.height = dialogBoxHeight;
    textfield.style.color = "red";
    textfield.style.position = "absolute";
-   textfield.style.top = "100px";
-   textfield.style.left = "300px";
+   textfield.style.top = topY + "px";
+   textfield.style.left = leftX + "px";
   
    textfield.innerHTML = "Hello";
 
