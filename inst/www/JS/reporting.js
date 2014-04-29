@@ -96,7 +96,7 @@ function reportingUnpairedTTest()
     var leftX = centerX - dialogBoxWidth/2;
    
     var mytop = displayOffsetTop;
-    var myleft = getWidth() - canvasWidth - sideBarWidth; 
+    var myleft = getWidth() - canvasWidth - sideBarWidth + (canvasWidth - dialogBoxWidth)/2; 
     //mytop = 25;
     //myleft = 40;
    //adding a textfield
