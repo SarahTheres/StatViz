@@ -120,11 +120,11 @@ function reportingUnpairedTTest()
    if (p <= 0.05)
    {
       //complement text and give degrees of freedom and t-value
-      text += "A significant difference can be reported t(" + testResults["df"] + ")=" + testResults["parameter"] + "," + pResult;
+      text += "A significant difference can be reported t(" + testResults["df"] + ")=" + testResults["parameter"] + "," + pResult + ".";
    }
    else
    {
-      text += "The descriptive difference is not significant." + pResult;
+      text += "The descriptive difference is not significant (" + pResult + ").";
    }
    
    textfield.innerHTML = text;
