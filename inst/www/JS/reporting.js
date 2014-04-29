@@ -85,6 +85,18 @@ function reportingUnpairedTTest()
 {
    var canvas = d3.select("#plotCanvas");
    
+   var dialogBoxHeight = plotHeight;
+    var dialogBoxWidth = plotWidth;
+    
+    var centerX = canvasWidth/2;
+    var centerY = canvasHeight/2;
+    
+    //present results in the following line which starts one step further
+    var stepY = dialogBoxHeight/15;
+    //top and left of dialog box
+    var topY = (centerY - dialogBoxHeight/2) + stepY;
+    var leftX = centerX - dialogBoxWidth/2;
+   
    //shows current Method         
    canvas.append("text")
             .attr("x", leftX)
