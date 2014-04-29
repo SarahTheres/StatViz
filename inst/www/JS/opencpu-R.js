@@ -51,10 +51,6 @@ function getData(dataset, variableName, level)
     IQR[variableName][level] = findIQR(variables[variableName][level]);
     CI[variableName][level] = findCI(variables[variableName][level]);   
     
-    //TODO: to delete
-    console.log("VariableName" + variableName);
-    console.log("level" + level);
-    
     if(++variableCount == getObjectLength(variableNames))
     {
         setVariableRow();
