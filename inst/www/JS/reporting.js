@@ -135,22 +135,58 @@ function reportingUnpairedTTest()
    
    //TODO: add se
    //IV in both groups with their means and standard errors are added to text
-   text += testResults["independent-variable-level0"] + " (M = " + mean0 + " , " + se0 + ") and ";
-   text += testResults["independent-variable-level1"] + " (M = " + mean1 + " , " + se1 + ") groups.";
+   text += testResults["independent-variable-level0"] + " (M = " + mean0 + ", " + se0 + ") and ";
+   text += testResults["independent-variable-level1"] + " (M = " + mean1 + ", " + se1 + ") groups.";
    
    //get pure p value without letter p or any operators 
    var p = getPurePValue(testResults["p"]);
    var pResult = changePValueNotationReporting(p);
+   
+   var effectSize = testResults["effect-size"];
    
    //check whether p is significant
    if (p <= 0.05)
    {
       //complement text and give degrees of freedom and t-value
       text += "A significant difference can be reported t(" + testResults["df"] + ")=" + testResults["parameter"] + "," + pResult + ".";
+   
+      //add effect size text depending on amount of effect
+      if (effectSize < 0.2)
+      {
+         text += "However, nearly no effect could be measured";
+      }
+      else if (effectSize >= 0.2 && effectSize < 0.5)
+      {
+         text += "However, there is only a small-sized effect";
+      }
+      else if (effectSize >= 0.5 && effectSize < 0.8)
+      {
+         text += "Additionally, a medium-sized effect could be detected";
+      }
+      // effectSize >= 0.8
+      else 
+      {
+         text += "Additionally, a large-sized effect could be detected";
+      }
+      
+      //add effect-size value
+      text += " (d = " + effectSize + ")."
    }
    else
    {
       text += "The descriptive difference is not significant (" + pResult + ").";
+      
+       //add effect size text depending on amount of effect
+      if (effectSize >= 0.5 && effectSize < 0.8)
+      {
+         text += "However, it did represent a medium-sized effect (d = " + effectSize + ").";
+      }
+      else if (effectSize >= 0.8) 
+      {
+         text += "However, it did represent a large-sized effect (d = " + effectSize + ").";
+      }
+      
+      //in case that effect size is smaller than medium, it is not remarkable as no signifikant results      
    }
    
    textfield.innerHTML = text;
