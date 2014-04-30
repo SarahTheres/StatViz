@@ -113,22 +113,30 @@ function reportingUnpairedTTest()
   //method and DV is reported
    var text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between "; 
    
-   //TODO: make more elegant, delete logs
-   //getting means for each independen variables and round them to 2 decimal places
+   //TODO: make more elegant
+   //getting means for each independent variable and round them to 2 decimal places
    var variableList = getSelectedVariables();
 
    var mean0 = mean(variables[variableList["dependent"]][variableList["independent-levels"][0]]);
    mean0 = mean0.toFixed(2);
-   console.log("Mean 1: " + mean0);
 
    var mean1 = mean(variables[variableList["dependent"]][variableList["independent-levels"][1]]);
    mean1 = mean1.toFixed(2);
-   console.log("Mean 2: " + mean1);
+   
+    //TODO: make more elegant
+   //getting means for each independent variable and round them to 2 decimal places
+   var variableList = getSelectedVariables();
+
+   var se0 = getStandardError(variables[variableList["dependent"]][variableList["independent-levels"][0]]);
+   se0 = se0.toFixed(2);
+
+   var se1 = getStandardError(variables[variableList["dependent"]][variableList["independent-levels"][1]]);
+   se1 = se1.toFixed(2);
    
    //TODO: add se
    //IV in both groups with their means and standard errors are added to text
-   text += testResults["independent-variable-level0"] + " (M = " + mean0 + ") and ";
-   text += testResults["independent-variable-level1"] + " (M = " + mean1 + ") groups.";
+   text += testResults["independent-variable-level0"] + " (M = " + mean0 + " , " + se0 + ") and ";
+   text += testResults["independent-variable-level1"] + " (M = " + mean1 + " , " + se1 + ") groups.\n";
    
    //get pure p value without letter p or any operators 
    var p = getPurePValue(testResults["p"]);
