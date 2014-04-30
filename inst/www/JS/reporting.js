@@ -47,9 +47,31 @@ function reportingResults()
                      .attr("style", "font:0.8em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
                      .text("Reporting all your results and preconditions is very important so that any other researcher can repeat your study.");
                      
-   
+   //draws the reporting textbox as the position is the same for every test 
+   setReportingTextbox();
    //calls appropriate reporting method depending on used test method
    getReportingMethod(testResults["method"]);
+}
+
+function setReportingTextbox()
+{
+   //var canvas = d3.select("#plotCanvas");
+   
+   // reporting textbox height is a third of dialogbox height
+   var dialogBoxHeight = plotHeight;
+   var reportingBoxHeight = dialogBoxHeight / 3;
+   
+   //reporting textbox width is same as dialogbox width but leaves a small border
+   var dialogBoxWidth = plotWidth;
+   var reportingBoxWidth = dialogBoxWidth - dialogBoxWidth/20;
+   
+   //reporting box position => left (x) = center; top (y) = 40%
+   var reportingBoxLeft = canvasWidth/2;
+   var reportingBoxTop = (2*canvasHeight)/5;
+   
+   //create a new div element for reporting the text 
+   reportingText = d3.select("body").append("div").attr("style", "position: absolute; left: " + reportingBoxLeft + "px; top: " + reportingBoxTop + "px; height: " + reportingBoxHeight + "px; width: " + reportingBoxWidth + "px; text-align: left;").attr("class", "reporting");
+
 }
 
 function getReportingMethod(method)
@@ -79,22 +101,6 @@ function getReportingMethod(method)
    
 function reportingUnpairedTTest()
 {
-   var canvas = d3.select("#plotCanvas");
-   
-   // reporting textbox height is a third of dialogbox height
-   var dialogBoxHeight = plotHeight;
-   var reportingBoxHeight = dialogBoxHeight / 3;
-   
-   //reporting textbox width is same as dialogbox width but leaves a small border
-   var dialogBoxWidth = plotWidth;
-   var reportingBoxWidth = dialogBoxWidth - dialogBoxWidth/20;
-   
-   //reporting box position => left (x) = center; top (y) = one third
-   var reportingBoxLeft = canvasWidth/2;
-   var reportingBoxTop = canvasHeight/3;
-   
-   //create a new div element for reporting the text 
-   reportingText = d3.select("body").append("div").attr("style", "position: absolute; left: " + reportingBoxLeft + "px; top: " + reportingBoxTop + "px; height: " + reportingBoxHeight + "px; width: " + reportingBoxWidth + "px; text-align: left;").attr("class", "reporting");
 
    //method and DV is reported
    var text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between "; 
