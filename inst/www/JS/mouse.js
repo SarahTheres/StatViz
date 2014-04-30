@@ -1356,10 +1356,53 @@ function OnMouseDown(e)
                 
                 setup(e, target);
                 removeElementsByClassName("reporting");
-        
+                
+                //TODO hide reporting button to close reporting button
+                d3.select(".reportingButton").attr("display", "none");
+                //removeElementsByClassName("closeReportingButton");
+               
+               //add Close Reporting Button
+                var canvas = d3.select("#plotCanvas");
+                var availableWidth = canvasWidth;
+     
+                canvas.append("rect")
+                    .attr("x", 2*availableWidth/3 - selectionButtonWidth/2)
+                    .attr("y", selectionButtonOffset)
+                    .attr("height", selectionButtonHeight)
+                    .attr("width", selectionButtonWidth)
+                    .attr("rx", scaleForWindowSize(10) + "px")
+                    .attr("ry", scaleForWindowSize(10) + "px")
+                    .attr("fill", "url(#buttonFillNormal)")
+                    .attr("filter", "url(#Bevel)")
+                    .attr("stroke", "black")
+                    .attr("id", "rect")
+                    .attr("class", "closeReportingButton");
+                            
+              canvas.append("text")
+                    .attr("x", 2*availableWidth/3)
+                    .attr("y", selectionButtonOffset + selectionButtonHeight/2 + yAxisTickTextOffset)
+                    .attr("fill", "black")
+                    .attr("text-anchor", "middle")
+                    .attr("font-size", fontSizeButtonLabel + "px")
+                    .text("Close Reporting")
+                    .attr("id", "text")
+                    .attr("class", "closeReportingButton");
+                
+                //call function in reporting.js for actual reporting
                 reportingResults();
                 //drawDialogBoxToGetOutcomeVariable();
             }
+            
+             else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "closeReportingButton")
+            {
+                setup(e, target);
+                //remove all reporting elements
+                removeElementsByClassName("reporting");
+                //remove closeReportingButton
+                removeElementsByClassName("closeReportingButton");
+                //show reporting Button
+                d3.select(".reportingButton").attr("display", "inline");
+            }    
 
             else
             {
