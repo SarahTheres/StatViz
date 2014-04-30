@@ -39,12 +39,12 @@ function reportingResults()
                      .text("HOW TO REPORT RESULTS");
    
    //declare new div as headline
-   var reportingIntroduction = d3.select("body").append("div").attr("style", "position: absolute; left: " + centerX + "px; top: " + (topY + 2*stepY) + "px; height: " + dialogBoxHeight + "px; width: " + dialogBoxWidth + "px; text-align: center;").attr("class", "reporting");
+   var reportingIntroduction = d3.select("body").append("div").attr("style", "position: absolute; left: " + centerX + "px; top: " + (topY + 2*stepY) + "px; height: " + dialogBoxHeight + "px; width: " + dialogBoxWidth + "px; text-align: left;").attr("class", "reporting");
    //add text to introduction div
    reportingIntroduction.append("label")
                      .attr("align", "left")
                      //.attr("vertical-align", "top")
-                     .attr("style", "font:1.0em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
+                     .attr("style", "font:0.8em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
                      .text("Reporting all your results and preconditions is very important so that any other researcher can repeat your study.");
                      
    
