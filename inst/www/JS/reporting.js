@@ -112,14 +112,10 @@ function reportingTTest(isPaired)
    var text;
    // write different text depending on paired or unpaired t-test
    if (isPaired)
-   {
-      text = "A paired t-test has been conducted to compare the "; 
-   }
+      text = "A paired t-test has been conducted to compare the " + testResults["dependent-variable"] + " within participants treated with "; 
    else
-   {
       //method and DV is reported
-       text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between "; 
-   }
+       text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " within "; 
    
    //TODO: make more elegant
    //getting means for each independent variable and round them to 2 decimal places
@@ -141,10 +137,14 @@ function reportingTTest(isPaired)
    var se1 = getStandardError(variables[variableList["dependent"]][variableList["independent-levels"][1]]);
    se1 = se1.toFixed(2);
    
-   //TODO: add se
    //IV in both groups with their means and standard errors are added to text
    text += testResults["independent-variable-level0"] + " (M = " + mean0 + ", SE = " + se0 + ") and ";
-   text += testResults["independent-variable-level1"] + " (M = " + mean1 + ", SE = " + se1 + ") groups.";
+   
+   //for second variable the text differs => therefore if-condition
+   if (isPaired)
+      text += "with " + testResults["independent-variable-level1"] + " (M = " + mean1 + ", SE = " + se1 + ").";
+   else
+      text += testResults["independent-variable-level1"] + " (M = " + mean1 + ", SE = " + se1 + ") groups.";
    
    //get pure p value without letter p or any operators 
    var p = getPurePValue(testResults["p"]);
