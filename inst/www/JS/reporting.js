@@ -121,7 +121,7 @@ function reportingUnpairedTTest()
    var variableNameData = variables[variableName]["dataset"];
    console.log("variable Name data:" + variableNameData);
    
-   var mean1 = mean(variableNameData);
+   var mean1 = mean(variables[variableList["dependent"]][variableList["independent-levels"][0]]);
    console.log("Mean 1: " + mean1);
    
    text += testResults["independent-variable-level0"] + "( and ";
