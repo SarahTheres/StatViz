@@ -115,7 +115,7 @@ function reportingUnpairedTTest()
    
    //IV in both groups with their means and standard errors are added
    var variableList = getSelectedVariables();
-   var variableName = variableList["independent"][0];
+   var variableName = variableList["dependent"][0];
    console.log("variable Name:" + variableName);
    
    var variableNameData = variables[variableName]["dataset"];
