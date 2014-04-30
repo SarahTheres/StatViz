@@ -40,25 +40,13 @@ function reportingResults()
    
    //declare new div as headline
    var reportingIntroduction = d3.select("body").append("div").attr("style", "position: absolute; left: " + centerX + "px; top: " + (topY + 2*stepY) + "px; height: " + dialogBoxHeight + "px; width: " + dialogBoxWidth + "px; text-align: center;").attr("class", "reporting");
-   //add text to headline div
-   reportingHeadline.append("label")
+   //add text to introduction div
+   reportingIntroduction.append("label")
                      .attr("align", "left")
                      //.attr("vertical-align", "top")
                      .attr("style", "font:1.0em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
                      .text("Reporting all your results and preconditions is very important so that any other researcher can repeat your study.");
                      
-
-   /* canvas.append("text")
-            .attr("x", leftX)
-            .attr("y", topY + 2*stepY)
-            .attr("fill", "black")
-            .attr("text-anchor", "left")
-            //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults + "px")
-            .text("Reporting all your results and preconditions is very important so that any other researcher can repeat your study.")
-            .attr("id", "reporting")
-            .attr("class", "reporting");
-   */
    
    //calls appropriate reporting method depending on used test method
    getReportingMethod(testResults["method"]);
