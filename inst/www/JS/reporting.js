@@ -218,7 +218,7 @@ function reportingTTest(isPaired)
 
 function reportingOneWayANOVA(isPaired)
 {
-   
+   /*
    var variableList = getSelectedVariables();
     //all text in reportingBox is stored in this variable;
    var text;
@@ -242,7 +242,8 @@ function reportingOneWayANOVA(isPaired)
        
        //add dependent variable
        text += " on " + variableList["dependent"];
-   }   
+   }
+   */
   
 }
 
