@@ -30,7 +30,7 @@ function reportingResults()
             .attr("class", "reporting");
 
    //declare new div as headline
-   var reportingHeadline = d3.select("body").append("div").attr("style", "position: absolute; left: " + myleft + "px; top: " + mytop + "px; height: " + dialogBoxHeight + "px; width: " + dialogBoxWidth + "px; text-align: center;").attr("class", "reporting");
+   var reportingHeadline = d3.select("body").append("div").attr("style", "position: absolute; left: " + centerX + "px; top: " + topY + "px; height: " + dialogBoxHeight + "px; width: " + dialogBoxWidth + "px; text-align: center;").attr("class", "reporting");
    reportingHeadline.append("label")
                      .attr("align", "center")
                      .attr("vertical-align", "top")
