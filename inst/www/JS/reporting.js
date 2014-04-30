@@ -98,9 +98,18 @@ function reportingUnpairedTTest()
    
     var mytop = canvasWidth/2 - dialogBoxHeight/2 + stepY;
     var myleft = getWidth() - canvasWidth - sideBarWidth + (canvasWidth - dialogBoxWidth)/2 + 3; 
-  
+   
+    //create a new div element for reporting the text 
+    var reportingText = d3.select("body").append("div").attr("style", "position: absolute; left: " + myleft + "px; top: " + mytop + "px; height: " + dialogBoxHeight + "px; width: " + dialogBoxWidth + "px; text-align: left;").attr("class", "reporting");
+
+   //method and DV is reported
+   var text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between "; 
+   
+ 
+    
+
    //adding a textfield
-   var textfield = document.createElement("reporting");
+   /*var textfield = document.createElement("reporting");
    textfield.style.display = "block";
    textfield.style.width = dialogBoxWidth/2;
    textfield.style.height = dialogBoxHeight;
@@ -109,10 +118,8 @@ function reportingUnpairedTTest()
    textfield.style.top = mytop + "px";
    textfield.style.left = myleft + "px";
    textfield.className = "reporting";
+   */
   
-  //method and DV is reported
-   var text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between "; 
-   
    //TODO: make more elegant
    //getting means for each independent variable and round them to 2 decimal places
    var variableList = getSelectedVariables();
@@ -192,7 +199,15 @@ function reportingUnpairedTTest()
       //in case that effect size is smaller than medium, it is not remarkable as no signifikant results      
    }
    
-   textfield.innerHTML = text;
-   document.body.appendChild(textfield);
-
+   //textfield.innerHTML = text;
+   //document.body.appendChild(textfield);
+   
+     //append label to div element reportingText and insert the reporting text
+    reportingText.append("label")
+                .attr("align", "left")
+                .attr("vertical-align", "middle")
+                .attr("style", "font:1.2em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
+                .text(text);
+    reportingText.append("br");
+    reportingText.append("br");
 }
