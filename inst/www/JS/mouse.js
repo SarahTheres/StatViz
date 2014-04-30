@@ -1390,7 +1390,6 @@ function OnMouseDown(e)
                 
                 //call function in reporting.js for actual reporting
                 reportingResults();
-                //drawDialogBoxToGetOutcomeVariable();
             }
             
              else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "closeReportingButton")
