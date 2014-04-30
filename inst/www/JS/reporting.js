@@ -97,7 +97,7 @@ function reportingUnpairedTTest()
    var myleft = getWidth() - canvasWidth - sideBarWidth + (canvasWidth - dialogBoxWidth)/2 + 3; 
    
     //create a new div element for reporting the text 
-   var reportingText = d3.select("body").append("div").attr("style", "position: absolute; left: " + myleft + "px; top: " + mytop + "px; height: " + dialogBoxHeight + "px; width: " + dialogBoxWidth + "px; text-align: left;").attr("class", "reporting");
+   var reportingText = d3.select("body").append("div").attr("style", "position: absolute; left: " + centerX + "px; top: " + mytop + "px; height: " + dialogBoxHeight + "px; width: " + dialogBoxWidth + "px; text-align: left;").attr("class", "reporting");
 
    //method and DV is reported
    var text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between "; 
