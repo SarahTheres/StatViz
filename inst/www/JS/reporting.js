@@ -15,7 +15,7 @@ function reportingResults()
     var topY = (centerY - dialogBoxHeight/2) + stepY;
     var leftX = centerX - dialogBoxWidth/2;
     
-    //create rect for reporting dialog box 
+    //create rect for reporting dialog box
     canvas.append("rect")
             .attr("x", centerX - dialogBoxWidth/2)
             .attr("y", centerY - dialogBoxHeight/2)
@@ -47,7 +47,7 @@ function reportingResults()
                      .attr("style", "font:0.8em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
                      .text("Reporting all your results and preconditions is very important so that any other researcher can repeat your study.");
                      
-   //draws the reporting textbox as the position is the same for every test 
+   //draws the reporting textbox as the position is the same for every test
    setReportingTextbox();
    //calls appropriate reporting method depending on used test method
    callReportingMethod(testResults["method"]);
@@ -70,14 +70,14 @@ function setReportingTextbox()
    var reportingBoxLeft = canvasWidth/2;
    var reportingBoxTop = (2*canvasHeight)/5;
    
-   //create a new div element for reporting the text 
+   //create a new div element for reporting the text
    reportingText = d3.select("body").append("div").attr("style", "position: absolute; left: " + reportingBoxLeft + "px; top: " + reportingBoxTop + "px; height: " + reportingBoxHeight + "px; width: " + reportingBoxWidth + "px; text-align: left;").attr("class", "reporting");
 
 }
 
 function callReportingMethod(method)
 {
-   //variable indicates whether test is paired 
+   //variable indicates whether test is paired
    var isPaired;
    
    if (method == "Unpaired T-test")
@@ -92,17 +92,14 @@ function callReportingMethod(method)
    }
    else if (method == "1-way ANOVA")
    {
-      isPaired = false;
-      reportingOneWayAnova(isPaired);
+      //TODO
    }
    else if (method == "2-way ANOVA")
    {
       //TODO
-   } 
+   }
    else if (method == "Repeated-measures ANOVA")
    {
-      isPaired = true;
-      reportingOneWayANOVAisPaired);
       //TODO
    }
 }
@@ -115,10 +112,10 @@ function reportingTTest(isPaired)
    var text;
    // write different text depending on paired or unpaired t-test
    if (isPaired)
-      text = "A paired t-test has been conducted to compare the " + testResults["dependent-variable"] + " within participants treated with "; 
+      text = "A paired t-test has been conducted to compare the " + testResults["dependent-variable"] + " within participants treated with ";
    else
       //method and DV is reported
-       text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between "; 
+       text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " within ";
    
    //TODO: make more elegant
    //getting means for each independent variable and round them to 2 decimal places
@@ -149,7 +146,7 @@ function reportingTTest(isPaired)
    else
       text += testResults["independent-variable-level1"] + " (M = " + mean1 + ", SE = " + se1 + ") groups.";
    
-   //get pure p value without letter p or any operators 
+   //get pure p value without letter p or any operators
    var p = getPurePValue(testResults["p"]);
    var pResult = changePValueNotationReporting(p);
    
@@ -178,7 +175,7 @@ function reportingTTest(isPaired)
       {
          text += " Additionally, a large-sized effect could be detected";
       }
-      else 
+      else
       {
          //TODO: error handling => no effect size
       }
@@ -195,12 +192,12 @@ function reportingTTest(isPaired)
       {
          text += " However, it did represent a medium-sized effect (d = " + effectSize + ").";
       }
-      else if (effectSize >= 0.8) 
+      else if (effectSize >= 0.8)
       {
          text += " However, it did represent a large-sized effect (d = " + effectSize + ").";
       }
       
-      //in case that effect size is smaller than medium, it is not remarkable as no signifikant results      
+      //in case that effect size is smaller than medium, it is not remarkable as no signifikant results
    }
    
    //append label to div element reportingText and insert the reporting text
@@ -210,4 +207,9 @@ function reportingTTest(isPaired)
                 .attr("style", "font:1.2em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
                 .text(text);
     //reportingText.append("br");
+}
+
+function reportingPairedTTest()
+{
+   
 }
