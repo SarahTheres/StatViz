@@ -212,10 +212,10 @@ function reportingTTest(isPaired)
     //reportingText.append("br");
 }
 
-
+/*
 function reportingOneWayAnova(isPaired)
 {
-   /*
+   
    var variableList = getSelectedVariables();
     //all text in reportingBox is stored in this variable;
    var text;
@@ -240,7 +240,7 @@ function reportingOneWayAnova(isPaired)
        //add dependent variable
        text += " on " + variableList["dependent"];
    }
-   */
+   
   
 }
-
+*/
