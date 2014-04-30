@@ -114,13 +114,15 @@ function reportingUnpairedTTest()
    var text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between "; 
    
    //TODO: make more elegant, delete logs
-   //getting means for each independen variables
+   //getting means for each independen variables and round them to 2 decimal places
    var variableList = getSelectedVariables();
 
    var mean0 = mean(variables[variableList["dependent"]][variableList["independent-levels"][0]]);
+   mean0 = mean0.toFixed(2);
    console.log("Mean 1: " + mean0);
 
    var mean1 = mean(variables[variableList["dependent"]][variableList["independent-levels"][1]]);
+   mean1 = mean1.toFixed(2);
    console.log("Mean 2: " + mean1);
    
    //TODO: add se
