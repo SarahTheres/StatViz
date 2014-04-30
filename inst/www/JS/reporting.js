@@ -89,16 +89,12 @@ function reportingUnpairedTTest()
    var dialogBoxWidth = plotWidth;
    var reportingBoxWidth = dialogBoxWidth - dialogBoxWidth/20;
    
-   //get center positions
-   var centerX = canvasWidth/2;
-   var centerY = canvasHeight/2;
+   //reporting box position => left (x) = center; top (y) = one third
+   var reportingBoxLeft = canvasWidth/2;
+   var reportingBoxTop = canvasHeight/3;
    
-   //var mytop = canvasWidth/2 - dialogBoxHeight/2 + stepY;
-  // var myleft = getWidth() - canvasWidth - sideBarWidth + (canvasWidth - dialogBoxWidth)/2 + 3; 
-   
-    //create a new div element for reporting the text 
-   //var reportingText = d3.select("body").append("div").attr("style", "position: absolute; left: " + centerX + "px; top: " + mytop + "px; height: " + dialogBoxHeight + "px; width: " + dialogBoxWidth + "px; text-align: left;").attr("class", "reporting");
-   reportingText = d3.select("body").append("div").attr("style", "position: absolute; left: " + centerX + "px; top: " + centerY + "px; height: " + reportingBoxHeight + "px; width: " + reportingBoxWidth + "px; text-align: left;").attr("class", "reporting");
+   //create a new div element for reporting the text 
+   reportingText = d3.select("body").append("div").attr("style", "position: absolute; left: " + reportingBoxLeft + "px; top: " + reportingBoxTop + "px; height: " + reportingBoxHeight + "px; width: " + reportingBoxWidth + "px; text-align: left;").attr("class", "reporting");
 
    //method and DV is reported
    var text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between "; 
