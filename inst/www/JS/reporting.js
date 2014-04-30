@@ -142,8 +142,8 @@ function reportingUnpairedTTest()
    
    //TODO: add se
    //IV in both groups with their means and standard errors are added to text
-   text += testResults["independent-variable-level0"] + " (M = " + mean0 + ", " + se0 + ") and ";
-   text += testResults["independent-variable-level1"] + " (M = " + mean1 + ", " + se1 + ") groups.";
+   text += testResults["independent-variable-level0"] + " (M = " + mean0 + ", SE = " + se0 + ") and ";
+   text += testResults["independent-variable-level1"] + " (M = " + mean1 + ", SE = " + se1 + ") groups.";
    
    //get pure p value without letter p or any operators 
    var p = getPurePValue(testResults["p"]);
@@ -155,7 +155,7 @@ function reportingUnpairedTTest()
    if (p <= 0.05)
    {
       //complement text and give degrees of freedom and t-value
-      text += "A significant difference can be reported t(" + testResults["df"] + ")=" + testResults["parameter"] + "," + pResult + ".";
+      text += " A significant difference can be reported t(" + testResults["df"] + ")=" + testResults["parameter"] + "," + pResult + ".";
    
       //add effect size text depending on amount of effect
       if (effectSize < 0.2)
@@ -184,7 +184,7 @@ function reportingUnpairedTTest()
    }
    else
    {
-      text += "The descriptive difference is not significant (" + pResult + ").";
+      text += " The descriptive difference is not significant (" + pResult + ").";
       
        //add effect size text depending on amount of effect
       if (effectSize >= 0.5 && effectSize < 0.8)
