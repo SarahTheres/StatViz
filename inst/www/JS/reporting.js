@@ -153,20 +153,23 @@ function reportingUnpairedTTest()
       //add effect size text depending on amount of effect
       if (effectSize < 0.2)
       {
-         text += "However, nearly no effect could be measured";
+         text += " However, nearly no effect could be measured";
       }
       else if (effectSize >= 0.2 && effectSize < 0.5)
       {
-         text += "However, there is only a small-sized effect";
+         text += " However, there is only a small-sized effect";
       }
       else if (effectSize >= 0.5 && effectSize < 0.8)
       {
-         text += "Additionally, a medium-sized effect could be detected";
+         text += " Additionally, a medium-sized effect could be detected";
       }
-      // effectSize >= 0.8
+      else if (effectSize >= 0.8)
+      {
+         text += " Additionally, a large-sized effect could be detected";
+      }
       else 
       {
-         text += "Additionally, a large-sized effect could be detected";
+         //TODO: error handling => no effect size
       }
       
       //add effect-size value
@@ -176,15 +179,14 @@ function reportingUnpairedTTest()
    {
       text += "The descriptive difference is not significant (" + pResult + ").";
       
-      //TODO: undo just for testing
        //add effect size text depending on amount of effect
-      if (effectSize <= 0.5 && effectSize < 0.8)
+      if (effectSize >= 0.5 && effectSize < 0.8)
       {
-         text += "However, it did represent a medium-sized effect (d = " + effectSize + ").";
+         text += " However, it did represent a medium-sized effect (d = " + effectSize + ").";
       }
       else if (effectSize >= 0.8) 
       {
-         text += "However, it did represent a large-sized effect (d = " + effectSize + ").";
+         text += " However, it did represent a large-sized effect (d = " + effectSize + ").";
       }
       
       //in case that effect size is smaller than medium, it is not remarkable as no signifikant results      
