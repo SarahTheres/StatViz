@@ -93,7 +93,7 @@ function callReportingMethod(method)
    else if (method == "1-way ANOVA")
    {
       isPaired = false;
-      reporting1wayANOVA(isPaired);
+      reportingOneWayANOVA(isPaired);
    }
    else if (method == "2-way ANOVA")
    {
@@ -102,7 +102,7 @@ function callReportingMethod(method)
    else if (method == "Repeated-measures ANOVA")
    {
       isPaired = true;
-      reporting1wayANOVA(isPaired);
+      reportingOneWayANOVAisPaired);
       //TODO
    }
 }
@@ -216,7 +216,7 @@ function reportingTTest(isPaired)
 
 
 
-/*function reporting1wayANOVA(isPaired)
+function reportingOneWayANOVA(isPaired)
 {
    
    var variableList = getSelectedVariables();
@@ -245,4 +245,4 @@ function reportingTTest(isPaired)
    }   
   
 }
-*/
+
