@@ -209,5 +209,5 @@ function reportingUnpairedTTest()
                 .attr("style", "font:1.2em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
                 .text(text);
     //reportingText.append("br");
-    reportingText.append("br");
+    //reportingText.append("br");
 }
