@@ -101,4 +101,4 @@ var factorials = [0, 1, 2, 6, 24, 120];
 var STATES = new Object();
 
 //reporting textfield 
-var reportingText = d3.select("body").append("div").attr("style", "position: absolute; left: " + centerX + "px; top: " + mytop + "px; height: " + dialogBoxHeight + "px; width: " + dialogBoxWidth + "px; text-align: left;").attr("class", "reporting");
+var reportingText; 
