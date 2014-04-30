@@ -31,23 +31,24 @@ function reportingResults()
 
    //declare new div as headline
    var reportingHeadline = d3.select("body").append("div").attr("style", "position: absolute; left: " + centerX + "px; top: " + topY + "px; height: " + dialogBoxHeight + "px; width: " + dialogBoxWidth + "px; text-align: center;").attr("class", "reporting");
+   //add text to headline div
    reportingHeadline.append("label")
                      .attr("align", "center")
                      .attr("vertical-align", "top")
-                     .attr("style", "font:1.8em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
+                     .attr("style", "font:1.6em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
                      .text("HOW TO REPORT RESULTS");
-    
-   /*canvas.append("text")
-            .attr("x", centerX)
-            .attr("y", topY)
-            .attr("fill", "black")
-            .attr("text-anchor", "middle")
-            .attr("font-size", fontSizeVariablePanel + "px")
-            .text("HOW TO REPORT")
-            .attr("id", "reporting")
-            .attr("class", "reporting");
-    */        
-   canvas.append("text")
+   
+   //declare new div as headline
+   var reportingIntroduction = d3.select("body").append("div").attr("style", "position: absolute; left: " + centerX + "px; top: " + (topY + 2*stepY) + "px; height: " + dialogBoxHeight + "px; width: " + dialogBoxWidth + "px; text-align: center;").attr("class", "reporting");
+   //add text to headline div
+   reportingHeadline.append("label")
+                     .attr("align", "left")
+                     //.attr("vertical-align", "top")
+                     .attr("style", "font:1.0em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
+                     .text("Reporting all your results and preconditions is very important so that any other researcher can repeat your study.");
+                     
+
+   /* canvas.append("text")
             .attr("x", leftX)
             .attr("y", topY + 2*stepY)
             .attr("fill", "black")
@@ -57,7 +58,7 @@ function reportingResults()
             .text("Reporting all your results and preconditions is very important so that any other researcher can repeat your study.")
             .attr("id", "reporting")
             .attr("class", "reporting");
-   
+   */
    
    //calls appropriate reporting method depending on used test method
    getReportingMethod(testResults["method"]);
