@@ -93,7 +93,7 @@ function callReportingMethod(method)
    else if (method == "1-way ANOVA")
    {
       isPaired = false;
-      reportingOneWayANOVA(isPaired);
+      reportingOneWayAnova(isPaired);
    }
    else if (method == "2-way ANOVA")
    {
@@ -212,11 +212,8 @@ function reportingTTest(isPaired)
     //reportingText.append("br");
 }
 
-//TODO: find better position
 
-
-
-function reportingOneWayANOVA(isPaired)
+function reportingOneWayAnova(isPaired)
 {
    /*
    var variableList = getSelectedVariables();
