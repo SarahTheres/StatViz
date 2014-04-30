@@ -114,14 +114,14 @@ function reportingUnpairedTTest()
    var text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between "; 
    
    //IV in both groups with their means and standard errors are added
-   //var variableList = getSelectedVariables();
-   //var variableName = variableList["independent"][0];
+   var variableList = getSelectedVariables();
+   var variableName = variableList["independent"][0];
    
    //console.log("variable List:" + variableList["independent"][0]);
    //console.log("dataset" + dataset);
    
-   //var mean1 = mean(variables[variableName][dataset]);
-   //console.log("Mean 1: " + mean1);
+   var mean1 = mean(variables[variableName]["dataset"]);
+   console.log("Mean 1: " + mean1);
    text += testResults["independent-variable-level0"] + "( and ";
    text += testResults["independent-variable-level1"] + " groups.";
    
