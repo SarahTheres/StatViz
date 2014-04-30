@@ -1384,7 +1384,7 @@ function OnMouseDown(e)
                     .attr("fill", "black")
                     .attr("text-anchor", "middle")
                     .attr("font-size", fontSizeButtonLabel + "px")
-                    .text("Close Reporting")
+                    .text("CLOSE REPORTING")
                     .attr("id", "text")
                     .attr("class", "closeReportingButton");
                 
@@ -1889,6 +1889,13 @@ function OnMouseOver(e)
                 setup(e, target);
             
                 d3.selectAll(".reportingButton").attr("cursor", "pointer");
+            }
+            //if mouse moves over close reporting button => pointer cursor
+            else if(target.className.baseVal == "closeReportingButton")
+            {
+                setup(e, target);
+            
+                d3.selectAll(".closeReportingButton").attr("cursor", "pointer");
             }
         
             else if(target.className.baseVal == "assumptionsButtonFront")
