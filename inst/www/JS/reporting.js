@@ -50,6 +50,7 @@ function reportingResults()
             .attr("id", "reporting")
             .attr("class", "reporting");
    
+   
    //calls appropriate reporting method depending on used test method
    getReportingMethod(testResults["method"]);
 }
@@ -142,33 +143,4 @@ function reportingUnpairedTTest()
    textfield.innerHTML = text;
    document.body.appendChild(textfield);
 
-    
-   //means
-   var means = document.getElementsByClassName("means");
-   
-   for(var i=0; i<means.length; i++)
-   {
-      canvas.append("text")
-            .attr("x", leftX)
-            .attr("y", topY + (9+i+1)*stepY)
-            .attr("fill", "black")
-            .attr("text-anchor", "left")
-              //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults + "px")
-            .text("mean" + i + means[i])
-            .attr("id", "reporting")
-            .attr("class", "dialogBox");   
-   }   
-   
-   //means 2nd try
-    canvas.append("text")
-            .attr("x", leftX)
-            .attr("y", topY + (9+i+1)*stepY)
-            .attr("fill", "black")
-            .attr("text-anchor", "left")
-              //TODO: declare font size independently
-            .attr("font-size", fontSizeSignificanceTestResults + "px")
-            .text(testResults["formula"])
-            .attr("id", "reporting")
-            .attr("class", "dialogBox");
 }
