@@ -176,8 +176,9 @@ function reportingUnpairedTTest()
    {
       text += "The descriptive difference is not significant (" + pResult + ").";
       
+      //TODO: undo just for testing
        //add effect size text depending on amount of effect
-      if (effectSize >= 0.5 && effectSize < 0.8)
+      if (effectSize <= 0.5 && effectSize < 0.8)
       {
          text += "However, it did represent a medium-sized effect (d = " + effectSize + ").";
       }
