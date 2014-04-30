@@ -216,7 +216,7 @@ function reportingTTest(isPaired)
 
 
 
-function reporting1wayANOVA(isPaired)
+/*function reporting1wayANOVA(isPaired)
 {
    
    var variableList = getSelectedVariables();
@@ -245,4 +245,4 @@ function reporting1wayANOVA(isPaired)
    }   
   
 }
-
+*/
