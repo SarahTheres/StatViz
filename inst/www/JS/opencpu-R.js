@@ -49,9 +49,7 @@ function getData(dataset, variableName, level)
     MAX[variableName][level] = Array.max(variables[variableName][level]);
     
     IQR[variableName][level] = findIQR(variables[variableName][level]);
-    //TODO: delete
-    console.log("Level: " + level);
-    console.log("Dataset: " + dataset);
+    
     CI[variableName][level] = findCI(variables[variableName][level]);   
     
     if(++variableCount == getObjectLength(variableNames))
