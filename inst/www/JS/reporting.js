@@ -211,36 +211,3 @@ function reportingTTest(isPaired)
                 .text(text);
     //reportingText.append("br");
 }
-
-/*
-function reportingOneWayAnova(isPaired)
-{
-   
-   var variableList = getSelectedVariables();
-    //all text in reportingBox is stored in this variable;
-   var text;
-   // write different text depending on paired or unpaired t-test
-   
-   if (isPaired)
-      //TODO
-   else
-   {
-      //method and DV is reported
-       text = "An one-way ANOVA has been conducted to investigate the effect of ";
-       //add independent levels to text
-       for (var i=0; i<variableList["independent-levels"].length; i++)
-       {
-            text += variableList["dependent"]][variableList["independent-levels"][i]];
-            
-            //add komma except for last one
-            if (i < variableList["independent-levels"].length -1 )
-               text += ", ";
-       }
-       
-       //add dependent variable
-       text += " on " + variableList["dependent"];
-   }
-   
-  
-}
-*/
