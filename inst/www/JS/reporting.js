@@ -81,24 +81,24 @@ function reportingUnpairedTTest()
 {
    var canvas = d3.select("#plotCanvas");
    
+   // reporting textbox height is a third of dialogbox height
    var dialogBoxHeight = plotHeight;
+   var reportingBoxHeight = dialogBoxHeight / 3;
+   
+   //reporting textbox width is same as dialogbox width but leaves a small border
    var dialogBoxWidth = plotWidth;
-    
+   var reportingBoxWidth = dialogBoxWidth - dialogBoxWidth/20;
+   
+   //get center positions
    var centerX = canvasWidth/2;
    var centerY = canvasHeight/2;
-    
-   //present results in the following line which starts one step further
-   var stepY = dialogBoxHeight/15;
-   //top and left of dialog box
-   var topY = (centerY - dialogBoxHeight/2) + stepY;
-   var leftX = centerX - dialogBoxWidth/2;
    
-   var mytop = canvasWidth/2 - dialogBoxHeight/2 + stepY;
-   var myleft = getWidth() - canvasWidth - sideBarWidth + (canvasWidth - dialogBoxWidth)/2 + 3; 
+   //var mytop = canvasWidth/2 - dialogBoxHeight/2 + stepY;
+  // var myleft = getWidth() - canvasWidth - sideBarWidth + (canvasWidth - dialogBoxWidth)/2 + 3; 
    
     //create a new div element for reporting the text 
    //var reportingText = d3.select("body").append("div").attr("style", "position: absolute; left: " + centerX + "px; top: " + mytop + "px; height: " + dialogBoxHeight + "px; width: " + dialogBoxWidth + "px; text-align: left;").attr("class", "reporting");
-   reportingText = d3.select("body").append("div").attr("style", "position: absolute; left: " + centerX + "px; top: " + mytop + "px; height: " + dialogBoxHeight + "px; width: " + dialogBoxWidth + "px; text-align: left;").attr("class", "reporting");
+   reportingText = d3.select("body").append("div").attr("style", "position: absolute; left: " + centerX + "px; top: " + centerY + "px; height: " + reportingBoxHeight + "px; width: " + reportingBoxWidth + "px; text-align: left;").attr("class", "reporting");
 
    //method and DV is reported
    var text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between "; 
