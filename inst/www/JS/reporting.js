@@ -82,9 +82,9 @@ function getReportingMethod(method)
    
 function reportingUnpairedTTest()
 {
-   var canvas = d3.select("#plotCanvas");
+    var canvas = d3.select("#plotCanvas");
    
-   var dialogBoxHeight = plotHeight;
+    var dialogBoxHeight = plotHeight;
     var dialogBoxWidth = plotWidth;
     
     var centerX = canvasWidth/2;
@@ -102,9 +102,9 @@ function reportingUnpairedTTest()
    //adding a textfield
    var textfield = document.createElement("reporting");
    textfield.style.display = "block";
-   textfield.style.width = dialogBoxWidth;
+   textfield.style.width = dialogBoxWidth/2;
    textfield.style.height = dialogBoxHeight;
-   textfield.style.color = "red";
+   textfield.style.color = "black";
    textfield.style.position = "absolute";
    textfield.style.top = mytop + "px";
    textfield.style.left = myleft + "px";
@@ -136,7 +136,7 @@ function reportingUnpairedTTest()
    //TODO: add se
    //IV in both groups with their means and standard errors are added to text
    text += testResults["independent-variable-level0"] + " (M = " + mean0 + " , " + se0 + ") and ";
-   text += testResults["independent-variable-level1"] + " (M = " + mean1 + " , " + se1 + ") groups.\n";
+   text += testResults["independent-variable-level1"] + " (M = " + mean1 + " , " + se1 + ") groups.";
    
    //get pure p value without letter p or any operators 
    var p = getPurePValue(testResults["p"]);
