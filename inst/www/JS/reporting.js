@@ -50,11 +50,12 @@ function reportingResults()
    //draws the reporting textbox as the position is the same for every test 
    setReportingTextbox();
    //calls appropriate reporting method depending on used test method
-   getReportingMethod(testResults["method"]);
+   callReportingMethod(testResults["method"]);
 }
 
 function setReportingTextbox()
 {
+   //TODO: deletable???
    //var canvas = d3.select("#plotCanvas");
    
    // reporting textbox height is a third of dialogbox height
@@ -74,16 +75,20 @@ function setReportingTextbox()
 
 }
 
-function getReportingMethod(method)
+function callReportingMethod(method)
 {
+   //variable indicates whether test is paired 
+   var isPaired;
    
    if (method == "Unpaired T-test")
    {
-      reportingUnpairedTTest();
+      isPaired = false;
+      reportingTTest(isPaired);
    }
    else if (method == "Paired T-test")
    {
-      reportingPairedTTest();
+      isPaired = true;
+      reportingTest(isPaired);
    }
    else if (method == "1-way ANOVA")
    {
@@ -98,13 +103,24 @@ function getReportingMethod(method)
       //TODO
    }
 }
-   
-function reportingUnpairedTTest()
+
+//function writes appropriate reporting style for t-Tests in reportingBox
+function reportingTTest(isPaired)
 {
 
-   //method and DV is reported
-   var text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between "; 
-  
+   //all text in reportingBox is stored in this variable;
+   var text;
+   // write different text depending on paired or unpaired t-test
+   if (isPaired)
+   {
+      text = "A paired t-test has been conducted to compare the "; 
+   }
+   else
+   {
+      //method and DV is reported
+       text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between "; 
+   }
+   
    //TODO: make more elegant
    //getting means for each independent variable and round them to 2 decimal places
    var variableList = getSelectedVariables();
