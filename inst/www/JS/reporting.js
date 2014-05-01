@@ -209,7 +209,7 @@ function reportingTTest(isPaired)
     //reportingText.append("br");
 }
 
-function reportingPairedTTest()
+function reportingOneWayAnova(isPaired)
 {
    
 }
