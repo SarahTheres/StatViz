@@ -228,5 +228,24 @@ function reportingOneWayAnova(isPaired)
       //method and DV is reported
       text = "An one-way ANOVA has been conducted to investigate the effect of ";
       //add independent levels to text
+      for (var i=0; i<variableList["independent-levels"].length; i++)
+      {
+         text += variableList["dependent"]][variableList["independent-levels"][i]];
+         
+         //add komma except for last one
+         if (i < variableList["independent-levels"].length - 1)
+            text += ", ";
+
+      }
+
+      //add dependent variable
+      text += " on " + variableList["dependent"];
    }
+   //append label to div element reportingText and insert the reporting text
+   reportingText.append("label")
+                .attr("align", "left")
+                .attr("vertical-align", "middle")
+                .attr("style", "font:1.2em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
+                .text(text);
+
 }
