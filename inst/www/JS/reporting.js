@@ -230,12 +230,11 @@ function reportingOneWayAnova(isPaired)
       //add independent levels to text
       for (var i=0; i<variableList["independent-levels"].length; i++)
       {
-         log.console(variableList["independent-levels"][i]);
          text += variableList["independent-levels"][i];
          
          //add komma except for last one
-         //if (i < variableList["independent-levels"].length - 1)
-         //   text += ", ";
+         if (i < variableList["independent-levels"].length - 1)
+            text += ", ";
 
       }
 
