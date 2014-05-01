@@ -92,7 +92,8 @@ function callReportingMethod(method)
    }
    else if (method == "1-way ANOVA")
    {
-      //TODO
+      isPaired = false;
+      reportingOneWayAnova(isPaired);
    }
    else if (method == "2-way ANOVA")
    {
@@ -100,7 +101,8 @@ function callReportingMethod(method)
    }
    else if (method == "Repeated-measures ANOVA")
    {
-      //TODO
+      isPaired = true;
+      reportingOneWayAnova(isPaired);
    }
 }
 
