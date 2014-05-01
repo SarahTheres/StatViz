@@ -117,7 +117,7 @@ function reportingTTest(isPaired)
       text = "A paired t-test has been conducted to compare the " + testResults["dependent-variable"] + " within participants treated with ";
    else
       //method and DV is reported
-       text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " within ";
+       text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between ";
    
    //TODO: make more elegant
    //getting means for each independent variable and round them to 2 decimal places
@@ -213,5 +213,20 @@ function reportingTTest(isPaired)
 
 function reportingOneWayAnova(isPaired)
 {
-   
+   var variableList = getSelectedVariables();
+
+    //all text in reportingBox is stored in this variable;
+   var text;
+
+    // write different text depending on paired or unpaired t-test
+   if (isPaired)
+   {
+       text = "todo";
+   }
+   else
+   {
+      //method and DV is reported
+      text = "An one-way ANOVA has been conducted to investigate the effect of ";
+      //add independent levels to text
+   }
 }
