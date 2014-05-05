@@ -267,7 +267,7 @@ function getReportingText(method)
    
    //depending on type of effect size the amount (small, medium, large) is measured and is returned here
    //0 = nearly no effect; 1 = small effect; 2 = medium effect; 3 = large effect; 99 = error
-   var effectSizeAmount = getEffectSizeAmount(testResults[effect-size-type], testResults[effect-size]);
+   var effectSizeAmount = getEffectSizeAmount(testResults["effect-size-type"], testResults["effect-size"]);
    
    //check whether p is significant
    if (p <= 0.05)
