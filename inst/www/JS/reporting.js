@@ -107,7 +107,7 @@ function callReportingMethod(method)
                 .text(text);
 }
 
-/*
+
 //function writes appropriate reporting style for t-Tests in reportingBox
 function reportingTTest()
 {
@@ -213,49 +213,4 @@ function reportingTTest()
                 .text(text);
     //reportingText.append("br");
 }
-*/
 
-function getReportingText(method)
-{
-  
-   //all text is stored in this variable
-   var text = "";
-   var mean;
-   var sd;
-   var n;
-   //get current variables
-   var variableList = getSelectedVariables();
-   
-   //first sentence including method
-   text += "A" + testresults["method"] + "has been conducted to investigate the effect of ";
-   
-   //add each condition of IV its mean, standard deviation and n have to be reported
-   for (var i=0; i<variableList["independent-levels"].length; i++)
-   {
-      //add indepdent variable
-      text += variableList["independent-levels"][i] + "(";
-      
-      //add mean and round it to 2 decimals places
-      mean = mean(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
-      text += "M = " + mean.toFixed(2) + ",";
-      
-      //add standard deviation and round it to 2 decimals places
-      sd = getStandardDeviation(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
-      text += "SD = " + sd.toFixed(2) + ",";   
-      
-      //TODO: add n
-      text += "n = " + ")";
-      
-      //add komma between each variable, add "and" for one before last, add nothing for last one
-      if (i < variableList["independent-levels"].length - 2)
-         text += ", ";
-      else if (i == variableList["independent-levels"].length - 2)
-         text += "and";
-   }
-  
-    //add dependent variable
-   text += " on " + variableList["dependent"];
-   console.log(text);
-   return text;
-
-}
