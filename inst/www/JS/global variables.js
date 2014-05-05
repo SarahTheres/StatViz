@@ -100,3 +100,5 @@ var factorials = [0, 1, 2, 6, 24, 120];
 
 var STATES = new Object();
 
+//reporting text so that it can be saved (e.g. for post-hoc test)
+var reportingText;
