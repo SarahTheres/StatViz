@@ -102,3 +102,4 @@ var STATES = new Object();
 
 //reporting 
 var reportingTextField;
+var resultsFromANOVA;
