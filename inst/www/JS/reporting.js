@@ -227,7 +227,7 @@ function getSignificanceTestReportingText(method)
 
 function getPostHocReportingText(method)
 {
-   var text = reportingText + "\r"";
+   var text = reportingText + "\r";
    console.log(text);
    text += getSignificanceTestReportingText(method);
    return text;
