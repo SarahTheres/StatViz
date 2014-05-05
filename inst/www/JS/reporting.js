@@ -84,26 +84,29 @@ function callReportingMethod(method)
    {
       //isPaired = false;
       //reportingTTest(isPaired);
-      text = getReportingText("up");
+      text = getReportingText("ut");
    }
    else if (method == "Paired T-test")
    {
-      isPaired = true;
-      reportingTest(isPaired);
+      //isPaired = true;
+      //reportingTest(isPaired);
+      text = getReportingText("pt");
    }
    else if (method == "1-way ANOVA")
    {
-      isPaired = false;
-      reportingOneWayAnova(isPaired);
+      //isPaired = false;
+      //reportingOneWayAnova(isPaired);
+      text = getReportingText("1a");
    }
    else if (method == "2-way ANOVA")
    {
-      //TODO
+      text = getReportingText("2a");
    }
    else if (method == "Repeated-measures ANOVA")
    {
-      isPaired = true;
-      reportingOneWayAnova(isPaired);
+      //isPaired = true;
+      //reportingOneWayAnova(isPaired);
+      text = getReportingText("rma");
    }
    
    reportingText.append("label")
@@ -230,7 +233,7 @@ function getReportingText(method)
    var variableList = getSelectedVariables();
    
    //first sentence including method
-   text += "A" + testResults["method"] + "has been conducted to investigate the effect of ";
+   text += (method == "ut" ? "An" : "A") + testResults["method"] + "has been conducted to investigate the effect of ";
    
    //add each condition of IV its mean, standard deviation and n have to be reported
    for (var i=0; i<variableList["independent-levels"].length; i++)
