@@ -223,7 +223,7 @@ function getReportingText(method)
    var variableList = getSelectedVariables();
    
    //first sentence including method
-   text += "A" + testresults["method"] + "has been conducted to investigate the effect of ";
+   text += "A" + testResults["method"] + "has been conducted to investigate the effect of ";
    
    //add each condition of IV its mean, standard deviation and n have to be reported
    for (var i=0; i<variableList["independent-levels"].length; i++)
