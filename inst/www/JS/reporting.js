@@ -82,8 +82,9 @@ function callReportingMethod(method)
    
    if (method == "Unpaired T-test")
    {
-      isPaired = false;
-      reportingTTest(isPaired);
+      //isPaired = false;
+      //reportingTTest(isPaired);
+      getReportingText("up");
    }
    else if (method == "Paired T-test")
    {
