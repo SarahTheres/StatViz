@@ -216,7 +216,7 @@ function getReportingText(method)
 {
     //all text is stored in this variable
    var text = "";
-   var mean;
+   var m;
    var sd;
    var n;
    //get current variables
@@ -232,8 +232,8 @@ function getReportingText(method)
       text += variableList["independent-levels"][i] + "(";
       
       //add mean and round it to 2 decimals places
-      mean = mean(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
-      text += "M = " + mean.toFixed(2) + ",";
+      m = m(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
+      text += "M = " + m.toFixed(2) + ",";
       
       //add standard deviation and round it to 2 decimals places
       sd = getStandardDeviation(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
