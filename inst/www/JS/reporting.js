@@ -299,7 +299,7 @@ function getReportingText(method)
       
       //add effect-size value: if effect size type is eS or RS, the letters have to be changed
       var effectSizeType = testResults["effect-size-type"];
-      var hochzwei = "2".sup();
+      var hochzwei = String.fromCharCode(178);
       if (effectSizeType == "eS")
          effectSizeType = hochzwei;
       else if (effectSizeType == "RS")
