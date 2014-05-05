@@ -81,7 +81,7 @@ function callReportingMethod(method)
    
    if (method == "Unpaired T-test")
    {
-      text = getReportingText(ut);
+      text = reportingTTest();
    }
    else if (method == "Paired T-test")
    {
@@ -109,7 +109,7 @@ function callReportingMethod(method)
 
 
 //function writes appropriate reporting style for t-Tests in reportingBox
-function reportingTTest(isPaired)
+function reportingTTest()
 {
 
    //all text in reportingBox is stored in this variable;
