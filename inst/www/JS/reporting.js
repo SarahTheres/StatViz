@@ -116,111 +116,6 @@ function callReportingMethod(method)
                 .text(text);
 }
 
-//function writes appropriate reporting style for t-Tests in reportingBox
-function reportingTTest(isPaired)
-{
-
-   //all text in reportingBox is stored in this variable;
-   var text;
-   // write different text depending on paired or unpaired t-test
-   if (isPaired)
-      text = "A paired t-test has been conducted to compare the " + testResults["dependent-variable"] + " within participants treated with ";
-   else
-      //method and DV is reported
-       text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between ";
-   
-   //TODO: make more elegant
-   //getting means for each independent variable and round them to 2 decimal places
-   var variableList = getSelectedVariables();
-
-   var mean0 = mean(variables[variableList["dependent"]][variableList["independent-levels"][0]]);
-   mean0 = mean0.toFixed(2);
-
-   var mean1 = mean(variables[variableList["dependent"]][variableList["independent-levels"][1]]);
-   mean1 = mean1.toFixed(2);
-   
-    //TODO: make more elegant
-   //getting means for each independent variable and round them to 2 decimal places
-   var variableList = getSelectedVariables();
-
-   var se0 = getStandardError(variables[variableList["dependent"]][variableList["independent-levels"][0]]);
-   se0 = se0.toFixed(2);
-
-   var se1 = getStandardError(variables[variableList["dependent"]][variableList["independent-levels"][1]]);
-   se1 = se1.toFixed(2);
-   
-   //IV in both groups with their means and standard errors are added to text
-   text += testResults["independent-variable-level0"] + " (M = " + mean0 + ", SE = " + se0 + ") and ";
-   
-   //for second variable the text differs => therefore if-condition
-   if (isPaired)
-      text += "with " + testResults["independent-variable-level1"] + " (M = " + mean1 + ", SE = " + se1 + ").";
-   else
-      text += testResults["independent-variable-level1"] + " (M = " + mean1 + ", SE = " + se1 + ") groups.";
-   
-   //get pure p value without letter p or any operators
-   var p = getPurePValue(testResults["p"]);
-   var pResult = changePValueNotationReporting(p);
-   
-   var effectSize = testResults["effect-size"];
-   
-   //check whether p is significant
-   if (p <= 0.05)
-   {
-      //complement text and give degrees of freedom and t-value
-      text += " A significant difference can be reported t(" + testResults["df"] + ")=" + testResults["parameter"] + "," + pResult + ".";
-   
-      //add effect size text depending on amount of effect
-      if (effectSize < 0.2)
-      {
-         text += " However, nearly no effect could be measured";
-      }
-      else if (effectSize >= 0.2 && effectSize < 0.5)
-      {
-         text += " However, there is only a small-sized effect";
-      }
-      else if (effectSize >= 0.5 && effectSize < 0.8)
-      {
-         text += " Additionally, a medium-sized effect could be detected";
-      }
-      else if (effectSize >= 0.8)
-      {
-         text += " Additionally, a large-sized effect could be detected";
-      }
-      else
-      {
-         //TODO: error handling => no effect size
-      }
-      
-      //add effect-size value
-      text += " (d = " + effectSize + ")."
-   }
-   else
-   {
-      text += " The descriptive difference is not significant (" + pResult + ").";
-      
-       //add effect size text depending on amount of effect
-      if (effectSize >= 0.5 && effectSize < 0.8)
-      {
-         text += " However, it did represent a medium-sized effect (d = " + effectSize + ").";
-      }
-      else if (effectSize >= 0.8)
-      {
-         text += " However, it did represent a large-sized effect (d = " + effectSize + ").";
-      }
-      
-      //in case that effect size is smaller than medium, it is not remarkable as no signifikant results
-   }
-   
-   //append label to div element reportingText and insert the reporting text
-   reportingText.append("label")
-                .attr("align", "left")
-                .attr("vertical-align", "middle")
-                .attr("style", "font:1.2em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
-                .text(text);
-    //reportingText.append("br");
-}
-
 function getReportingText(method)
 {
     //all text is stored in this variable
@@ -268,6 +163,12 @@ function getReportingText(method)
    //depending on type of effect size the amount (small, medium, large) is measured and is returned here
    //0 = small; 1 = small-medium; 2 = medium-large; 3: large effect; 99 = error
    var effectSizeAmount = getEffectSizeAmount(testResults["effect-size-type"], testResults["effect-size"]);
+   //if effect size type is eS or RS, the letters have to be change)
+   var effectSizeType = testResults["effect-size-type"];
+   if (effectSizeType == "eS")
+      effectSizeType = "η" + String.fromCharCode(178);
+   else if (effectSizeType == "RS")
+      effectSizeType = "r" + String.fromCharCode(178);
    
    //check whether p is significant
    if (p <= 0.05)
@@ -297,13 +198,7 @@ function getReportingText(method)
          //TODO: error handling => no effect size
       }
       
-      //add effect-size value: if effect size type is eS or RS, the letters have to be changed
-      var effectSizeType = testResults["effect-size-type"];
-      if (effectSizeType == "eS")
-         effectSizeType = "η" + String.fromCharCode(178);
-      else if (effectSizeType == "RS")
-         effectSizeType = "r" + String.fromCharCode(178);
-         
+      //add effect-size value
       text += " (" + effectSizeType + "= " + testResults["effect-size"] + ").";
    }
    else
@@ -313,11 +208,11 @@ function getReportingText(method)
        //add effect size text depending on amount of effect
       if (effectSizeAmount == 2)
       {
-         text += " However, it did represent a medium to large-sized effect (" + testResults["effect-size-type"] + "= " + testResults["effect-size"] + ").";
+         text += " However, it did represent a medium to large-sized effect (" + effectSizetype + "= " + testResults["effect-size"] + ").";
       }
       else if (effectSizeAmount == 3)
       {
-         text += " However, it did represent a large-sized effect (" + testResults["effect-size-type"] + "= " + testResults["effect-size"] + ").";
+         text += " However, it did represent a large-sized effect (" + effectSizeType + "= " + testResults["effect-size"] + ").";
       }
       
       //in case that effect size is smaller than medium, it is not remarkable as no signifikant results
