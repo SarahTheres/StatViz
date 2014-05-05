@@ -115,6 +115,7 @@ function getReportingText(method)
    else if (method == "ptT" || method == "pwt")
       reportingText = getPostHocReportingText(method, resultsFromANOVA);
    
+   console.log(resultsFromANOVA);
    return reportingText;
 }
 
@@ -248,5 +249,6 @@ function getPostHocReportingText(method, resultsFromANOVA)
    //add conditions of indepdent variable (there can only be two due to pairwise)
    text += variableList["independent-levels"][0] + " and " + variableList["independent-levels"][1];
    
+   //TODO: effect size
    return text;
 }
