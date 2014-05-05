@@ -168,7 +168,7 @@ function getReportingText(method)
    if (p <= 0.05)
    {
       //complement text and give parameter result and exact p-value (rounded to 3 decimal places)
-      text += " A significant difference can be reported " + testResults["parameter-type"] + "(" + testResults["df"] + ") = " + testResults["parameter"] + ", " + testResults["p"] + ".";
+      text += " A significant difference could be reported " + testResults["parameter-type"] + "(" + testResults["df"] + ") = " + testResults["parameter"] + ", " + testResults["p"] + ".";
    
       //add effect size text depending on amount of effect
       if (effectSizeAmount == 0)
