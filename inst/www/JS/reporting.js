@@ -50,7 +50,12 @@ function reportingResults()
    //draws the reporting textbox as the position is the same for every test
    setReportingTextbox();
    //calls appropriate reporting method depending on used test method
-   getReportingText(testResults["test-type"]);
+   var text = getReportingText(testResults["test-type"]);
+   reportingTextField.append("label")
+                .attr("align", "left")
+                .attr("vertical-align", "middle")
+                .attr("style", "font:1.2em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
+                .text(text);
 }
 
 function setReportingTextbox()
@@ -75,6 +80,22 @@ function setReportingTextbox()
 
 }
 
+/* test methods:
+   upT = unpaired t-test
+   pT = paired t-test
+   wT = Wilcoxon test
+   mwT = Mann-Whitney test
+   owA = one-way ANOVA
+   WA = Welch's ANOVA
+   kwT = Kruskall Wallis test
+   twA = two-way ANOVA
+   owrA = one-way repeated measure ANOVA
+   fT = Friedmann Test
+   fA = Mixed Design ANOVA
+   ptT = pairwise t-test
+   pwT = pairwise Wilcox test
+*/   
+
 //returns the reporting text for each method, attribute method (in general testResults[test-type])
 function getReportingText(method)
 {
@@ -84,12 +105,7 @@ function getReportingText(method)
    || method == "kwT" || method == "twA" || method == "owrA" || method == "fT" || method == "fA")
       reportingText = getSignificanceTestReportingText(method);
    
-   reportingTextField.append("label")
-                .attr("align", "left")
-                .attr("vertical-align", "middle")
-                .attr("style", "font:1.2em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
-                .text(reportingText);
-   //TODO: return reportingText;
+   return reportingText;
 }
 
 //returns reporting text for significance tests
