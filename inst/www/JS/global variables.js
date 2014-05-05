@@ -102,4 +102,3 @@ var STATES = new Object();
 
 //reporting 
 var reportingTextField;
-var reportingText;
