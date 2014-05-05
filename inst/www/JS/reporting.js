@@ -297,8 +297,15 @@ function getReportingText(method)
          //TODO: error handling => no effect size
       }
       
-      //add effect-size value
-      text += " (" + testResults["effect-size-type"] + "= " + testResults["effect-size"] + ").";
+      //add effect-size value: if effect size type is eS or RS, the letters have to be changed
+      var effectSizeType = testResults["effect-size-type"];
+      
+      if (effectSizeType == "eS")
+         effectSizeType = "η^2";
+      else if (effectSizeType == "RS")
+         effectSizeType = "r^2";
+         
+      text += " (" + effectSizeType + "= " + testResults["effect-size"] + ").";
    }
    else
    {
