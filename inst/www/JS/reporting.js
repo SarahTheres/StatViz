@@ -225,10 +225,20 @@ function getSignificanceTestReportingText(method)
 
 }
 
+//returns reporting text for post-hoc tests => has its one function in order to differ the text
 function getPostHocReportingText(method)
 {
+   //add prior text from test before
    var text = reportingText;
    console.log(text);
-   text += getSignificanceTestReportingText(method);
+   text += "\n";
+
+   //get pure p value without letter p or any operators
+   var p = getPurePValue(testResults["p"]);
+   text += "A " + testResults["method"] + "revealed that there is " + (p < 0.05 ? "a" : "no") + "significant difference between" 
+   
+   //add conditions of indepdent variable (there can only be two due to pairwise)
+   text += variableList["independent-levels"][0] + " and " + variableList["independent-levels"][0];
+   
    return text;
 }
