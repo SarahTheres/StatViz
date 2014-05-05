@@ -1,5 +1,3 @@
-var resultsFromANOVA;
-
 function reportingResults()
 {
    
@@ -107,15 +105,21 @@ function getReportingText(method)
    if (method == "upT" || method == "pt" || method == "wT" || method == "mwT" || method == "owA" || method == "WA" 
    || method == "kwT" || method == "twA" || method == "owrA" || method == "fT" || method == "fA")
       reportingText = getSignificanceTestReportingText(method);
+  
    //in case an ANOVA or corresponding non-parametric test is conducted, text has to be saved for post-hoc tests
    if (method == "owA" || method == "WA" || method == "kwT" || method == "twA" || method == "owrA" || method == "fT" || method == "fA")
+   {   
       resultsFromANOVA = reportingText;
+      console.log(resultsFromANOVA);
+   }
    
    //post-hoc tests
    else if (method == "ptT" || method == "pwt")
+   {
       reportingText = getPostHocReportingText(method, resultsFromANOVA);
+      resultsFromANOVA = "";
+   }
    
-   console.log(resultsFromANOVA);
    return reportingText;
 }
 
