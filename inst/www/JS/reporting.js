@@ -233,11 +233,11 @@ function getSignificanceTestReportingText(method)
 
 }
 
-//returns reporting text for post-hoc tests => has its one function in order to differ the text
-function getPostHocReportingText(method, resultsFromANOVA)
+//returns reporting text for post-hoc tests, gets method and results from prior ANOVA  => has its own function in order to differ the text
+function getPostHocReportingText(method, priorResults)
 {
    //add prior text from test before
-   var text = resultsFromANOVA;
+   var text = priorResults;
    console.log(text);
 
    //get pure p value without letter p or any operators
