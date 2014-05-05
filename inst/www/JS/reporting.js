@@ -78,13 +78,13 @@ function setReportingTextbox()
 function callReportingMethod(method)
 {
    //variable indicates whether test is paired
-   var isPaired;
+   var text;
    
    if (method == "Unpaired T-test")
    {
       //isPaired = false;
       //reportingTTest(isPaired);
-      getReportingText("up");
+      text = getReportingText("up");
    }
    else if (method == "Paired T-test")
    {
@@ -105,6 +105,12 @@ function callReportingMethod(method)
       isPaired = true;
       reportingOneWayAnova(isPaired);
    }
+   
+   reportingText.append("label")
+                .attr("align", "left")
+                .attr("vertical-align", "middle")
+                .attr("style", "font:1.2em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
+                .text(text);
 }
 
 //function writes appropriate reporting style for t-Tests in reportingBox
@@ -252,7 +258,7 @@ function getReportingText(method)
     //add dependent variable
    text += " on " + variableList["dependent"];
    console.log(text);
-   //TODO return text;
+   return text;
 
 }
 
