@@ -154,10 +154,17 @@ function getReportingText(method)
    //get pure p value without letter p or any operators
    var p = getPurePValue(testResults["p"]);
    
+   //if parameter type is cS, the letters have to be changed to display correctly
+   var parameterType = testResults["parameter-type"];
+   if (parameterType == "cS")
+   {
+      parameterType = "𝝌" +String.fromCharCode(178);
+   }
+   
    //depending on type of effect size the amount (small, medium, large) is measured and is returned here
    //0 = small; 1 = small-medium; 2 = medium-large; 3: large effect; 99 = error
    var effectSizeAmount = getEffectSizeAmount(testResults["effect-size-type"], testResults["effect-size"]);
-   //if effect size type is eS or RS, the letters have to be change)
+   //if effect size type is eS or RS, the letters have to be change to display correctly
    var effectSizeType = testResults["effect-size-type"];
    if (effectSizeType == "eS")
       effectSizeType = "η" + String.fromCharCode(178);
@@ -168,7 +175,7 @@ function getReportingText(method)
    if (p <= 0.05)
    {
       //complement text and give parameter result and exact p-value (rounded to 3 decimal places)
-      text += " A significant difference could be reported " + testResults["parameter-type"] + "(" + testResults["df"] + ") = " + testResults["parameter"] + ", " + testResults["p"] + ".";
+      text += " A significant difference could be reported " + parameterType + "(" + testResults["df"] + ") = " + testResults["parameter"] + ", " + testResults["p"] + ".";
    
       //add effect size text depending on amount of effect
       if (effectSizeAmount == 0)
