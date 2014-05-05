@@ -1,3 +1,6 @@
+//global variable for the text so that it is saved (e.g. for post-hoc test)
+var reportingText;
+
 function reportingResults()
 {
    
@@ -78,36 +81,35 @@ function setReportingTextbox()
 function callReportingMethod(method)
 {
    //variable indicates whether test is paired
-   var text;
-   
+
    if (method == "Unpaired T-test")
-      text = getReportingText("ut");
+      reportingText = getReportingText("ut");
    else if (method == "Paired T-test")
-      text = getReportingText("pt");
+      reportingText = getReportingText("pt");
    else if (method == "1-way ANOVA")
-      text = getReportingText("1a");
+      reportingText = getReportingText("1a");
    else if (method == "2-way ANOVA")
-      text = getReportingText("2a");
+      reportingText = getReportingText("2a");
    else if (method == "Repeated-measures ANOVA")
-      text = getReportingText("rma");
+      reportingText = getReportingText("rma");
    else if (method == "Mann-Whitney U test")
-      text = getReportingText("mwu");
+      reportingText = getReportingText("mwu");
    else if (method == "Wilcoxon Signed-rank test")
-      text = getReportingText("wst");
+      reportingText = getReportingText("wst");
    else if (method == "Welch's ANOVA")
-      text = getReportingText("wa");
+      reportingText = getReportingText("wa");
    else if (method == "Kruskal-Wallis test")
-      text = getReportingText("kwt");
+      reportingText = getReportingText("kwt");
    else if (method == "Friedman's Analysis")
-      text = getReportingText("fa");
+      reportingText = getReportingText("fa");
    else if (method == "Mixed-design ANOVA")
-      text = getReportingText("mda");
+      reportingText = getReportingText("mda");
    
    reportingText.append("label")
                 .attr("align", "left")
                 .attr("vertical-align", "middle")
                 .attr("style", "font:1.2em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
-                .text(text);
+                .text(reportingText);
 }
 
 function getReportingText(method)
