@@ -107,18 +107,6 @@ function changePValueNotation(p)
         return "p = " + p;
 }
 
-//change p-value notation so that it is either <0.001, <0.01 or <0.05 necesarry for correct reporting
-function changePValueNotationReporting(p)
-{
-    if (p < 0.001)
-        return "p < 0.001";
-    else if (p < 0.01)
-        return "p < 0.01";
-    else if (p < 0.05)
-        return "p < 0.05";
-    else
-        return "p = " + p;
-}
 
 //returns the pure p value without p or operators
 function getPurePValue(presult)
@@ -131,9 +119,19 @@ function getPurePValue(presult)
 }
 
 //returns the amount of an effect size depending on its type 
+//0 = small; 1 = small-medium; 2 = medium-large; 3: large effect; 99 = error
 function getEffectSizeAmount(effectSizeType, effectSize)
 {
-    return 1;
+    var interpretations = effectSizeInterpretations[effectSizeType];
+    if(effectSize <= interpretations[0])
+        return 0;
+    else if(effectSize > interpretations[0] && effectSize < interpretations[1])
+        return 1;
+    else if(effectSize >= interpretations[1] && effectSize < interpretations[2])
+        return 2;
+    else if(effectSize >= interpretations[2])
+        return 3; 
+    return 99;
 }
 
 function getGroupsForColourBoxPlotData()
