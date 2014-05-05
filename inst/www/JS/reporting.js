@@ -211,7 +211,7 @@ function reportingTTest(isPaired)
     //reportingText.append("br");
 }
 
-function reportingOneWayAnova(isPaired)
+function getReportingText(method)
 {
     //all text is stored in this variable
    var text = "";
@@ -251,7 +251,7 @@ function reportingOneWayAnova(isPaired)
     //add dependent variable
    text += " on " + variableList["dependent"];
    console.log(text);
-   return text;
+   //TODO return text;
 
 }
 
