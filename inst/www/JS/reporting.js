@@ -1,3 +1,5 @@
+var resultsFromANOVA = "";
+
 function reportingResults()
 {
    
@@ -100,7 +102,6 @@ function setReportingTextbox()
 function getReportingText(method)
 {
    var reportingText = "";
-   var resultsFromANOVA = "";
    
    //significance tests
    if (method == "upT" || method == "pt" || method == "wT" || method == "mwT" || method == "owA" || method == "WA" 
@@ -245,7 +246,7 @@ function getPostHocReportingText(method, resultsFromANOVA)
    text += "A " + testResults["method"] + " revealed that there is " + (p < 0.05 ? "a" : "no") + "significant difference between " 
    
    //add conditions of indepdent variable (there can only be two due to pairwise)
-   text += variableList["independent-levels"][0] + " and " + variableList["independent-levels"][0];
+   text += variableList["independent-levels"][0] + " and " + variableList["independent-levels"][1];
    
    return text;
 }
