@@ -301,9 +301,9 @@ function getReportingText(method)
       var effectSizeType = testResults["effect-size-type"];
       
       if (effectSizeType == "eS")
-         effectSizeType = "η^2";
+         effectSizeType = "η" + 2.sup();
       else if (effectSizeType == "RS")
-         effectSizeType = "r^2";
+         effectSizeType = "r" + "2".sup();
          
       text += " (" + effectSizeType + "= " + testResults["effect-size"] + ").";
    }
