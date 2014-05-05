@@ -82,28 +82,42 @@ function callReportingMethod(method)
    
    if (method == "Unpaired T-test")
    {
-      isPaired = false;
-      reportingTTest(isPaired);
+      getReportingText(ut);
    }
    else if (method == "Paired T-test")
    {
-      isPaired = true;
-      reportingTest(isPaired);
+      getReportingText(pt);
    }
    else if (method == "1-way ANOVA")
    {
-      isPaired = false;
-      reportingOneWayAnova(isPaired);
+      getReportingText(1a);
    }
    else if (method == "2-way ANOVA")
    {
-      //TODO
+      getReportingText(2a);
    }
    else if (method == "Repeated-measures ANOVA")
    {
-      isPaired = true;
-      reportingOneWayAnova(isPaired);
+      getReportingText(rma);
    }
+}
+
+function getReportingText(method) 
+{
+   //all text is stored in this variable
+   var text = "";
+   
+   //first sentence including method
+   text += "A" + testresults["method"] + "has been conducted to investigate the effect of ";
+   //TODO: for each condition of IV mean, standard deviation and n have to be reported
+   
+   
+   
+   if (method == "ut")
+   {
+      text += 
+   }
+   return text;
 }
 
 //function writes appropriate reporting style for t-Tests in reportingBox
@@ -114,7 +128,7 @@ function reportingTTest(isPaired)
    var text;
    // write different text depending on paired or unpaired t-test
    if (isPaired)
-      text = "A paired t-test has been conducted to compare the " + testResults["dependent-variable"] + " within participants treated with ";
+      text = "A paired t-test has been conducted to compare the " + testResults["dependent-variable"] + " within participants treated with "; 
    else
       //method and DV is reported
        text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between ";
