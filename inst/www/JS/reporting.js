@@ -235,6 +235,8 @@ function getPostHocReportingText(method)
 
    //get pure p value without letter p or any operators
    var p = getPurePValue(testResults["p"]);
+   var variableList = getSelectedVariables();
+   
    text += "A " + testResults["method"] + "revealed that there is " + (p < 0.05 ? "a" : "no") + "significant difference between" 
    
    //add conditions of indepdent variable (there can only be two due to pairwise)
