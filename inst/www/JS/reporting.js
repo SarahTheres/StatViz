@@ -260,7 +260,7 @@ function getReportingText(method)
    }
   
     //add dependent variable
-   text += " on " + variableList["dependent"];
+   text += " on " + variableList["dependent"] + ".";
 
    //get pure p value without letter p or any operators
    var p = getPurePValue(testResults["p"]);
@@ -298,7 +298,7 @@ function getReportingText(method)
       }
       
       //add effect-size value
-      text += " (" + testResults[effect-size-type] + "= " + testResults[effect-size] + ").";
+      text += " (" + testResults["effect-size-type"] + "= " + testResults["effect-size"] + ").";
    }
    else
    {
@@ -307,11 +307,11 @@ function getReportingText(method)
        //add effect size text depending on amount of effect
       if (effectSizeAmount == 2)
       {
-         text += " However, it did represent a medium-sized effect (d = " + effectSize + ").";
+         text += " However, it did represent a medium-sized effect (" + testResults["effect-size-type"] + "= " + testResults["effect-size"] + ").";
       }
       else if (effectSizeAmount == 3)
       {
-         text += " However, it did represent a large-sized effect (d = " + effectSize + ").";
+         text += " However, it did represent a large-sized effect (" + testResults["effect-size-type"] + "= " + testResults["effect-size"] + ").";
       }
       
       //in case that effect size is smaller than medium, it is not remarkable as no signifikant results
