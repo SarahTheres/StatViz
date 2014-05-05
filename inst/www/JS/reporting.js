@@ -232,7 +232,7 @@ function getReportingText(method)
       text += variableList["independent-levels"][i] + "(";
       
       //add mean and round it to 2 decimals places
-      m = m(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
+      m = mean(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
       text += "M = " + m.toFixed(2) + ",";
       
       //add standard deviation and round it to 2 decimals places
