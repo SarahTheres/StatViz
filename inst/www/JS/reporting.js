@@ -80,8 +80,8 @@ function getReportingText(method)
 {
    //depending on method, the appropriate reporting text function is selected
    //significance tests
-   if (method == "upT" || method == "pt" || method == "wT" || method == "mwT" || method == "owA" || method == "WA") 
-      || method == "kwT" || method == "twA" || method == "owrA" || method == "fT" || method == "fA")
+   if (method == "upT" || method == "pt" || method == "wT" || method == "mwT" || method == "owA" || method == "WA" 
+   || method == "kwT" || method == "twA" || method == "owrA" || method == "fT" || method == "fA")
       reportingText = getSignificanceTestReportingText(method);
    
    reportingTextField.append("label")
