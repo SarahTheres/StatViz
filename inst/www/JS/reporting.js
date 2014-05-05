@@ -71,7 +71,7 @@ function setReportingTextbox()
    var reportingBoxTop = (2*canvasHeight)/5;
    
    //create a new div element for reporting the text
-   reportingText = d3.select("body").append("div").attr("style", "position: absolute; left: " + reportingBoxLeft + "px; top: " + reportingBoxTop + "px; height: " + reportingBoxHeight + "px; width: " + reportingBoxWidth + "px; text-align: left;").attr("class", "reporting");
+   reportingTextField = d3.select("body").append("div").attr("style", "position: absolute; left: " + reportingBoxLeft + "px; top: " + reportingBoxTop + "px; height: " + reportingBoxHeight + "px; width: " + reportingBoxWidth + "px; text-align: left;").attr("class", "reporting");
 
 }
 
@@ -102,7 +102,7 @@ function callReportingMethod(method)
    else if (method == "Mixed-design ANOVA")
       reportingText = getReportingText("mda");
    
-   reportingText.append("label")
+   reportingTextField.append("label")
                 .attr("align", "left")
                 .attr("vertical-align", "middle")
                 .attr("style", "font:1.2em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
