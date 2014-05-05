@@ -99,11 +99,14 @@ function setReportingTextbox()
 //returns the reporting text for each method, attribute method (in general testResults[test-type])
 function getReportingText(method)
 {
-   //depending on method, the appropriate reporting text function is selected
    //significance tests
    if (method == "upT" || method == "pt" || method == "wT" || method == "mwT" || method == "owA" || method == "WA" 
    || method == "kwT" || method == "twA" || method == "owrA" || method == "fT" || method == "fA")
       reportingText = getSignificanceTestReportingText(method);
+   
+   //post-hoc tests
+   else if (method == "ptT" || method == "pwt")
+      reportingText = getPostHocReportingText(method);
    
    return reportingText;
 }
@@ -222,4 +225,8 @@ function getSignificanceTestReportingText(method)
 
 }
 
-
+function getPostHocReportingText(method)
+{
+   var text = reportingText;
+   return text;
+}
