@@ -50,7 +50,7 @@ function reportingResults()
    //draws the reporting textbox as the position is the same for every test
    setReportingTextbox();
    //calls appropriate reporting method depending on used test method
-   callReportingMethod(testResults["method"]);
+   getReportingText(testResults["test-type"]);
 }
 
 function setReportingTextbox()
@@ -75,41 +75,25 @@ function setReportingTextbox()
 
 }
 
-function callReportingMethod(method)
+//returns the reporting text for each method, attribute method (in general testResults[test-type])
+function getReportingText(method)
 {
-   //variable indicates whether test is paired
-
-   if (method == "Unpaired T-test")
-      reportingText = getReportingText("ut");
-   else if (method == "Paired T-test")
-      reportingText = getReportingText("pt");
-   else if (method == "1-way ANOVA")
-      reportingText = getReportingText("1a");
-   else if (method == "2-way ANOVA")
-      reportingText = getReportingText("2a");
-   else if (method == "Repeated-measures ANOVA")
-      reportingText = getReportingText("rma");
-   else if (method == "Mann-Whitney U test")
-      reportingText = getReportingText("mwu");
-   else if (method == "Wilcoxon Signed-rank test")
-      reportingText = getReportingText("wst");
-   else if (method == "Welch's ANOVA")
-      reportingText = getReportingText("wa");
-   else if (method == "Kruskal-Wallis test")
-      reportingText = getReportingText("kwt");
-   else if (method == "Friedman's Analysis")
-      reportingText = getReportingText("fa");
-   else if (method == "Mixed-design ANOVA")
-      reportingText = getReportingText("mda");
+   //depending on method, the appropriate reporting text function is selected
+   //significance tests
+   if (method == "upT" || method == "pt" || method == "wT" || method == "mwT" || method == "owA" || method == "WA") 
+      || method == "kwT" || method == "twA" || method == "owrA" || method == "fT" || method == "fA")
+      reportingText = getSignificanceTestReportingText(method);
    
    reportingTextField.append("label")
                 .attr("align", "left")
                 .attr("vertical-align", "middle")
                 .attr("style", "font:1.2em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
                 .text(reportingText);
+   //TODO: return reportingText;
 }
 
-function getReportingText(method)
+//returns reporting text for significance tests
+function getSignificanceTestReportingText(method)
 {
     //all text is stored in this variable
    var text = "";
@@ -121,7 +105,7 @@ function getReportingText(method)
    var variableList = getSelectedVariables();
    
    //first sentence including method, in case that method is unpaired there has to be an "an" instead of an "a"
-   text += (method == "ut" ? "An " : "A ") + testResults["method"] + " has been conducted to investigate the effect of ";
+   text += (method == "upT" ? "An " : "A ") + testResults["method"] + " has been conducted to investigate the effect of ";
    
    //add each condition of IV its mean, standard deviation and n have to be reported
    for (var i=0; i<variableList["independent-levels"].length; i++)
