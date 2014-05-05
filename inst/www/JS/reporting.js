@@ -99,7 +99,9 @@ function setReportingTextbox()
 //returns the reporting text for each method, attribute method (in general testResults[test-type])
 function getReportingText(method)
 {
+   var reportingText = "";
    var resultsFromANOVA = "";
+   
    //significance tests
    if (method == "upT" || method == "pt" || method == "wT" || method == "mwT" || method == "owA" || method == "WA" 
    || method == "kwT" || method == "twA" || method == "owrA" || method == "fT" || method == "fA")
