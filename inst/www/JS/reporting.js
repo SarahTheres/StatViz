@@ -222,6 +222,7 @@ function getReportingText(method)
 {
     //all text is stored in this variable
    var text = "";
+   //variables for mean, standard deviation and n
    var m;
    var sd;
    var n;
