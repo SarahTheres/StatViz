@@ -77,27 +77,34 @@ function setReportingTextbox()
 
 function callReportingMethod(method)
 {
+   var text = "";
    
    if (method == "Unpaired T-test")
    {
-      getReportingText(ut);
+      text = getReportingText(ut);
    }
    else if (method == "Paired T-test")
    {
-      getReportingText(pt);
+      text = getReportingText(pt);
    }
    else if (method == "1-way ANOVA")
    {
-      getReportingText(1a);
+      text = getReportingText(1a);
    }
    else if (method == "2-way ANOVA")
    {
-      getReportingText(2a);
+      text = getReportingText(2a);
    }
    else if (method == "Repeated-measures ANOVA")
    {
-      getReportingText(rma);
+      text = getReportingText(rma);
    }
+   
+    reportingText.append("label")
+                .attr("align", "left")
+                .attr("vertical-align", "middle")
+                .attr("style", "font:1.2em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
+                .text(text);
 }
 
 
