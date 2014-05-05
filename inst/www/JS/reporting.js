@@ -90,7 +90,7 @@ function callReportingMethod(method)
       text = getReportingText("2a");
    else if (method == "Repeated-measures ANOVA")
       text = getReportingText("rma");
-   else if (method == "Mann-Whitney U test)
+   else if (method == "Mann-Whitney U test")
       text = getReportingText("mwu");
    else if (method == "Wilcoxon Signed-rank test")
       text = getReportingText("wst");
