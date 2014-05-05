@@ -1,4 +1,4 @@
-var resultsFromANOVA = "";
+var resultsFromANOVA;
 
 function reportingResults()
 {
