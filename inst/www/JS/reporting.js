@@ -81,33 +81,27 @@ function callReportingMethod(method)
    var text;
    
    if (method == "Unpaired T-test")
-   {
-      //isPaired = false;
-      //reportingTTest(isPaired);
       text = getReportingText("ut");
-   }
    else if (method == "Paired T-test")
-   {
-      //isPaired = true;
-      //reportingTest(isPaired);
       text = getReportingText("pt");
-   }
    else if (method == "1-way ANOVA")
-   {
-      //isPaired = false;
-      //reportingOneWayAnova(isPaired);
       text = getReportingText("1a");
-   }
    else if (method == "2-way ANOVA")
-   {
       text = getReportingText("2a");
-   }
    else if (method == "Repeated-measures ANOVA")
-   {
-      //isPaired = true;
-      //reportingOneWayAnova(isPaired);
       text = getReportingText("rma");
-   }
+   else if (method == "Mann-Whitney U test)
+      text = getReportingText("mwu");
+   else if (method == "Wilcoxon Signed-rank test")
+      text = getReportingText("wst");
+   else if (method == "Welch's ANOVA")
+      text = getReportingText("wa");
+   else if (method == "Kruskal-Wallis test")
+      text = getReportingText("kwt");
+   else if (method == "Friedman's Analysis")
+      text = getReportingText("fa");
+   else if (method == "Mixed-design ANOVA")
+      text = getReportingText("mda");
    
    reportingText.append("label")
                 .attr("align", "left")
