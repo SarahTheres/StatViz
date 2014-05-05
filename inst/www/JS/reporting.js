@@ -232,22 +232,22 @@ function getReportingText(method)
    //get current variables
    var variableList = getSelectedVariables();
    
-   //first sentence including method
-   text += (method == "ut" ? "An" : "A") + testResults["method"] + "has been conducted to investigate the effect of ";
+   //first sentence including method, in case that method is unpaired there has to be an "an" instead of an "a"
+   text += (method == "ut" ? "An " : "A ") + testResults["method"] + " has been conducted to investigate the effect of ";
    
    //add each condition of IV its mean, standard deviation and n have to be reported
    for (var i=0; i<variableList["independent-levels"].length; i++)
    {
       //add indepdent variable
-      text += variableList["independent-levels"][i] + "(";
+      text += variableList["independent-levels"][i] + " (";
       
       //add mean and round it to 2 decimals places
       m = mean(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
-      text += "M = " + m.toFixed(2) + ",";
+      text += "M = " + m.toFixed(2) + ", ";
       
       //add standard deviation and round it to 2 decimals places
       sd = getStandardDeviation(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
-      text += "SD = " + sd.toFixed(2) + ",";
+      text += "SD = " + sd.toFixed(2) + ", ";
       
       //TODO: add n
       text += "n = " + ")";
@@ -256,12 +256,67 @@ function getReportingText(method)
       if (i < variableList["independent-levels"].length - 2)
          text += ", ";
       else if (i == variableList["independent-levels"].length - 2)
-         text += "and";
+         text += " and ";
    }
   
     //add dependent variable
    text += " on " + variableList["dependent"];
-   console.log(text);
+
+   //get pure p value without letter p or any operators
+   var p = getPurePValue(testResults["p"]);
+   
+   //depending on type of effect size the amount (small, medium, large) is measured and is returned here
+   //0 = nearly no effect; 1 = small effect; 2 = medium effect; 3 = large effect; 99 = error
+   var effectSizeAmount = getEffectSizeAmount(testResults[effect-size-type], testResults[effect-size]);
+   
+   //check whether p is significant
+   if (p <= 0.05)
+   {
+      //complement text and give degrees of freedom and t-value
+      text += " A significant difference can be reported t(" + testResults["df"] + ")=" + testResults["parameter"] + "," + pResult + ".";
+   
+      //add effect size text depending on amount of effect
+      if (effectSizeAmount == 0)
+      {
+         text += " However, nearly no effect could be measured";
+      }
+      else if (effectSizeAmount == 1)
+      {
+         text += " However, there is only a small-sized effect";
+      }
+      else if (effectSizeAmount == 2)
+      {
+         text += " Additionally, a medium-sized effect could be detected";
+      }
+      else if (effectSizeAmount == 3)
+      {
+         text += " Additionally, a large-sized effect could be detected";
+      }
+      else
+      {
+         //TODO: error handling => no effect size
+      }
+      
+      //add effect-size value
+      text += " (" + testResults[effect-size-type] + "= " + testResults[effect-size] + ").";
+   }
+   else
+   {
+      text += " The descriptive difference is not significant (" + pResult + ").";
+      
+       //add effect size text depending on amount of effect
+      if (effectSizeAmount == 2)
+      {
+         text += " However, it did represent a medium-sized effect (d = " + effectSize + ").";
+      }
+      else if (effectSizeAmount == 3)
+      {
+         text += " However, it did represent a large-sized effect (d = " + effectSize + ").";
+      }
+      
+      //in case that effect size is smaller than medium, it is not remarkable as no signifikant results
+   }
+   
    return text;
 
 }
