@@ -81,7 +81,7 @@ function callReportingMethod(method)
    
    if (method == "Unpaired T-test")
    {
-      text = reportingTTest();
+      text = getReportingText(ut);
    }
    else if (method == "Paired T-test")
    {
@@ -107,13 +107,14 @@ function callReportingMethod(method)
                 .text(text);
 }
 
-
+/*
 //function writes appropriate reporting style for t-Tests in reportingBox
 function reportingTTest()
 {
 
    //all text in reportingBox is stored in this variable;
    var text;
+   isPaired = true;
    // write different text depending on paired or unpaired t-test
    if (isPaired)
       text = "A paired t-test has been conducted to compare the " + testResults["dependent-variable"] + " within participants treated with "; 
@@ -212,24 +213,39 @@ function reportingTTest()
                 .text(text);
     //reportingText.append("br");
 }
+*/
 
 function getReportingText(method)
 {
   
    //all text is stored in this variable
    var text = "";
-   //get current variables 
+   var mean;
+   var sd;
+   var n;
+   //get current variables
    var variableList = getSelectedVariables();
    
    //first sentence including method
    text += "A" + testresults["method"] + "has been conducted to investigate the effect of ";
    
    //add each condition of IV its mean, standard deviation and n have to be reported
-   
    for (var i=0; i<variableList["independent-levels"].length; i++)
    {
-      text += variableList["independent-levels"][i];
-         
+      //add indepdent variable
+      text += variableList["independent-levels"][i] + "(";
+      
+      //add mean and round it to 2 decimals places
+      mean = mean(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
+      text += "M = " + mean.toFixed(2) + ",";
+      
+      //add standard deviation and round it to 2 decimals places
+      sd = getStandardDeviation(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
+      text += "SD = " + sd.toFixed(2) + ",";   
+      
+      //TODO: add n
+      text += "n = " + ")";
+      
       //add komma between each variable, add "and" for one before last, add nothing for last one
       if (i < variableList["independent-levels"].length - 2)
          text += ", ";
@@ -238,7 +254,7 @@ function getReportingText(method)
    }
   
     //add dependent variable
-      text += " on " + variableList["dependent"];
+   text += " on " + variableList["dependent"];
    console.log(text);
    return text;
 
