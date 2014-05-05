@@ -99,14 +99,18 @@ function setReportingTextbox()
 //returns the reporting text for each method, attribute method (in general testResults[test-type])
 function getReportingText(method)
 {
+   var resultsFromANOVA = "";
    //significance tests
    if (method == "upT" || method == "pt" || method == "wT" || method == "mwT" || method == "owA" || method == "WA" 
    || method == "kwT" || method == "twA" || method == "owrA" || method == "fT" || method == "fA")
       reportingText = getSignificanceTestReportingText(method);
+   //in case an ANOVA or corresponding non-parametric test is conducted, text has to be saved for post-hoc tests
+   if (method == "owA" || method == "WA" || method == "kwT" || method == "twA" || method == "owrA" || method == "fT" || method == "fA")
+      resultsFromANOVA = reportingText;
    
    //post-hoc tests
    else if (method == "ptT" || method == "pwt")
-      reportingText = getPostHocReportingText(method);
+      reportingText = getPostHocReportingText(method, resultsFromANOVA);
    
    return reportingText;
 }
@@ -226,18 +230,17 @@ function getSignificanceTestReportingText(method)
 }
 
 //returns reporting text for post-hoc tests => has its one function in order to differ the text
-function getPostHocReportingText(method)
+function getPostHocReportingText(method, resultsFromANOVA)
 {
    //add prior text from test before
-   var text = reportingText;
+   var text = resultsFromANOVA;
    console.log(text);
-   text += "\n";
 
    //get pure p value without letter p or any operators
    var p = getPurePValue(testResults["p"]);
    var variableList = getSelectedVariables();
    
-   text += "A " + testResults["method"] + "revealed that there is " + (p < 0.05 ? "a" : "no") + "significant difference between" 
+   text += "A " + testResults["method"] + " revealed that there is " + (p < 0.05 ? "a" : "no") + "significant difference between " 
    
    //add conditions of indepdent variable (there can only be two due to pairwise)
    text += variableList["independent-levels"][0] + " and " + variableList["independent-levels"][0];
