@@ -241,13 +241,13 @@ function getReportingText(method)
       //add indepdent variable
       text += variableList["independent-levels"][i] + " (";
       
-      //add mean and round it to 2 decimals places
+      //add mean and round it to 3 decimals places
       m = mean(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
-      text += "M = " + m.toFixed(2) + ", ";
+      text += "M = " + m.toFixed(3) + ", ";
       
-      //add standard deviation and round it to 2 decimals places
+      //add standard deviation and round it to 3 decimals places
       sd = getStandardDeviation(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
-      text += "SD = " + sd.toFixed(2) + ", ";
+      text += "SD = " + sd.toFixed(3) + ", ";
       
       //TODO: add n
       text += "n = " + (variables[variableList["dependent"]][variableList["independent-levels"][i]]).length + ")";
@@ -266,27 +266,27 @@ function getReportingText(method)
    var p = getPurePValue(testResults["p"]);
    
    //depending on type of effect size the amount (small, medium, large) is measured and is returned here
-   //0 = nearly no effect; 1 = small effect; 2 = medium effect; 3 = large effect; 99 = error
+   //0 = small; 1 = small-medium; 2 = medium-large; 3: large effect; 99 = error
    var effectSizeAmount = getEffectSizeAmount(testResults["effect-size-type"], testResults["effect-size"]);
    
    //check whether p is significant
    if (p <= 0.05)
    {
-      //complement text and give parameter result 
-      text += " A significant difference can be reported " + testResults["parameter-type"] + "(" + testResults["df"] + ") = " + testResults["parameter"] + ", p = " + p + ".";
+      //complement text and give parameter result and exact p-value (rounded to 3 decimal places)
+      text += " A significant difference can be reported " + testResults["parameter-type"] + "(" + testResults["df"] + ") = " + testResults["parameter"] + ", " + testResults["p"] ".";
    
       //add effect size text depending on amount of effect
       if (effectSizeAmount == 0)
       {
-         text += " However, nearly no effect could be measured";
+         text += " However, only a small-sized effect could be measured";
       }
       else if (effectSizeAmount == 1)
       {
-         text += " However, there is only a small-sized effect";
+         text += " However, only a small to medium-sized effect could be measured";
       }
       else if (effectSizeAmount == 2)
       {
-         text += " Additionally, a medium-sized effect could be detected";
+         text += " Additionally, a medium to large-sized effect could be detected";
       }
       else if (effectSizeAmount == 3)
       {
@@ -307,7 +307,7 @@ function getReportingText(method)
        //add effect size text depending on amount of effect
       if (effectSizeAmount == 2)
       {
-         text += " However, it did represent a medium-sized effect (" + testResults["effect-size-type"] + "= " + testResults["effect-size"] + ").";
+         text += " However, it did represent a medium to large-sized effect (" + testResults["effect-size-type"] + "= " + testResults["effect-size"] + ").";
       }
       else if (effectSizeAmount == 3)
       {
