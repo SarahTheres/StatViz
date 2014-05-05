@@ -250,7 +250,7 @@ function getReportingText(method)
       text += "SD = " + sd.toFixed(2) + ", ";
       
       //TODO: add n
-      text += "n = " + ")";
+      text += "n = " + (variables[variableList["dependent"]][variableList["independent-levels"][i]]).length + ")";
       
       //add komma between each variable, add "and" for one before last, add nothing for last one
       if (i < variableList["independent-levels"].length - 2)
@@ -272,8 +272,8 @@ function getReportingText(method)
    //check whether p is significant
    if (p <= 0.05)
    {
-      //complement text and give degrees of freedom and t-value
-      text += " A significant difference can be reported t(" + testResults["df"] + ")=" + testResults["parameter"] + ", p = " + p + ".";
+      //complement text and give parameter result 
+      text += " A significant difference can be reported " + testResults["parameter-type"] + "(" + testResults["df"] + ") = " + testResults["parameter"] + ", p = " + p + ".";
    
       //add effect size text depending on amount of effect
       if (effectSizeAmount == 0)
