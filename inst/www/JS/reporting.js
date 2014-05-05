@@ -1,6 +1,6 @@
 function reportingResults()
 {
-   console.log("TEST REPORTING!");
+   
     var canvas = d3.select("#plotCanvas");
     
     var dialogBoxHeight = plotHeight;
@@ -77,47 +77,44 @@ function setReportingTextbox()
 
 function callReportingMethod(method)
 {
-   var text = "";
+   //variable indicates whether test is paired
+   var isPaired;
    
    if (method == "Unpaired T-test")
    {
-      text = getReportingText(ut);
+      isPaired = false;
+      reportingTTest(isPaired);
    }
    else if (method == "Paired T-test")
    {
-      text = getReportingText(pt);
+      isPaired = true;
+      reportingTest(isPaired);
    }
    else if (method == "1-way ANOVA")
    {
-      text = getReportingText(1a);
+      isPaired = false;
+      reportingOneWayAnova(isPaired);
    }
    else if (method == "2-way ANOVA")
    {
-      text = getReportingText(2a);
+      //TODO
    }
    else if (method == "Repeated-measures ANOVA")
    {
-      text = getReportingText(rma);
+      isPaired = true;
+      reportingOneWayAnova(isPaired);
    }
-   
-    reportingText.append("label")
-                .attr("align", "left")
-                .attr("vertical-align", "middle")
-                .attr("style", "font:1.2em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
-                .text(text);
 }
 
-
 //function writes appropriate reporting style for t-Tests in reportingBox
-function reportingTTest()
+function reportingTTest(isPaired)
 {
 
    //all text in reportingBox is stored in this variable;
    var text;
-   isPaired = true;
    // write different text depending on paired or unpaired t-test
    if (isPaired)
-      text = "A paired t-test has been conducted to compare the " + testResults["dependent-variable"] + " within participants treated with "; 
+      text = "A paired t-test has been conducted to compare the " + testResults["dependent-variable"] + " within participants treated with ";
    else
       //method and DV is reported
        text = "An Unpaired t-test has been conducted to compare the " + testResults["dependent-variable"] + " between ";
@@ -214,47 +211,43 @@ function reportingTTest()
     //reportingText.append("br");
 }
 
-function getReportingText(method)
+function reportingOneWayAnova(isPaired)
 {
-  
-   //all text is stored in this variable
-   var text = "";
-   var mean;
-   var sd;
-   var n;
-   //get current variables
    var variableList = getSelectedVariables();
-   
-   //first sentence including method
-   text += "A" + testresults["method"] + "has been conducted to investigate the effect of ";
-   
-   //add each condition of IV its mean, standard deviation and n have to be reported
-   for (var i=0; i<variableList["independent-levels"].length; i++)
+
+    //all text in reportingBox is stored in this variable;
+   var text;
+
+    // write different text depending on paired or unpaired t-test
+   if (isPaired)
    {
-      //add indepdent variable
-      text += variableList["independent-levels"][i] + "(";
-      
-      //add mean and round it to 2 decimals places
-      mean = mean(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
-      text += "M = " + mean.toFixed(2) + ",";
-      
-      //add standard deviation and round it to 2 decimals places
-      sd = getStandardDeviation(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
-      text += "SD = " + sd.toFixed(2) + ",";   
-      
-      //TODO: add n
-      text += "n = " + ")";
-      
-      //add komma between each variable, add "and" for one before last, add nothing for last one
-      if (i < variableList["independent-levels"].length - 2)
-         text += ", ";
-      else if (i == variableList["independent-levels"].length - 2)
-         text += "and";
+       text = "todo";
    }
-  
-    //add dependent variable
-   text += " on " + variableList["dependent"];
-   console.log(text);
-   return text;
+   else
+   {
+      //method and DV is reported
+      text = "An one-way ANOVA has been conducted to investigate the effect of ";
+      //add independent levels to text
+      for (var i=0; i<variableList["independent-levels"].length; i++)
+      {
+         text += variableList["independent-levels"][i];
+         
+         //add komma except for last one
+         if (i < variableList["independent-levels"].length - 1)
+            text += ", ";
+
+      }
+
+      //add dependent variable
+      text += " on " + variableList["dependent"];
+   }
+   //append label to div element reportingText and insert the reporting text
+   reportingText.append("label")
+                .attr("align", "left")
+                .attr("vertical-align", "middle")
+                .attr("style", "font:1.2em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: black; padding-top: 10px;")
+                .text(text);
 
 }
+
+
