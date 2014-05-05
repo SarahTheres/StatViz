@@ -130,6 +130,12 @@ function getPurePValue(presult)
     return pValue;
 }
 
+//returns the amount of an effect size depending on its type 
+function getEffectSizeAmount(effectSizeType, effectSize)
+{
+    return 1;
+}
+
 function getGroupsForColourBoxPlotData()
 {
     var variableList = getSelectedVariables();
