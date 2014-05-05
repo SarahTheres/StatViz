@@ -1,6 +1,3 @@
-//global variable for the text so that it is saved (e.g. for post-hoc test)
-var reportingText;
-
 function reportingResults()
 {
    
