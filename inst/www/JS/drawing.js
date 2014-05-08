@@ -1389,6 +1389,7 @@ function displayANOVAResults()
     
     //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
     resultsFromANOVA = getReportingText(testResults["test-type"]);
+    console.log("Results ANOVA: " + resultsFromANOVA);
 }
 
 function displayCorrelationResults()
