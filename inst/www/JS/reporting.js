@@ -110,7 +110,7 @@ function getReportingText(method)
    else if (method == "ptT" || method == "pwt")
    {
       //display reporting text from ANOVA before and add post-hoc reporting text
-      reportingText = resultsFromANOVA;
+      reportingText = resultsFromANOVA + "\n";
       reportingText += getPostHocReportingText(method);
       //reset ANOVA results text
       resultsFromANOVA = "";
@@ -243,10 +243,13 @@ function getPostHocReportingText(method)
    var p = getPurePValue(testResults["p"]);
    var variableList = getSelectedVariables();
    
-   text += "A " + testResults["method"] + " revealed that there is " + (p < 0.05 ? "a" : "no") + "significant difference between " 
+   text += "A " + testResults["method"] + " revealed that there is " + (p < 0.05 ? "a" : "no") + " significant difference between " 
    
    //add conditions of indepdent variable (there can only be two due to pairwise)
-   text += variableList["independent-levels"][0] + " and " + variableList["independent-levels"][1];
+   text += variableList["independent-levels"][0] + " and " + variableList["independent-levels"][1] + ", ";
+   
+   //add exact p-value and parameter
+   text += testResults["parameter-type"] + " = " + testResults["parameter"] + ", " + testResults["p"];
    
    //TODO: add t/value etc.
  
