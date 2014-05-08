@@ -154,7 +154,7 @@ function getSignificanceTestReportingText(method)
       
        //add confidence intervals (round values to 3 decimal places)
       ci = findCI(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
-      text += "95% [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "]" + ")";
+      text += "95% CI [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "]" + ")";
       
       //add komma between each variable, add "and" for one before last, add nothing for last one
       if (i < variableList["independent-levels"].length - 2)
