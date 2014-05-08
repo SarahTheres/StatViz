@@ -107,7 +107,7 @@ function getReportingText(method)
       reportingText = getSignificanceTestReportingText(method);
    
    //post-hoc tests
-   else if (method == "ptT" || method == "pwt")
+   else if (method == "ptT" || method == "pwT")
    {
       //display reporting text from ANOVA before and add post-hoc reporting text
       reportingText = resultsFromANOVA + "\n";
