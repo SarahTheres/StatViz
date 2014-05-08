@@ -153,6 +153,7 @@ function getSignificanceTestReportingText(method)
       
       //add confidence intervals
       ci = CIs[variableList["independent-levels"][i]];
+      text += ci;
       
       //add komma between each variable, add "and" for one before last, add nothing for last one
       if (i < variableList["independent-levels"].length - 2)
