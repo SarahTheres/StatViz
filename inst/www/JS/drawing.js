@@ -1214,6 +1214,7 @@ function displaySignificanceTestResults()
       drawReportingButton();
       
       //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
+      console.log("Bin da!");    
       var testType = testResults["test-type"];
       if (testType == "owA" || testType == "kwT" || testType == "WA" || testType == "owrA" || testType == "fT")
       {
