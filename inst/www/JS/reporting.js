@@ -241,8 +241,8 @@ function getSignificanceTest2WayReportingText(method)
          text += ", ";
       else if (j == variableList["independent-levels"].length - 2)
          text += " and ";
-      */      
-      }
+            
+      */
       
       
    }
