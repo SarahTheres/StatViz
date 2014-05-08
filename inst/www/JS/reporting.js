@@ -111,6 +111,7 @@ function getReportingText(method)
    {
       //display reporting text from ANOVA before and add post-hoc reporting text
       reportingText = resultsFromANOVA;
+      console.log(reportingText);
       reportingText += getPostHocReportingText(method);
       //reset ANOVA results text
       resultsFromANOVA = "";
@@ -237,9 +238,8 @@ function getSignificanceTestReportingText(method)
 function getPostHocReportingText(method)
 {
    //add prior text from test before
-   var text;
-   console.log(text);
-
+   var text = "";
+   
    //get pure p value without letter p or any operators
    var p = getPurePValue(testResults["p"]);
    var variableList = getSelectedVariables();
@@ -249,6 +249,8 @@ function getPostHocReportingText(method)
    //add conditions of indepdent variable (there can only be two due to pairwise)
    text += variableList["independent-levels"][0] + " and " + variableList["independent-levels"][1];
    
+   //TODO: add t/value etc.
+ 
    //TODO: effect size
    return text;
 }
