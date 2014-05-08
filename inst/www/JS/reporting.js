@@ -209,6 +209,8 @@ function getSignificanceTest2WayReportingText(method)
    text += "In order to compare the effect of " + variableList["independent"][0] + " and " + variableList["independent"][1];
    //add DV and method
    text += " on " + variableList["dependent"] + ", a " + testResults["method"] + " has been conducted. ";
+   
+   return text;
 }
 
 //returns reporting text for post-hoc tests => has its own function in order to differ the text for better readability
