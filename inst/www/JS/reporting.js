@@ -174,7 +174,7 @@ function getSignificanceTestReportingText(method)
    //check whether p is significant
    if (p <= 0.05)
       //complement text and give parameter result and degrees of freedom (if parameter has some) and exact p-value 
-      text += " A significant difference could be reported " + parameterType + (hasDF(parameterType) ? "(" + testResults["df"] + ") " : "") + " = " + testResults["parameter"] + ", " + testResults["p"] + ".";
+      text += " A significant difference could be reported " + parameterType + (hasDF[testResults["parameter-type"]] ? "(" + testResults["df"] + ") " : "") + " = " + testResults["parameter"] + ", " + testResults["p"] + ".";
    else
       text += " The descriptive difference is not significant (p = " + p + ").";
    
