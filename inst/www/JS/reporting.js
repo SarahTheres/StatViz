@@ -116,7 +116,7 @@ function getReportingText(method)
    else if (method == "ptT" || method == "pwT")
    {
       //display reporting text from ANOVA before and add post-hoc reporting text
-      reportingText = resultsFromANOVA + "/\n";
+      reportingText = resultsFromANOVA + "\n";
       reportingText += getPostHocReportingText(method);
       //reset ANOVA results text
       resultsFromANOVA = "";
@@ -221,7 +221,7 @@ function getSignificanceTest2WayReportingText(method)
       for (var j=0; j<variableList["independent-levels"][i].length; j++)
       {
          //add indepdent variable
-         text += variableList["independent-levels"][i].split("-") + " (";
+         text += variableList["independent-levels"][i].split("-")[0] + " (";
          /*
          //add mean and round it to 3 decimals places
          m = mean(variables[variableList["dependent"]][variableList["independent-levels"][i][j]]);
