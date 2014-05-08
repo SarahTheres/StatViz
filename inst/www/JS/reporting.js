@@ -217,7 +217,7 @@ function getSignificanceTest2WayReportingText(method)
       text += "There is " + (p < 0.05 ? "a" : "no") + " signifcant difference between ";
       
       //add each condition of each IV its mean, standard deviation and n have to be reported
-      for (var j=0; j<variableList["independent-levels"].length; j++)
+      for (var j=0; j<variableList["independent-levels"][i].length; j++)
       {
          //add indepdent variable
          text += variableList["independent-levels"][i][j] + " (";
