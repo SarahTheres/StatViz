@@ -1212,6 +1212,15 @@ function displaySignificanceTestResults()
       
       //add reporting button
       drawReportingButton();
+      
+      //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
+      var testType = testResults["test-type"];
+      if (testType == "owA" || testType == "kwT" || testType == "WA" || testType == "owrA" || testType == "fT")
+      {
+            resultsFromANOVA = getReportingText(testResults[testType]);
+            console.log("Results ANOVA: " + resultsFromANOVA);      
+      }
+      
 }
 
 function displayANOVAResults()
@@ -1384,9 +1393,12 @@ function displayANOVAResults()
             .attr("class", "significanceTest");
     
     
-    //Effect sizes
+    //Effect sizes      
     drawEffectSize(parseFloat(testResults["effect-size"][0]));
     
+    //add reporting button
+    drawReportingButton();
+      
     //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
     resultsFromANOVA = getReportingText(testResults["test-type"]);
     console.log("Results ANOVA: " + resultsFromANOVA);
