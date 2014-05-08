@@ -212,7 +212,7 @@ function getSignificanceTest2WayReportingText(method)
    
    for (var i=0; i<variableList["dependent"].length; i++)
    {
-      text += variableList["independent"][0]["independent-levels"][0];
+      text += variableList["independent"][0]variableList["independent-levels"][0];
       /*//add each condition of IV its mean, standard deviation and n have to be reported
       for (var j=0; j<variableList["independent-levels"].length; j++)
       {
