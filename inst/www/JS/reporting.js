@@ -225,8 +225,10 @@ function getSignificanceTest2WayReportingText(method)
          //currentIVlevel = variableList["independent-levels"][j].split("-")[i];
          currentIVlevel = variableList["independent-levels"][i].split("-");
          TEST = colourBoxPlotData[currentIVlevel[0]][currentIVlevel[1]];
+         console.log(currentIVlevel);
+         console.log(TEST);
          //add IV i: level 1 
-         text +=  currentIVlevel + " (";
+         //text +=  currentIVlevel + " (";
          
          /*
          //add mean and round it to 3 decimals places
