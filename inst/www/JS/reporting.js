@@ -101,10 +101,16 @@ function getReportingText(method)
 {
    var reportingText = "";
    
-   //significance tests
+   //significance tests with one IV
    if (method == "upT" || method == "pt" || method == "wT" || method == "mwT" || method == "owA" || method == "WA" 
-   || method == "kwT" || method == "twA" || method == "owrA" || method == "fT" || method == "fA")
+   || method == "kwT" || method == "owrA" || method == "fT" )
       reportingText = getSignificanceTestReportingText(method);
+   
+   //significance tests with two IVs
+   else if (method == "twA" || method == "fA")
+   {
+      reportingText = getSignificanceTest2WayReportingText;
+   }
    
    //post-hoc tests
    else if (method == "ptT" || method == "pwT")
@@ -190,6 +196,19 @@ function getSignificanceTestReportingText(method)
    
    return text;
 
+}
+
+function getSignificanceTest2WayReportingText(method)
+{
+   var text = "";
+   
+   //get current variables
+   var variableList = getSelectedVariables();
+   
+   //add both IVs
+   text += "In order to compare the effect of " + variableList["independent"][0] + " and " + variableList["independent"][1]:
+   //add DV and method
+   text += " on " + variableList["dependent"] + ", a " + testResults["method"] + " has been conducted. "
 }
 
 //returns reporting text for post-hoc tests => has its own function in order to differ the text for better readability
