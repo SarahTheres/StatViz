@@ -213,34 +213,38 @@ function getSignificanceTest2WayReportingText(method)
    
    for (var i=0; i<variableList["independent"].length; i++)
    {
-      currentIVlevel = variableList["independent-levels"][i].split("-")[i];
        //differ text between significant and non-significant p
       var p = getPurePValue(testResults["p"][i]);
       text += "There is " + (p < 0.05 ? "a" : "no") + " signifcant difference between ";
       
-      //add IV i: level 1 
-      text +=  currentIVlevel + " (";
+      for (var j = 0; j<variableList["independent-levels"].length; j++)
+      {
+         currentIVlevel = variableList["independent-levels"][j].split("-")[i];
+         //add IV i: level 1 
+         text +=  currentIVlevel + " (";
+         
+         //add mean and round it to 3 decimals places
+         m = mean(variables[variableList["dependent"]][currentIVlevel]);
+         text += "M = " + m.toFixed(3) + ", ";
+         
+         //add standard deviation and round it to 3 decimals places
+         sd = getStandardDeviation(variables[variableList["dependent"]][currentIVlevel]);
+         text += "SD = " + sd.toFixed(3) + ", ";
+            
+         //add n
+         text += "n = " + (variables[variableList["dependent"]][currentIVlevel]).length + ", ";
+            
+          //add confidence intervals (round values to 3 decimal places)
+         ci = findCI(variables[variableList["dependent"]][currentIVlevel]);
+         text += "95% CI [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "]" + ")";
+            
+         //add komma between each variable, add "and" for one before last, add nothing for last one
+         if (i < variableList["independent-levels"].length - 2)
+            text += ", ";
+         else if (i == variableList["independent-levels"].length - 2)
+            text += " and ";
+      }
       
-      //add mean and round it to 3 decimals places
-      m = mean(variables[variableList["dependent"]][currentIVlevel]);
-      text += "M = " + m.toFixed(3) + ", ";
-      
-      //add standard deviation and round it to 3 decimals places
-      sd = getStandardDeviation(variables[variableList["dependent"]][currentIVlevel]);
-      text += "SD = " + sd.toFixed(3) + ", ";
-         
-      //add n
-      text += "n = " + (variables[variableList["dependent"]][currentIVlevel]).length + ", ";
-         
-       //add confidence intervals (round values to 3 decimal places)
-      ci = findCI(variables[variableList["dependent"]][currentIVlevel]);
-      text += "95% CI [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "]" + ")";
-         
-      //add komma between each variable, add "and" for one before last, add nothing for last one
-      if (i < variableList["independent-levels"].length - 2)
-         text += ", ";
-      else if (i == variableList["independent-levels"].length - 2)
-         text += " and ";
       
    }
    
