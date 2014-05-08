@@ -106,17 +106,13 @@ function getReportingText(method)
    || method == "kwT" || method == "twA" || method == "owrA" || method == "fT" || method == "fA")
       reportingText = getSignificanceTestReportingText(method);
   
-   //in case an ANOVA or corresponding non-parametric test is conducted, text has to be saved for post-hoc tests
-   if (method == "owA" || method == "WA" || method == "kwT" || method == "twA" || method == "owrA" || method == "fT" || method == "fA")
-   {   
-      resultsFromANOVA = reportingText;
-      console.log(resultsFromANOVA);
-   }
-   
    //post-hoc tests
    else if (method == "ptT" || method == "pwt")
    {
-      reportingText = getPostHocReportingText(method, resultsFromANOVA);
+      //display reporting text from ANOVA before and add post-hoc reporting text
+      reportingText = resultsFromANOVA;
+      reportingText += getPostHocReportingText(method);
+      //reset ANOVA results text
       resultsFromANOVA = "";
    }
    
@@ -237,8 +233,8 @@ function getSignificanceTestReportingText(method)
 
 }
 
-//returns reporting text for post-hoc tests, gets method and results from prior ANOVA  => has its own function in order to differ the text
-function getPostHocReportingText(method, priorResults)
+//returns reporting text for post-hoc tests => has its own function in order to differ the text for better readability
+function getPostHocReportingText(method)
 {
    //add prior text from test before
    var text = priorResults;
