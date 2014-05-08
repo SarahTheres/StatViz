@@ -1386,6 +1386,9 @@ function displayANOVAResults()
     
     //Effect sizes
     drawEffectSize(parseFloat(testResults["effect-size"][0]));
+    
+    //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
+    resultsFromANOVA = getReportingText(testResults["test-type"]);
 }
 
 function displayCorrelationResults()
