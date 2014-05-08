@@ -224,16 +224,16 @@ function getSignificanceTest2WayReportingText(method)
       //add mean and round it to 3 decimals places
       m = mean(variables[variableList["dependent"]][currentIVlevel]);
       text += "M = " + m.toFixed(3) + ", ";
-      /*   
+      
       //add standard deviation and round it to 3 decimals places
-      sd = getStandardDeviation(variables[variableList["dependent"]][variableList["independent-levels"][i][j]]);
+      sd = getStandardDeviation(variables[variableList["dependent"]][currentIVlevel]);
       text += "SD = " + sd.toFixed(3) + ", ";
          
       //add n
-      text += "n = " + (variables[variableList["dependent"]][variableList["independent-levels"][i][j]]).length + ", ";
+      text += "n = " + (variables[variableList["dependent"]][currentIVlevel]).length + ", ";
          
        //add confidence intervals (round values to 3 decimal places)
-      ci = findCI(variables[variableList["dependent"]][variableList["independent-levels"][i][j]]);
+      ci = findCI(variables[variableList["dependent"]][currentIVlevel]);
       text += "95% CI [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "]" + ")";
          
       //add komma between each variable, add "and" for one before last, add nothing for last one
