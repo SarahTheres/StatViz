@@ -206,9 +206,42 @@ function getSignificanceTest2WayReportingText(method)
    var variableList = getSelectedVariables();
    
    //add both IVs
-   text += "In order to compare the effect of " + variableList["independent"][0] + " and " + variableList["independent"][1];
+   text += "In order to compare the effect of " + variableList["independent"][0] + " and " + variableList["independent"][1] + " and their interaction ";
    //add DV and method
    text += " on " + variableList["dependent"] + ", a " + testResults["method"] + " has been conducted. ";
+   
+   for (var i=0; i<variableList["dependent"].length; i++)
+   {
+      text += variableList["independent"][0]["independent-levels"][0];
+      /*//add each condition of IV its mean, standard deviation and n have to be reported
+      for (var j=0; j<variableList["independent-levels"].length; j++)
+      {
+         //add indepdent variable
+         text += variableList["independent-levels"][j] + " (";
+         
+         //add mean and round it to 3 decimals places
+         m = mean(variables[variableList["dependent"]][variableList["independent-levels"][j]]);
+         text += "M = " + m.toFixed(3) + ", ";
+         
+         //add standard deviation and round it to 3 decimals places
+         sd = getStandardDeviation(variables[variableList["dependent"]][variableList["independent-levels"][j]]);
+         text += "SD = " + sd.toFixed(3) + ", ";
+         
+         //add n
+         text += "n = " + (variables[variableList["dependent"]][variableList["independent-levels"][j]]).length + ", ";
+         
+          //add confidence intervals (round values to 3 decimal places)
+         ci = findCI(variables[variableList["dependent"]][variableList["independent-levels"][j]]);
+         text += "95% CI [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "]" + ")";
+         
+         //add komma between each variable, add "and" for one before last, add nothing for last one
+         if (j < variableList["independent-levels"].length - 2)
+            text += ", ";
+         else if (j == variableList["independent-levels"].length - 2)
+            text += " and ";
+      }
+      */
+   }
    
    return text;
 }
