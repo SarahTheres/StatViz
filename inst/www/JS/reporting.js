@@ -100,6 +100,7 @@ function setReportingTextbox()
 function getReportingText(method)
 {
    var reportingText = "";
+   console.log("Bin in reportingText Method");
    
    //significance tests
    if (method == "upT" || method == "pt" || method == "wT" || method == "mwT" || method == "owA" || method == "WA" 
@@ -111,7 +112,7 @@ function getReportingText(method)
    {
       //display reporting text from ANOVA before and add post-hoc reporting text
       reportingText = resultsFromANOVA;
-      console.log(reportingText);
+      console.log("Reporting Text in Method:" + reportingText);
       reportingText += getPostHocReportingText(method);
       //reset ANOVA results text
       resultsFromANOVA = "";
