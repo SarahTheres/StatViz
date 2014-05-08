@@ -171,63 +171,15 @@ function getSignificanceTestReportingText(method)
       parameterType = "𝝌" +String.fromCharCode(178);
    }
    
-   //depending on type of effect size the amount (small, medium, large) is measured and is returned here
-   //0 = small; 1 = small-medium; 2 = medium-large; 3: large effect; 99 = error
-   var effectSizeAmount = getEffectSizeAmount(testResults["effect-size-type"], testResults["effect-size"]);
-   //if effect size type is eS or RS, the letters have to be change to display correctly
-   var effectSizeType = testResults["effect-size-type"];
-   if (effectSizeType == "eS")
-      effectSizeType = "η" + String.fromCharCode(178);
-   else if (effectSizeType == "RS")
-      effectSizeType = "r" + String.fromCharCode(178);
-   
    //check whether p is significant
    if (p <= 0.05)
-   {
       //complement text and give parameter result and exact p-value (rounded to 3 decimal places)
       text += " A significant difference could be reported " + parameterType + "(" + testResults["df"] + ") = " + testResults["parameter"] + ", " + testResults["p"] + ".";
-   
-      //add effect size text depending on amount of effect
-      if (effectSizeAmount == 0)
-      {
-         text += " However, only a small-sized effect could be measured";
-      }
-      else if (effectSizeAmount == 1)
-      {
-         text += " However, only a small to medium-sized effect could be measured";
-      }
-      else if (effectSizeAmount == 2)
-      {
-         text += " Additionally, a medium to large-sized effect could be detected";
-      }
-      else if (effectSizeAmount == 3)
-      {
-         text += " Additionally, a large-sized effect could be detected";
-      }
-      else
-      {
-         //TODO: error handling => no effect size
-      }
-      
-      //add effect-size value
-      text += " (" + effectSizeType + "= " + testResults["effect-size"] + ").";
-   }
    else
-   {
       text += " The descriptive difference is not significant (p = " + p + ").";
-      
-       //add effect size text depending on amount of effect
-      if (effectSizeAmount == 2)
-      {
-         text += " However, it did represent a medium to large-sized effect (" + effectSizetype + "= " + testResults["effect-size"] + ").";
-      }
-      else if (effectSizeAmount == 3)
-      {
-         text += " However, it did represent a large-sized effect (" + effectSizeType + "= " + testResults["effect-size"] + ").";
-      }
-      
-      //in case that effect size is smaller than medium, it is not remarkable as no signifikant results
-   }
+   
+   //add effect size to text
+   text += getEffectSizeReportingText(p);
    
    return text;
 
@@ -249,10 +201,56 @@ function getPostHocReportingText(method)
    text += variableList["independent-levels"][0] + " and " + variableList["independent-levels"][1] + ", ";
    
    //add exact p-value and parameter
-   text += testResults["parameter-type"] + " = " + testResults["parameter"] + ", " + testResults["p"];
+   text += testResults["parameter-type"] + " = " + testResults["parameter"] + ", " + testResults["p"] + ".";
    
-   //TODO: add t/value etc.
- 
+   //add effect size to text
+   text += getEffectSizeReportingText(p);
    //TODO: effect size
+   return text;
+}
+
+//depending on p-value, the effect size text is returned
+function getEffectSizeReportingText(p)
+{
+   var text = "";
+   
+   //depending on type of effect size the amount (small, medium, large) is measured and is returned here
+   //0 = small; 1 = small-medium; 2 = medium-large; 3: large effect; 99 = error
+   var effectSizeAmount = getEffectSizeAmount(testResults["effect-size-type"], testResults["effect-size"]);
+   //if effect size type is eS or RS, the letters have to be change to display correctly
+   var effectSizeType = testResults["effect-size-type"];
+   if (effectSizeType == "eS")
+      effectSizeType = "η" + String.fromCharCode(178);
+   else if (effectSizeType == "RS")
+      effectSizeType = "r" + String.fromCharCode(178);
+      
+   if (p < 0.05)
+   {
+      //add effect size text depending on amount of effect
+      if (effectSizeAmount == 0)
+         text += " However, only a small-sized effect could be measured";
+      else if (effectSizeAmount == 1)
+         text += " However, only a small to medium-sized effect could be measured";
+      else if (effectSizeAmount == 2)
+         text += " Additionally, a medium to large-sized effect could be detected";
+      else if (effectSizeAmount == 3)
+         text += " Additionally, a large-sized effect could be detected";
+      else
+         //TODO: error handling => no effect size
+      
+      //add effect-size value
+      text += " (" + effectSizeType + "= " + testResults["effect-size"] + ").";
+   }
+   //p > 0.05 (not significant)
+   else 
+   {
+           //add effect size text depending on amount of effect
+      if (effectSizeAmount == 2)
+         text += " However, it did represent a medium to large-sized effect (" + effectSizetype + "= " + testResults["effect-size"] + ").";
+      else if (effectSizeAmount == 3)
+         text += " However, it did represent a large-sized effect (" + effectSizeType + "= " + testResults["effect-size"] + ").";
+      //in case that effect size is smaller than medium, it is not remarkable as no signifikant results
+   }
+   
    return text;
 }
