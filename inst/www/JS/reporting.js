@@ -100,7 +100,7 @@ function setReportingTextbox()
 function getReportingText(method)
 {
    var reportingText = "";
-   console.log("Bin in reportingText Method");
+   console.log("Bin in reportingText Method" + method);
    
    //significance tests
    if (method == "upT" || method == "pt" || method == "wT" || method == "mwT" || method == "owA" || method == "WA" 
