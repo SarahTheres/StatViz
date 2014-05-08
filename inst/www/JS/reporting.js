@@ -235,8 +235,7 @@ function getEffectSizeReportingText(p)
          text += " Additionally, a medium to large-sized effect could be detected";
       else if (effectSizeAmount == 3)
          text += " Additionally, a large-sized effect could be detected";
-      else
-         //TODO: error handling => no effect size
+      //else: TODO error handling => no effect size
       
       //add effect-size value
       text += " (" + effectSizeType + "= " + testResults["effect-size"] + ").";
