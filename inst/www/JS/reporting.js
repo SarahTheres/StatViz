@@ -221,7 +221,7 @@ function getSignificanceTest2WayReportingText(method)
       {
          //add indepdent variable
          text += variableList["independent-levels"][i][j] + " (";
-         
+         /*
          //add mean and round it to 3 decimals places
          m = mean(variables[variableList["dependent"]][variableList["independent-levels"][i][j]]);
          text += "M = " + m.toFixed(3) + ", ";
@@ -242,6 +242,7 @@ function getSignificanceTest2WayReportingText(method)
             text += ", ";
          else if (j == variableList["independent-levels"].length - 2)
             text += " and ";
+            */
       }
       
       
