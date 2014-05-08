@@ -206,9 +206,9 @@ function getSignificanceTest2WayReportingText(method)
    var variableList = getSelectedVariables();
    
    //add both IVs
-   text += "In order to compare the effect of " + variableList["independent"][0] + " and " + variableList["independent"][1]:
+   text += "In order to compare the effect of " + variableList["independent"][0] + " and " + variableList["independent"][1];
    //add DV and method
-   text += " on " + variableList["dependent"] + ", a " + testResults["method"] + " has been conducted. "
+   text += " on " + variableList["dependent"] + ", a " + testResults["method"] + " has been conducted. ";
 }
 
 //returns reporting text for post-hoc tests => has its own function in order to differ the text for better readability
@@ -221,7 +221,7 @@ function getPostHocReportingText(method)
    var p = getPurePValue(testResults["p"]);
    var variableList = getSelectedVariables();
    
-   text += "A " + testResults["method"] + " revealed that there is " + (p < 0.05 ? "a" : "no") + " significant difference between " 
+   text += "A " + testResults["method"] + " revealed that there is " + (p < 0.05 ? "a" : "no") + " significant difference between "; 
    
    //add conditions of indepdent variable (there can only be two due to pairwise)
    text += variableList["independent-levels"][0] + " and " + variableList["independent-levels"][1] + ", ";
