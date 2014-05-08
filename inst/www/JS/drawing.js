@@ -1218,7 +1218,7 @@ function displaySignificanceTestResults()
       console.log("Test-Type:" + testType);
       if (testType == "owA" || testType == "kwT" || testType == "WA" || testType == "owrA" || testType == "fT")
       {
-            resultsFromANOVA = getReportingText(testResults[testType]);
+            resultsFromANOVA = getReportingText(testType);
             console.log("Results ANOVA: " + resultsFromANOVA);      
       }
       
