@@ -237,9 +237,9 @@ function getSignificanceTest2WayReportingText(method)
       text += "95% CI [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "]" + ")";
          
       //add komma between each variable, add "and" for one before last, add nothing for last one
-      if (j < variableList["independent-levels"].length - 2)
+      if (i < variableList["independent-levels"].length - 2)
          text += ", ";
-      else if (j == variableList["independent-levels"].length - 2)
+      else if (i == variableList["independent-levels"].length - 2)
          text += " and ";
       
    }
