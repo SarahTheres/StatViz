@@ -114,7 +114,7 @@ function getReportingText(method)
    {
       //display reporting text from ANOVA before and add post-hoc reporting text
       reportingText = resultsFromANOVA;
-      console.log("Ich gehe in die post-hoc Anweisung: xt(method);
+      console.log("Ich gehe in die post-hoc Anweisung:" + reportingText;
       //reset ANOVA results text
       resultsFromANOVA = "";
    }
