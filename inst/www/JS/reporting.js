@@ -237,7 +237,7 @@ function getSignificanceTestReportingText(method)
 function getPostHocReportingText(method)
 {
    //add prior text from test before
-   var text = priorResults;
+   var text;
    console.log(text);
 
    //get pure p value without letter p or any operators
