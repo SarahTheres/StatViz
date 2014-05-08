@@ -124,13 +124,14 @@ function getSignificanceTestReportingText(method)
 {
     //all text is stored in this variable
    var text = "";
-   //variables for mean, standard deviation and confidence interval
+   //variables for mean, standard deviation, standard error and confidence interval
    var m;
    var sd;
+   var se;
    var ci;
    //get current variables
    var variableList = getSelectedVariables();
-   
+  
    //first sentence including method, in case that method is unpaired there has to be an "an" instead of an "a"
    text += (method == "upT" ? "An " : "A ") + testResults["method"] + " has been conducted to investigate the effect of ";
    
@@ -149,11 +150,11 @@ function getSignificanceTestReportingText(method)
       text += "SD = " + sd.toFixed(3) + ", ";
       
       //add n
-      text += "n = " + (variables[variableList["dependent"]][variableList["independent-levels"][i]]).length + ")";
+      text += "n = " + (variables[variableList["dependent"]][variableList["independent-levels"][i]]).length + ", ";
       
-      //add confidence intervals
-      ci = CIs[variableList["independent-levels"][i]];
-      text += ci;
+       //add confidence intervals
+      ci = findCI(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
+      text += "95% [" + ci[0] + "," + ci[1] + "]" + ")";
       
       //add komma between each variable, add "and" for one before last, add nothing for last one
       if (i < variableList["independent-levels"].length - 2)
