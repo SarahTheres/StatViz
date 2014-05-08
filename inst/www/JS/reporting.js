@@ -124,10 +124,10 @@ function getSignificanceTestReportingText(method)
 {
     //all text is stored in this variable
    var text = "";
-   //variables for mean, standard deviation and n
+   //variables for mean, standard deviation and confidence interval
    var m;
    var sd;
-   var n;
+   var ci;
    //get current variables
    var variableList = getSelectedVariables();
    
@@ -148,8 +148,11 @@ function getSignificanceTestReportingText(method)
       sd = getStandardDeviation(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
       text += "SD = " + sd.toFixed(3) + ", ";
       
-      //TODO: add n
+      //add n
       text += "n = " + (variables[variableList["dependent"]][variableList["independent-levels"][i]]).length + ")";
+      
+      //add confidence intervals
+      ci = CIs[variableList["independent-levels"][i]];
       
       //add komma between each variable, add "and" for one before last, add nothing for last one
       if (i < variableList["independent-levels"].length - 2)
@@ -207,7 +210,7 @@ function getPostHocReportingText(method)
    
    //add effect size to text
    text += getEffectSizeReportingText(p);
-   //TODO: effect size
+  
    return text;
 }
 
