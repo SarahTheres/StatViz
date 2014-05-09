@@ -304,13 +304,13 @@ function getEffectSizeReportingText(p)
    {
       //add effect size text depending on amount of effect
       if (effectSizeAmount == 0)
-         text += " However, only a small-sized effect could be measured";
+         text += " However, it did only represent a small-sized effect";
       else if (effectSizeAmount == 1)
-         text += " However, only a small to medium-sized effect could be measured";
+         text += " However, it did only represent a small to medium-sized effect";
       else if (effectSizeAmount == 2)
-         text += " Additionally, a medium to large-sized effect could be detected";
+         text += " The differences constitute a medium to large-sized effect size";
       else if (effectSizeAmount == 3)
-         text += " Additionally, a large-sized effect could be detected";
+         text += " The differences constitute a large effect size";
       //else: TODO error handling => no effect size
       
       //add effect-size value
