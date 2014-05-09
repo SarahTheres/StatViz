@@ -121,7 +121,7 @@ function getReportingText(method)
       //reset ANOVA results text
       resultsFromANOVA = "";
    }
-   
+   console.log(reportingText);
    return reportingText;
 }
 
