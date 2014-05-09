@@ -102,7 +102,7 @@ function getReportingText(method)
    var reportingText = "";
    
    //significance tests with one IV
-   if (method == "upT" || method == "pt" || method == "wT" || method == "mwT" || method == "owA" || method == "WA" 
+   if (method == "upT" || method == "pT" || method == "wT" || method == "mwT" || method == "owA" || method == "WA" 
    || method == "kwT" || method == "owrA" || method == "fT" )
       reportingText = getSignificanceTestReportingText(method);
    
