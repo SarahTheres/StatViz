@@ -155,7 +155,7 @@ function getSignificanceTestReportingText(method)
    }
   
     //add dependent variable
-   text += " on " + variableList["dependent"] + ".";
+   text += " on " + "<i>" + variableList["dependent"] + "</i>" +".";
 
    //get pure p value without letter p or any operators
    var p = getPurePValue(testResults["p"]);
@@ -163,9 +163,9 @@ function getSignificanceTestReportingText(method)
    //check whether p is significant
    if (p <= 0.05)
     
-      text += " A significant difference could be reported";
+      text += " A significant difference can be reported";
    else
-      text += " The descriptive difference is not significant";
+      text += " The observed difference is not significant";
    
    //add results of test to text
    text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"], testResults["parameter"], testResults["p"]);
@@ -184,9 +184,9 @@ function getSignificanceTest2WayReportingText(method)
    var variableList = sort(currentVariableSelection);
    
    //add both IVs
-   text += "In order to compare the effect of " + variableList["independent"][0] + " and " + variableList["independent"][1] + " as well as their interaction ";
+   text += "In order to compare the effect of " + "<i>" + variableList["independent"][0] + "</i>" + " and " + "<i>" + variableList["independent"][1] + "</i>" + " as well as their interaction ";
    //add DV and method
-   text += " on " + variableList["dependent"] + ", a " + testResults["method"] + " has been conducted.\n";
+   text += " on " + "<i>" + variableList["dependent"] + "</i>" + ", a " + testResults["method"] + " has been conducted.\n";
    var currentIVlevel;
    
    //add main effects of each independent variable and for the interaction (therefore, i <= nr. of IV)
@@ -222,16 +222,16 @@ function getSignificanceTest2WayReportingText(method)
           //varying text so that text is more fluent: end
          if (i%2 == 0)
             //add dependent variable
-            text += " on " + variableList["dependent"];
+            text += " on " + "<i>" + variableList["dependent"] + "</i>";
          else
             //add dependent variable and whether signifcant
-            text += ", a " + (p < 0.05 ? "" : "non-") + "significant main effect on " + variableList["dependent"] + " has been determined" 
+            text += ", a " + (p < 0.05 ? "" : "non-") + "significant main effect on " + "<i>" + variableList["dependent"] + "</i>" + " has been determined" 
             
       }
       //results for interaction
       else
       {
-         text += "Investigating the interaction between " + variableList["independent"][0] + " and " + variableList["independent"][1] + ", "; 
+         text += "Investigating the interaction between " + "<i>" + variableList["independent"][0] + "</i>" + " and " + "<i>" + variableList["independent"][1] + "</i>" + ", "; 
          text += (p < 0.05 ? "a " : "no ") + "sigifnicant difference could have been identified ";
       }
       
@@ -262,7 +262,7 @@ function getPostHocReportingText(method)
    text += "A " + testResults["method"] + " revealed that there is " + (p < 0.05 ? "a" : "no") + " significant difference between "; 
    
    //add conditions of indepdent variable (there can only be two due to pairwise)
-   text += variableList["independent-levels"][0] + " and " + variableList["independent-levels"][1];
+   text += "<i>" + variableList["independent-levels"][0] + "</i>" + "and " + "<i>" + variableList["independent-levels"][1] + "</i>";
    
    //add results of test to text
    text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"], testResults["parameter"], testResults["p"]);
@@ -283,18 +283,18 @@ function getVariableCharacteristicsReportingText(dependentVariable, IVlevel, var
    var distribution = variables[variableList["dependent"]][IVlevel];
    
    //add IV i: level j 
-   text +=  IVlevel + " (";
+   text +=  "<i>" + IVlevel + "</i>" + " (";
    
    //report median for ordinal data and mean for rest of variable types
    if (variableTypes[dependentVariable] == "ordinal")
    {
       mdn = median(distribution);
-      text += "Mdn = " + mdn.toFixed(2) + ", ";
+      text += "<i>Mdn</i> = " + mdn.toFixed(2) + ", ";
    }
    else
    {
       m = mean(distribution);
-      text += "M = " + m.toFixed(2) + ", ";
+      text += "<i>M</i> = " + m.toFixed(2) + ", ";
    }
    
    //add confidence intervals (round values to 3 decimal places)
@@ -303,10 +303,10 @@ function getVariableCharacteristicsReportingText(dependentVariable, IVlevel, var
       
    //add standard deviation and round it to 3 decimals places
    sd = getStandardDeviation(distribution);
-   text += "SD = " + sd.toFixed(2) + ", ";
+   text += "<i>SD</i> = " + sd.toFixed(2) + ", ";
             
    //add n
-   text += "n = " + (distribution).length + ")";
+   text += "<i>n</i> = " + (distribution).length + ")";
             
    return text;
 }   
@@ -320,12 +320,12 @@ function getTestResultsReportingText(parameterType, df, parameter, p)
       parameterType = String.fromCharCode(967) + String.fromCharCode(178);
 
    //complement text and give parameter result and degrees of freedom (if parameter has some) 
-   text += ", " + parameterType + (hasDF[parameterType] ? "(" + df + ") " : "") + " = " + parameter + ", ";
+   text += ", " + "<i>" + parameterType + "</i>" + (hasDF[parameterType] ? "(" + df + ") " : "") + " = " + parameter + ", ";
 
    //change p-value notation so that first zero is omitted
    p = omitZeroPValueNotation(p);
    //add exact p-value (unless smaller than 0.001)
-   text += p + ".";
+   text += "<i>" + p + "</i>" + ".";
    
    return text;
 }
@@ -335,7 +335,6 @@ function getEffectSizeReportingText(p, effectSize)
 {
    var text = "";
    //round effect size to 2 decimal places (effectSize is currently an array)
-   console.log(effectSize);
    var effectSizeRounded = effectSize.toFixed(2);
    
    //depending on type of effect size the amount (small, medium, large) is measured and is returned here
@@ -362,16 +361,16 @@ function getEffectSizeReportingText(p, effectSize)
       //else: TODO error handling => no effect size
       
       //add effect-size value
-      text += " (" + effectSizeType + " = " + effectSizeRounded + "). ";
+      text += " (" + "<i>" + effectSizetype + "</i>" + " = " + effectSizeRounded + "). ";
    }
    //p > 0.05 (not significant)
    else 
    {
            //add effect size text depending on amount of effect
       if (effectSizeAmount == 2)
-         text += " However, it represents a medium-sized effect (" + effectSizetype + "= " + effectSizeRounded + ").";
+         text += " However, it represents a medium-sized effect (" + "<i>" + effectSizetype + "</i>" + "= " + effectSizeRounded + ").";
       else if (effectSizeAmount == 3)
-         text += " However, it represents a large-sized effect (" + effectSizeType + "= " + effectSizeRounded + ").";
+         text += " However, it represents a large-sized effect (" + "<i>" + effectSizetype + "</i>" + "= " + effectSizeRounded + ").";
       //in case that effect size is smaller than medium, it is not remarkable as no significant results
    }
    
