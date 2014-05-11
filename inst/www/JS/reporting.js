@@ -228,29 +228,10 @@ function getSignificanceTest2WayReportingText(method)
       {
          //get current level of current IV
          currentIVlevel = variableList["independent-levels"][i][j]; 
-         console.log(currentIVlevel);
          text += getVariableCharacteristicsReportingText(currentIVlevel, variableList);
          
-         /*
-         //add IV i: level j 
-         text +=  currentIVlevel + " (";
-         
-         //add mean and round it to 3 decimals places
-         m = mean(variables[variableList["dependent"]][currentIVlevel]);
-         text += "M = " + m.toFixed(3) + ", ";
-         
-         //add standard deviation and round it to 3 decimals places
-         sd = getStandardDeviation(variables[variableList["dependent"]][currentIVlevel]);
-         text += "SD = " + sd.toFixed(3) + ", ";
-            
-         //add n
-         text += "n = " + (variables[variableList["dependent"]][currentIVlevel]).length + ", ";
-            
-          //add confidence intervals (round values to 3 decimal places)
-         ci = findCI(variables[variableList["dependent"]][currentIVlevel]);
-         text += "95% CI [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "]" + ")";
-         */
-         
+         console.log(text);
+
          //add komma between each variable, add "and" for one before last, add nothing for last one
          if (j < variableList["independent-levels"][i].length - 2)
             text += ", ";
@@ -377,7 +358,6 @@ function getVariableCharacteristicsReportingText(IVlevel, variableList)
 {
    var text;
    
-   console.log(IVlevel);
    //add IV i: level j 
    text +=  IVlevel + " (";
          
@@ -395,6 +375,7 @@ function getVariableCharacteristicsReportingText(IVlevel, variableList)
     //add confidence intervals (round values to 3 decimal places)
    ci = findCI(variables[variableList["dependent"]][IVlevel]);
    text += "95% CI [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "]" + ")";
-            
+   console.log(text);
+   
    return text;
 }   
