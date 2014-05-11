@@ -111,7 +111,6 @@ function changePValueNotation(p)
 function omitZeroPValueNotation(p)
 {
     //only in case that p is one, first digit shouldn't be omitted
-    console.log(p);
     if (getPurePValue(p) == 1)
         return p;
     else
@@ -125,8 +124,6 @@ function omitZeroPValueNotation(p)
 //returns the pure p value without p or operators
 function getPurePValue(presult)
 {
-    //TODO
-    console.log("Bin in Pure p Value");
     var pValue =  removeAlphabetsFromString(presult);
     pValue = pValue.replace(/</g, '');
     pValue = pValue.replace(/>/g, '');
@@ -135,7 +132,7 @@ function getPurePValue(presult)
 }
 
 //returns the amount of an effect size depending on its type 
-//0 = small; 1 = small-medium; 2 = medium-large; 3: large effect; 99 = error
+//0 = no; 1 = small; 2 = medium; 3: large effect; 99 = error
 function getEffectSizeAmount(effectSizeType, effectSize)
 {
     var interpretations = effectSizeInterpretations[effectSizeType];
