@@ -310,6 +310,9 @@ function getTestResultsReportingText(parameterType, df, parameter, p)
    if (parameterType == "cS")
       parameterType = String.fromCharCode(967) + String.fromCharCode(178);
 
+   //change p-value notation so that first zero is omitted
+   p = omitZeroPValueNotation(p);
+   
    //complement text and give parameter result and degrees of freedom (if parameter has some) and exact p-value 
    text += parameterType + (hasDF[parameterType] ? "(" + df + ") " : "") + " = " + parameter + ", " + p + ".";
    
@@ -352,7 +355,7 @@ function getEffectSizeReportingText(p, effectSize)
    {
            //add effect size text depending on amount of effect
       if (effectSizeAmount == 2)
-         text += " However, it did represent a medium to large-sized effect (" + effectSizetype + "= " + effectSize + ").";
+         text += " However, it did represent a medium-sized effect (" + effectSizetype + "= " + effectSize + ").";
       else if (effectSizeAmount == 3)
          text += " However, it did represent a large-sized effect (" + effectSizeType + "= " + effectSize + ").";
       //in case that effect size is smaller than medium, it is not remarkable as no signifikant results
