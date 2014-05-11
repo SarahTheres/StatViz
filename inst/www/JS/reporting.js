@@ -143,7 +143,7 @@ function getSignificanceTestReportingText(method)
    {
       
       currentIVlevel = variableList["independent-levels"][i]; 
-      text += getVariableCharacteristicsReportingText(variableList["independent"], currentIVlevel, variableList);
+      text += getVariableCharacteristicsReportingText(variableList["dependent"], currentIVlevel, variableList);
       
       //add komma between each variable, add "and" for one before last, add nothing for last one
       if (i < variableList["independent-levels"].length - 2)
@@ -208,7 +208,7 @@ function getSignificanceTest2WayReportingText(method)
          {
             //get current level of current IV
             currentIVlevel = variableList["independent-levels"][i][j]; 
-            text += getVariableCharacteristicsReportingText(variableList["independent"][i], currentIVlevel, variableList);
+            text += getVariableCharacteristicsReportingText(variableList["dependent"], currentIVlevel, variableList);
    
             //add komma between each variable, add "and" for one before last, add nothing for last one
             if (j < variableList["independent-levels"][i].length - 2)
@@ -273,7 +273,7 @@ function getPostHocReportingText(method)
 }
 
 //function returns reporting text for given independent variable's level and its characteristics (m/mdn, sd, n, ci)
-function getVariableCharacteristicsReportingText(independentVariable, IVlevel, variableList)
+function getVariableCharacteristicsReportingText(dependentVariable, IVlevel, variableList)
 {
    //variables for mean, median, confidence interval, standard deviation and number of participants
    var m, mdn, ci, sd, n;
@@ -285,7 +285,7 @@ function getVariableCharacteristicsReportingText(independentVariable, IVlevel, v
    text +=  IVlevel + " (";
    
    //report median for ordinal data and mean for rest of variable types
-   if (variableTypes[independentVariable] == "ordinal")
+   if (variableTypes[dependentVariable] == "ordinal")
    {
       mdn = median(distribution);
       text += "Mdn = " + m.toFixed(3) + ", ";
