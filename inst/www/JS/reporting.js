@@ -338,8 +338,7 @@ function getEffectSizeReportingText(p, effectSize)
 {
    var text = "";
    //round effect size to 2 decimal places (effectSize is currently an array)
-   //TODO
-   //var effectSizeRounded = effectSize[0].toFixed(2);
+   var effectSizeRounded = effectSize[0].toFixed(2);
    
    //depending on type of effect size the amount (small, medium, large) is measured and is returned here
    //0 = small; 1 = small-medium; 2 = medium-large; 3: large effect; 99 = error
@@ -365,16 +364,16 @@ function getEffectSizeReportingText(p, effectSize)
       //else: TODO error handling => no effect size
       
       //add effect-size value
-      text += " (" + effectSizeType + " = " + effectSize + "). ";
+      text += " (" + effectSizeType + " = " + effectSizeRounded + "). ";
    }
    //p > 0.05 (not significant)
    else 
    {
            //add effect size text depending on amount of effect
       if (effectSizeAmount == 2)
-         text += " However, it represents a medium-sized effect (" + effectSizetype + "= " + effectSize + ").";
+         text += " However, it represents a medium-sized effect (" + effectSizetype + "= " + effectSizeRounded + ").";
       else if (effectSizeAmount == 3)
-         text += " However, it represents a large-sized effect (" + effectSizeType + "= " + effectSize + ").";
+         text += " However, it represents a large-sized effect (" + effectSizeType + "= " + effectSizeRounded + ").";
       //in case that effect size is smaller than medium, it is not remarkable as no signifikant results
    }
    
