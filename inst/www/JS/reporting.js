@@ -248,9 +248,9 @@ function getSignificanceTest2WayReportingText(method)
          text += "95% CI [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "]" + ")";
             
          //add komma between each variable, add "and" for one before last, add nothing for last one
-         if (j < variableList["independent-levels"][j].length - 2)
+         if (j < variableList["independent-levels"][i].length - 2)
             text += ", ";
-         else if (j == variableList["independent-levels"][j].length - 2)
+         else if (j == variableList["independent-levels"][i].length - 2)
             text += " and ";
          
       }
@@ -259,10 +259,22 @@ function getSignificanceTest2WayReportingText(method)
        //varying text so that text is more fluent: end
       if (i%2 == 0)
          //add dependent variable
-         text += " on " + variableList["dependent"];
+         text += " on " + variableList["dependent"] + " ";
       else
          //add dependent variable and whether signifcant
-         text += ", a " + (p > 0.05 ? "non" : "") + " significant main effect on " + variableList["dependent"] + " has been determined." 
+         text += ", a " + (p > 0.05 ? "non" : "") + " significant main effect on " + variableList["dependent"] + " has been determined " 
+      
+         //if parameter type is cS, the letters have to be changed to display correctly
+      var parameterType = testResults["parameter-type"];
+      if (parameterType == "cS")
+         parameterType = "𝝌" +String.fromCharCode(178);
+   
+   
+   
+      //complement text and give parameter result and degrees of freedom (if parameter has some) and exact p-value 
+      text += parameterType + (hasDF[testResults["parameter-type"]] ? "(" + testResults["df"] + ") " : "") + " = " + testResults["parameter"] + ", " + testResults["p"] + ".";
+      //add effect size to text
+      text += getEffectSizeReportingText(p);
       
       text += "\n";
    }
