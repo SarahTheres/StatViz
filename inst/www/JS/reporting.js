@@ -211,7 +211,7 @@ function getSignificanceTest2WayReportingText(method)
    text += " on " + variableList["dependent"] + ", a " + testResults["method"] + " has been conducted. ";
    var currentIVlevel;
    //TODO: remove
-   var TEST;
+   var test;
    
    for (var i=0; i<variableList["independent"].length; i++)
    {
@@ -224,9 +224,10 @@ function getSignificanceTest2WayReportingText(method)
       {
          //currentIVlevel = variableList["independent-levels"][j].split("-")[i];
          currentIVlevel = variableList["independent-levels"][j].split("-");
-         TEST = colourBoxPlotData[0][1];
+         //TEST = colourBoxPlotData[0][1];
         // TEST = colourBoxPlotData[currentIVlevel];
-         console.log("CurrentIVLevel:" + currentIVlevel);
+         test = splitThisLevelBy(variableList["independent"][0], variableList["independent"][1], variableList["dependent"][0]);
+         //console.log("CurrentIVLevel:" + currentIVlevel);
          //console.log("BoxPlotData IV-level" + colourBoxPlotData[currentIVlevel]);
          console.log("BoxPlotData 0-1-2 " + TEST);
 
