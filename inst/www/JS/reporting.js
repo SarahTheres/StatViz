@@ -212,13 +212,19 @@ function getSignificanceTest2WayReportingText(method)
    text += " on " + variableList["dependent"] + ", a " + testResults["method"] + " has been conducted. ";
    var currentIVlevel;
    
+   //add main effects of each independent variable
    for (var i=0; i<variableList["independent"].length; i++)
    {
        //differ text between significant and non-significant p
       var p = getPurePValue(testResults["p"][i]);
-      text += "There is " + (p < 0.05 ? "a" : "no") + " signifcant difference between ";
       
-      //TODO: Kommentar
+      //varying text so that text is more fluent: start
+      if (i%2)
+         text += "There is " + (p < 0.05 ? "a" : "no") + " signifcant difference between ";
+      else
+         text += "Comparing  "
+      
+      //add independent variables' levels and their means, n, sds, ci 
       for (var j = 0; j<variableList["independent-levels"][i].length; j++)
       {
          //get current level of current IV
@@ -250,6 +256,14 @@ function getSignificanceTest2WayReportingText(method)
          
       }
       
+      
+       //varying text so that text is more fluent: end
+      if (i%2)
+         //add dependent variable
+         text += " on " + variableList["dependent"];
+      else
+         //add dependent variable and whether signifcant
+         text += ", a " + (p > 0.05 ? "non" : "") + " significant main effect on " + variableList["dependent"] + " has been determined." 
       
    }
    
