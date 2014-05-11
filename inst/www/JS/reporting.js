@@ -169,8 +169,8 @@ function getSignificanceTestReportingText(method)
    
    //add results of test to text
    text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"], testResults["parameter"], testResults["p"]);
-   //add effect size to text
-   text += getEffectSizeReportingText(p, testResults["effect-size"]);
+   //add effect size to text (testResults["effect-size"] is an array)
+   text += getEffectSizeReportingText(p, testResults["effect-size"][0]);
    
    return text;
 
@@ -267,8 +267,8 @@ function getPostHocReportingText(method)
    //add results of test to text
    text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"], testResults["parameter"], testResults["p"]);
          
-   //add effect size to text
-   text += getEffectSizeReportingText(p, testResults["effect-size"]);
+   //add effect size to text (testResults["effect-size"] is an array)
+   text += getEffectSizeReportingText(p, testResults["effect-size"][0]);
   
    return text;
 }
@@ -336,7 +336,7 @@ function getEffectSizeReportingText(p, effectSize)
    var text = "";
    //round effect size to 2 decimal places (effectSize is currently an array)
    console.log(effectSize);
-   var effectSizeRounded = effectSize[0].toFixed(2);
+   var effectSizeRounded = effectSize.toFixed(2);
    
    //depending on type of effect size the amount (small, medium, large) is measured and is returned here
    //0 = small; 1 = small-medium; 2 = medium-large; 3: large effect; 99 = error
