@@ -228,7 +228,7 @@ function getSignificanceTest2WayReportingText(method)
          //currentIVlevel = variableList["independent-levels"][j];
          //TEST = colourBoxPlotData[0][1];
         // TEST = colourBoxPlotData[currentIVlevel];
-         test = variableList2["independent-levels"][i][j]; 
+         test = variableList["independent-levels"][i][j]; 
          //console.log("CurrentIVLevel:" + currentIVlevel);
          //console.log("BoxPlotData IV-level" + colourBoxPlotData[currentIVlevel]);
          console.log("2. Test " + test);
