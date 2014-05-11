@@ -137,30 +137,17 @@ function getSignificanceTestReportingText(method)
    var ci;
    //get current variables
    var variableList = getSelectedVariables();
-  
+   var currentIVlevel;
+   
    //first sentence including method, in case that method is unpaired there has to be an "an" instead of an "a"
    text += (method == "upT" ? "An " : "A ") + testResults["method"] + " has been conducted to investigate the effect of ";
    
    //add each condition of IV its mean, standard deviation and n have to be reported
    for (var i=0; i<variableList["independent-levels"].length; i++)
    {
-      //add independent variable
-      text += variableList["independent-levels"][i] + " (";
       
-      //add mean and round it to 3 decimals places
-      m = mean(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
-      text += "M = " + m.toFixed(3) + ", ";
-      
-      //add standard deviation and round it to 3 decimals places
-      sd = getStandardDeviation(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
-      text += "SD = " + sd.toFixed(3) + ", ";
-      
-      //add n
-      text += "n = " + (variables[variableList["dependent"]][variableList["independent-levels"][i]]).length + ", ";
-      
-       //add confidence intervals (round values to 3 decimal places)
-      ci = findCI(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
-      text += "95% CI [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "]" + ")";
+      currentIVlevel = variableList["independent-levels"][i]; 
+      text += getVariableCharacteristicsReportingText(currentIVlevel, variableList);
       
       //add komma between each variable, add "and" for one before last, add nothing for last one
       if (i < variableList["independent-levels"].length - 2)
@@ -229,8 +216,6 @@ function getSignificanceTest2WayReportingText(method)
          //get current level of current IV
          currentIVlevel = variableList["independent-levels"][i][j]; 
          text += getVariableCharacteristicsReportingText(currentIVlevel, variableList);
-         
-         console.log(text);
 
          //add komma between each variable, add "and" for one before last, add nothing for last one
          if (j < variableList["independent-levels"][i].length - 2)
@@ -375,7 +360,6 @@ function getVariableCharacteristicsReportingText(IVlevel, variableList)
     //add confidence intervals (round values to 3 decimal places)
    ci = findCI(variables[variableList["dependent"]][IVlevel]);
    text += "95% CI [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "]" + ")";
-   console.log(text);
-   
+
    return text;
 }   
