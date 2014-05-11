@@ -130,12 +130,8 @@ function getSignificanceTestReportingText(method)
 {
     //all text is stored in this variable
    var text = "";
-   //variables for mean, standard deviation, standard error and confidence interval
-   var m;
-   var sd;
-   var se;
-   var ci;
-   //get current variables
+ 
+  //get current variables
    var variableList = getSelectedVariables();
    var currentIVlevel;
    
@@ -147,7 +143,7 @@ function getSignificanceTestReportingText(method)
    {
       
       currentIVlevel = variableList["independent-levels"][i]; 
-      text += getVariableCharacteristicsReportingText(currentIVlevel, variableList);
+      text += getVariableCharacteristicsReportingText(variableList["independent"], currentIVlevel, variableList);
       
       //add komma between each variable, add "and" for one before last, add nothing for last one
       if (i < variableList["independent-levels"].length - 2)
@@ -212,7 +208,7 @@ function getSignificanceTest2WayReportingText(method)
          {
             //get current level of current IV
             currentIVlevel = variableList["independent-levels"][i][j]; 
-            text += getVariableCharacteristicsReportingText(currentIVlevel, variableList);
+            text += getVariableCharacteristicsReportingText(variableList["independent"][i], currentIVlevel, variableList);
    
             //add komma between each variable, add "and" for one before last, add nothing for last one
             if (j < variableList["independent-levels"][i].length - 2)
@@ -276,28 +272,40 @@ function getPostHocReportingText(method)
    return text;
 }
 
-//function returns reporting text for given independent variable's level and its characteristics (m, sd, n, ci)
-function getVariableCharacteristicsReportingText(IVlevel, variableList)
+//function returns reporting text for given independent variable's level and its characteristics (m/mdn, sd, n, ci)
+function getVariableCharacteristicsReportingText(independentVariable, IVlevel, variableList)
 {
+   //variables for mean, median, confidence interval, standard deviation and number of participants
+   var m, mdn, ci, sd, n;
    var text = "";
+   //data distribution of a variable in order to calculate characteristics
+   var distribution = variables[variableList["dependent"]][IVlevel];
    
    //add IV i: level j 
    text +=  IVlevel + " (";
-         
-   //add mean and round it to 3 decimals places
-   m = mean(variables[variableList["dependent"]][IVlevel]);
-   text += "M = " + m.toFixed(3) + ", ";
+   
+   //report median for ordinal data and mean for rest of variable types
+   if (variableTypes[independentVariable] == "ordinal")
+   {
+      mdn = median(distribution);
+      text += "Mdn = " + m.toFixed(3) + ", ";
+   }
+   else
+   {
+      m = mean(distribution);
+      text += "M = " + m.toFixed(3) + ", ";
+   }
    
    //add confidence intervals (round values to 3 decimal places)
-   ci = findCI(variables[variableList["dependent"]][IVlevel]);
+   ci = findCI(distribution);
    text += "95% CI [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "], ";
       
    //add standard deviation and round it to 3 decimals places
-   sd = getStandardDeviation(variables[variableList["dependent"]][IVlevel]);
+   sd = getStandardDeviation(distribution);
    text += "SD = " + sd.toFixed(3) + ", ";
             
    //add n
-   text += "n = " + (variables[variableList["dependent"]][IVlevel]).length + ")";
+   text += "n = " + (distribution).length + ")";
             
    return text;
 }   
