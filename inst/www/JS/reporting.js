@@ -229,7 +229,7 @@ function getSignificanceTest2WayReportingText(method)
          test = splitThisLevelBy(variableList["independent"][0], variableList["independent"][1], variableList["dependent"][0]);
          //console.log("CurrentIVLevel:" + currentIVlevel);
          //console.log("BoxPlotData IV-level" + colourBoxPlotData[currentIVlevel]);
-         console.log("BoxPlotData 0-1-2 " + test);
+         console.log("BoxPlotData 0-1-2 " + test[0][0];
 
          //add IV i: level 1 
          //text +=  currentIVlevel + " (";
