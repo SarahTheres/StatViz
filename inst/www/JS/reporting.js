@@ -276,6 +276,46 @@ function getPostHocReportingText(method)
    return text;
 }
 
+//function returns reporting text for given independent variable's level and its characteristics (m, sd, n, ci)
+function getVariableCharacteristicsReportingText(IVlevel, variableList)
+{
+   var text = "";
+   
+   //add IV i: level j 
+   text +=  IVlevel + " (";
+         
+   //add mean and round it to 3 decimals places
+   m = mean(variables[variableList["dependent"]][IVlevel]);
+   text += "M = " + m.toFixed(3) + ", ";
+   
+   //add confidence intervals (round values to 3 decimal places)
+   ci = findCI(variables[variableList["dependent"]][IVlevel]);
+   text += "95% CI [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "], ";
+      
+   //add standard deviation and round it to 3 decimals places
+   sd = getStandardDeviation(variables[variableList["dependent"]][IVlevel]);
+   text += "SD = " + sd.toFixed(3) + ", ";
+            
+   //add n
+   text += "n = " + (variables[variableList["dependent"]][IVlevel]).length + ")";
+            
+   return text;
+}   
+
+//returns reporting text for results of test
+function getTestResultsReportingText(parameterType, df, parameter, p)
+{
+   var text = "";
+   //if parameter type is cS, the letters have to be changed to display correctly
+   if (parameterType == "cS")
+      parameterType = String.fromCharCode(967) + String.fromCharCode(178);
+
+   //complement text and give parameter result and degrees of freedom (if parameter has some) and exact p-value 
+   text += parameterType + (hasDF[parameterType] ? "(" + df + ") " : "") + " = " + parameter + ", " + p + ".";
+   
+   return text;
+}
+
 //depending on p-value and effect size, the effect size text is returned
 function getEffectSizeReportingText(p, effectSize)
 {
@@ -295,11 +335,11 @@ function getEffectSizeReportingText(p, effectSize)
    {
       //add effect size text depending on amount of effect
       if (effectSizeAmount == 0)
-         text += " However, it did only represent a small-sized effect";
+         text += " However, it did represent nearly no effect";
       else if (effectSizeAmount == 1)
-         text += " However, it did only represent a small to medium-sized effect";
+         text += " However, it did only represent a small-sized effect";
       else if (effectSizeAmount == 2)
-         text += " The differences constitute a medium to large-sized effect size";
+         text += " The differences constitute a medium effect size";
       else if (effectSizeAmount == 3)
          text += " The differences constitute a large effect size";
       //else: TODO error handling => no effect size
@@ -317,46 +357,6 @@ function getEffectSizeReportingText(p, effectSize)
          text += " However, it did represent a large-sized effect (" + effectSizeType + "= " + effectSize + ").";
       //in case that effect size is smaller than medium, it is not remarkable as no signifikant results
    }
-   
-   return text;
-}
-
-//function returns reporting text for given independent variable's level and its characteristics (m, sd, n, ci)
-function getVariableCharacteristicsReportingText(IVlevel, variableList)
-{
-   var text = "";
-   
-   //add IV i: level j 
-   text +=  IVlevel + " (";
-         
-   //add mean and round it to 3 decimals places
-   m = mean(variables[variableList["dependent"]][IVlevel]);
-   text += "M = " + m.toFixed(3) + ", ";
-         
-   //add standard deviation and round it to 3 decimals places
-   sd = getStandardDeviation(variables[variableList["dependent"]][IVlevel]);
-   text += "SD = " + sd.toFixed(3) + ", ";
-            
-   //add n
-   text += "n = " + (variables[variableList["dependent"]][IVlevel]).length + ", ";
-            
-    //add confidence intervals (round values to 3 decimal places)
-   ci = findCI(variables[variableList["dependent"]][IVlevel]);
-   text += "95% CI [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "]" + ")";
-
-   return text;
-}   
-
-//returns reporting text for results of test
-function getTestResultsReportingText(parameterType, df, parameter, p)
-{
-   var text = "";
-   //if parameter type is cS, the letters have to be changed to display correctly
-   if (parameterType == "cS")
-      parameterType = String.fromCharCode(967) + String.fromCharCode(178);
-
-   //complement text and give parameter result and degrees of freedom (if parameter has some) and exact p-value 
-   text += parameterType + (hasDF[parameterType] ? "(" + df + ") " : "") + " = " + parameter + ", " + p + ".";
    
    return text;
 }
