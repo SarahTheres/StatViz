@@ -231,7 +231,7 @@ function getSignificanceTest2WayReportingText(method)
          text += " on " + variableList["dependent"] + " ";
       else
          //add dependent variable and whether signifcant
-         text += ", a " + (p < 0.05 ? "" : "non-") + " significant main effect on " + variableList["dependent"] + " has been determined " 
+         text += ", a " + (p < 0.05 ? "" : "non-") + "significant main effect on " + variableList["dependent"] + " has been determined " 
       
       //if parameter type is cS, the letters have to be changed to display correctly
       var parameterType = testResults["parameter-type"];
@@ -243,7 +243,7 @@ function getSignificanceTest2WayReportingText(method)
       //complement text and give parameter result and degrees of freedom (if parameter has some) and exact p-value 
       text += parameterType + (hasDF[testResults["parameter-type"]] ? "(" + testResults["df"][i] + ") " : "") + " = " + testResults["parameter"][i] + ", " + testResults["p"][i] + ".";
       //add effect size to text
-      text += getEffectSizeReportingText(p);
+      text += getEffectSizeReportingText(p, testResults["effect-size"][i]);
       
       text += "\n";
       
@@ -288,7 +288,7 @@ function getPostHocReportingText(method)
    text += testResults["parameter-type"] + " = " + testResults["parameter"] + ", " + testResults["p"] + ".";
    
    //add effect size to text
-   text += getEffectSizeReportingText(p);
+   text += getEffectSizeReportingText(p, testResults["effect-size"]);
   
    return text;
 }
