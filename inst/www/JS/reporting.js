@@ -194,9 +194,9 @@ function getSignificanceTest2WayReportingText(method)
    for (var i=0; i<=variableList["independent"].length; i++)
    {
        //differ text between significant and non-significant p
-      console.log("p 1: " + testResults["p"][i]);
+      console.log(testResults["p"][i]);
       var p = getPurePValue(testResults["p"][i]);
-      console.log("p" + p);
+      console.log(+ p);
       
       //results of each independent variable
       if (i<variableList["independent"].length)
