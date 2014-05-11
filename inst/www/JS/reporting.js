@@ -340,13 +340,16 @@ function getEffectSizeReportingText(p, effectSize)
    //depending on type of effect size the amount (small, medium, large) is measured and is returned here
    //0 = small; 1 = small-medium; 2 = medium-large; 3: large effect; 99 = error
    var effectSizeAmount = getEffectSizeAmount(testResults["effect-size-type"], effectSize);
+  
    //if effect size type is eS or RS, the letters have to be change to display correctly
    var effectSizeType = testResults["effect-size-type"];
    if (effectSizeType == "eS")
       effectSizeType = "η" + String.fromCharCode(178);
    else if (effectSizeType == "RS")
       effectSizeType = "r" + String.fromCharCode(178);
-      
+   
+   console.log(effectSizeType);
+   
    if (p < 0.05)
    {
       //add effect size text depending on amount of effect
@@ -361,7 +364,7 @@ function getEffectSizeReportingText(p, effectSize)
       //else: TODO error handling => no effect size
       
       //add effect-size value
-      text += " (" + effectSizetype + " = " + effectSizeRounded + "). ";
+      text += " (" + "<i>" + effectSizeType + "</i>" + " = " + effectSizeRounded + "). ";
    }
    //p > 0.05 (not significant)
    else 
