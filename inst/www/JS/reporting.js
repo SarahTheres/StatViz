@@ -288,22 +288,21 @@ function getVariableCharacteristicsReportingText(dependentVariable, IVlevel, var
    if (variableTypes[dependentVariable] == "ordinal")
    {
       mdn = median(distribution);
-      text += "Mdn = " + mdn.toFixed(3) + ", ";
+      text += "Mdn = " + mdn.toFixed(2) + ", ";
    }
    else
    {
       m = mean(distribution);
-      //text += "M = " + m.toFixed(3) + ", ";
-      text += "M = " + round(m, 2) + ", ";
+      text += "M = " + m.toFixed(2) + ", ";
    }
    
    //add confidence intervals (round values to 3 decimal places)
    ci = findCI(distribution);
-   text += "95% CI [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "], ";
+   text += "95% CI [" + ci[0].toFixed(2) + "," + ci[1].toFixed(2) + "], ";
       
    //add standard deviation and round it to 3 decimals places
    sd = getStandardDeviation(distribution);
-   text += "SD = " + sd.toFixed(3) + ", ";
+   text += "SD = " + sd.toFixed(2) + ", ";
             
    //add n
    text += "n = " + (distribution).length + ")";
@@ -359,16 +358,16 @@ function getEffectSizeReportingText(p, effectSize)
       //else: TODO error handling => no effect size
       
       //add effect-size value
-      text += " (" + effectSizeType + " = " + effectSize + "). ";
+      text += " (" + effectSizeType + " = " + effectSize.toFixed(2) + "). ";
    }
    //p > 0.05 (not significant)
    else 
    {
            //add effect size text depending on amount of effect
       if (effectSizeAmount == 2)
-         text += " However, it did represent a medium-sized effect (" + effectSizetype + "= " + effectSize + ").";
+         text += " However, it did represent a medium-sized effect (" + effectSizetype + "= " + effectSize.toFixed(2) + ").";
       else if (effectSizeAmount == 3)
-         text += " However, it did represent a large-sized effect (" + effectSizeType + "= " + effectSize + ").";
+         text += " However, it did represent a large-sized effect (" + effectSizeType + "= " + effectSize.toFixed(2) + ").";
       //in case that effect size is smaller than medium, it is not remarkable as no signifikant results
    }
    
