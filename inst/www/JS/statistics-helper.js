@@ -110,7 +110,9 @@ function changePValueNotation(p)
 //returns the p-value but with omitted zero
 function omitZeroPValueNotation(p)
 {
-    var newP = p.substring(1);
+    //find position of first 0.
+    var position = p.indexOf("0");
+    var newP = p.substring(position);
     console.log(newP);
     return newP;
 }
