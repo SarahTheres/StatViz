@@ -110,9 +110,15 @@ function changePValueNotation(p)
 //returns p-text but with omitted first zero
 function omitZeroPValueNotation(p)
 {
-    var newP = p;
-    newP = newP.replace("0", '');
-    return newP;
+    //only in case that p is one, first digit shouldn't be omitted
+    if (getPurePValue(p) == 1)
+        return p;
+    else
+    {
+        var newP = p;
+        newP = newP.replace("0", '');
+        return newP;
+    }
 }
 
 //returns the pure p value without p or operators
