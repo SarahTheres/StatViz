@@ -265,7 +265,7 @@ function getSignificanceTest2WayReportingText(method)
          //add dependent variable and whether signifcant
          text += ", a " + (p > 0.05 ? "non" : "") + " significant main effect on " + variableList["dependent"] + " has been determined." 
       
-      text += "\n",
+      text += "\n";
    }
    
    return text;
