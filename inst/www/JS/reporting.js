@@ -179,7 +179,7 @@ function getSignificanceTestReportingText(method)
 function getSignificanceTest2WayReportingText(method)
 {
    var text = "";
-   
+   console.log("bin in 2way drin");
    //get current variables
    //var variableList = getSelectedVariables();
    var variableList = sort(currentVariableSelection);
@@ -194,10 +194,8 @@ function getSignificanceTest2WayReportingText(method)
    for (var i=0; i<=variableList["independent"].length; i++)
    {
        //differ text between significant and non-significant p
-      console.log(testResults["p"][i]);
       var p = getPurePValue(testResults["p"][i]);
-      console.log(+ p);
-      
+
       //results of each independent variable
       if (i<variableList["independent"].length)
       {
