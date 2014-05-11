@@ -336,8 +336,8 @@ function getEffectSizeReportingText(p, effectSize)
 {
    var text = "";
    console.log(effectSize);
-   //round effect size to 2 decimal places
-   //var effectSizeRounded = effectSize.toFixed(2);
+   //round effect size to 2 decimal places (effectSize is currently an array)
+   var effectSizeRounded = effectSize[0].toFixed(2);
    
    //depending on type of effect size the amount (small, medium, large) is measured and is returned here
    //0 = small; 1 = small-medium; 2 = medium-large; 3: large effect; 99 = error
