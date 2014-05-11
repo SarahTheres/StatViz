@@ -252,7 +252,6 @@ function getSignificanceTest2WayReportingText(method)
             text += ", ";
          else if (j == variableList["independent-levels"][i].length - 2)
             text += " and ";
-         
       }
       
       
@@ -272,7 +271,7 @@ function getSignificanceTest2WayReportingText(method)
    
    
       //complement text and give parameter result and degrees of freedom (if parameter has some) and exact p-value 
-      text += parameterType + (hasDF[testResults["parameter-type"]] ? "(" + testResults["df"] + ") " : "") + " = " + testResults["parameter"] + ", " + testResults["p"] + ".";
+      text += parameterType + (hasDF[testResults["parameter-type"]] ? "(" + testResults["df"][i] + ") " : "") + " = " + testResults["parameter"][i] + ", " + testResults["p"][i] + ".";
       //add effect size to text
       text += getEffectSizeReportingText(p);
       
