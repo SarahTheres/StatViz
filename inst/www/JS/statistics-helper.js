@@ -124,6 +124,7 @@ function omitZeroPValueNotation(p)
 //returns the pure p value without p or operators
 function getPurePValue(presult)
 {
+    console.log("Bin in Pure p Value");
     var pValue =  removeAlphabetsFromString(presult);
     pValue = pValue.replace(/</g, '');
     pValue = pValue.replace(/>/g, '');
