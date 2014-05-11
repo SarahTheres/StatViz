@@ -111,6 +111,7 @@ function changePValueNotation(p)
 function omitZeroPValueNotation(p)
 {
     //only in case that p is one, first digit shouldn't be omitted
+    console.log(p);
     if (getPurePValue(p) == 1)
         return p;
     else
@@ -124,6 +125,7 @@ function omitZeroPValueNotation(p)
 //returns the pure p value without p or operators
 function getPurePValue(presult)
 {
+    //TODO
     console.log("Bin in Pure p Value");
     var pValue =  removeAlphabetsFromString(presult);
     pValue = pValue.replace(/</g, '');
