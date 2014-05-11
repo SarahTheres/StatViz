@@ -293,7 +293,8 @@ function getVariableCharacteristicsReportingText(dependentVariable, IVlevel, var
    else
    {
       m = mean(distribution);
-      text += "M = " + m.toFixed(3) + ", ";
+      //text += "M = " + m.toFixed(3) + ", ";
+      text += "M = " + round(m, 2) + ", ";
    }
    
    //add confidence intervals (round values to 3 decimal places)
@@ -319,7 +320,7 @@ function getTestResultsReportingText(parameterType, df, parameter, p)
       parameterType = String.fromCharCode(967) + String.fromCharCode(178);
 
    //complement text and give parameter result and degrees of freedom (if parameter has some) 
-   text += parameterType + (hasDF[parameterType] ? "(" + df + ") " : "") + " = " + parameter + ", ";
+   text += ", " + parameterType + (hasDF[parameterType] ? "(" + df + ") " : "") + " = " + parameter + ", ";
 
    //change p-value notation so that first zero is omitted
    p = omitZeroPValueNotation(p);
