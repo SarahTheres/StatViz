@@ -356,7 +356,7 @@ function getEffectSizeReportingText(p)
 //function returns reporting text for given independent variable's level and its characteristics (m, sd, n, ci)
 function getVariableCharacteristicsReportingText(IVlevel, variableList)
 {
-   var text;
+   var text = "";
    
    //add IV i: level j 
    text +=  IVlevel + " (";
