@@ -110,7 +110,9 @@ function changePValueNotation(p)
 //returns the p-value but with omitted zero
 function omitZeroPValueNotation(p)
 {
-    return p.substring(1);
+    var newP = p.substring(1);
+    console.log(newP);
+    return newP;
 }
 
 //returns the pure p value without p or operators
