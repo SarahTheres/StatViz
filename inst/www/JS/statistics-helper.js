@@ -123,9 +123,9 @@ function getPurePValue(presult)
 function getEffectSizeAmount(effectSizeType, effectSize)
 {
     var interpretations = effectSizeInterpretations[effectSizeType];
-    if(effectSize <= interpretations[0])
+    if(effectSize < interpretations[0])
         return 0;
-    else if(effectSize > interpretations[0] && effectSize < interpretations[1])
+    else if(effectSize >= interpretations[0] && effectSize < interpretations[1])
         return 1;
     else if(effectSize >= interpretations[1] && effectSize < interpretations[2])
         return 2;
