@@ -162,12 +162,6 @@ function getSignificanceTestReportingText(method)
    //get pure p value without letter p or any operators
    var p = getPurePValue(testResults["p"]);
    
-   //if parameter type is cS, the letters have to be changed to display correctly
-   var parameterType = testResults["parameter-type"];
-   if (parameterType == "cS")
-      parameterType = "𝝌" +String.fromCharCode(178);
-
-
    //check whether p is significant
    if (p <= 0.05)
     
@@ -175,8 +169,8 @@ function getSignificanceTestReportingText(method)
    else
       text += " The descriptive difference is not significant ";
    
-   //complement text and give parameter result and degrees of freedom (if parameter has some) and exact p-value 
-   text += parameterType + (hasDF[testResults["parameter-type"]] ? "(" + testResults["df"] + ") " : "") + " = " + testResults["parameter"] + ", " + testResults["p"] + ".";
+   //add results of test to text
+   text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"], testResults["parameter"], testResults["p"]);
    //add effect size to text
    text += getEffectSizeReportingText(p, testResults["effect-size"]);
    
@@ -273,9 +267,9 @@ function getPostHocReportingText(method)
    //add conditions of indepdent variable (there can only be two due to pairwise)
    text += variableList["independent-levels"][0] + " and " + variableList["independent-levels"][1] + ", ";
    
-   //add exact p-value and parameter
-   text += testResults["parameter-type"] + " = " + testResults["parameter"] + ", " + testResults["p"] + ".";
-   
+   //add results of test to text
+   text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"][i], testResults["parameter"][i], testResults["p"][i]);
+         
    //add effect size to text
    text += getEffectSizeReportingText(p, testResults["effect-size"]);
   
