@@ -111,8 +111,10 @@ function changePValueNotation(p)
 function omitZeroPValueNotation(p)
 {
     //find position of first 0.
-    var position = p.indexOf("0");
-    var newP = p.substring(position);
+   // var position = p.indexOf("0");
+    //var newP = p.substring(position);
+    var newP = p;
+    newP = newP.replace("0", '');
     console.log(newP);
     return newP;
 }
