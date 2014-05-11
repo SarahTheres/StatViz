@@ -178,7 +178,7 @@ function getSignificanceTestReportingText(method)
    //complement text and give parameter result and degrees of freedom (if parameter has some) and exact p-value 
    text += parameterType + (hasDF[testResults["parameter-type"]] ? "(" + testResults["df"] + ") " : "") + " = " + testResults["parameter"] + ", " + testResults["p"] + ".";
    //add effect size to text
-   text += getEffectSizeReportingText(p);
+   text += getEffectSizeReportingText(p, testResults["effect-size"]);
    
    return text;
 
@@ -262,7 +262,7 @@ function getSignificanceTest2WayReportingText(method)
    //complement text and give parameter result and degrees of freedom (if parameter has some) and exact p-value 
    text += parameterType + (hasDF[testResults["parameter-type"]] ? "(" + testResults["df"][i] + ") " : "") + " = " + testResults["parameter"][i] + ", " + testResults["p"][i] + ".";
    //add effect size to text
-   text += getEffectSizeReportingText(p);
+   text += getEffectSizeReportingText(p, testResults["effect-size"][i]);
       
    text += "\n";
       
@@ -293,14 +293,14 @@ function getPostHocReportingText(method)
    return text;
 }
 
-//depending on p-value, the effect size text is returned
-function getEffectSizeReportingText(p)
+//depending on p-value and effect size, the effect size text is returned
+function getEffectSizeReportingText(p, effectSize)
 {
    var text = "";
    
    //depending on type of effect size the amount (small, medium, large) is measured and is returned here
    //0 = small; 1 = small-medium; 2 = medium-large; 3: large effect; 99 = error
-   var effectSizeAmount = getEffectSizeAmount(testResults["effect-size-type"], testResults["effect-size"]);
+   var effectSizeAmount = getEffectSizeAmount(testResults["effect-size-type"], effectSize);
    //if effect size type is eS or RS, the letters have to be change to display correctly
    var effectSizeType = testResults["effect-size-type"];
    if (effectSizeType == "eS")
@@ -322,16 +322,15 @@ function getEffectSizeReportingText(p)
       //else: TODO error handling => no effect size
       
       //add effect-size value
-      text += " (" + effectSizeType + "= " + testResults["effect-size"] + ").";
-   }
+      text += " (" + effectSizeType + "= " + effectSize;
    //p > 0.05 (not significant)
    else 
    {
            //add effect size text depending on amount of effect
       if (effectSizeAmount == 2)
-         text += " However, it did represent a medium to large-sized effect (" + effectSizetype + "= " + testResults["effect-size"] + ").";
+         text += " However, it did represent a medium to large-sized effect (" + effectSizetype + "= " + effectSize + ").";
       else if (effectSizeAmount == 3)
-         text += " However, it did represent a large-sized effect (" + effectSizeType + "= " + testResults["effect-size"] + ").";
+         text += " However, it did represent a large-sized effect (" + effectSizeType + "= " + effectSize + ").";
       //in case that effect size is smaller than medium, it is not remarkable as no signifikant results
    }
    
