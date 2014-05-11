@@ -316,7 +316,7 @@ function getTestResultsReportingText(parameterType, df, parameter, p)
    //change p-value notation so that first zero is omitted
    p = omitZeroPValueNotation(p);
    //add exact p-value (unless smaller than 0.001)
-   text += (p < 0.001 ? "p < " : "p = ") + p + ".";
+   text += (p <= 0.001 ? "p < " : "p = ") + p + ".";
    
    return text;
 }
