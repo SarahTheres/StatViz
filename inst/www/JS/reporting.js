@@ -335,6 +335,8 @@ function getTestResultsReportingText(parameterType, df, parameter, p)
 function getEffectSizeReportingText(p, effectSize)
 {
    var text = "";
+   //round effect size to 2 decimal places
+   var effectSizeRounded = effectSize.toFixed(2);
    
    //depending on type of effect size the amount (small, medium, large) is measured and is returned here
    //0 = small; 1 = small-medium; 2 = medium-large; 3: large effect; 99 = error
@@ -360,16 +362,16 @@ function getEffectSizeReportingText(p, effectSize)
       //else: TODO error handling => no effect size
       
       //add effect-size value
-      text += " (" + effectSizeType + " = " + effectSize.toFixed(2) + "). ";
+      text += " (" + effectSizeType + " = " + effectSizeRounded + "). ";
    }
    //p > 0.05 (not significant)
    else 
    {
            //add effect size text depending on amount of effect
       if (effectSizeAmount == 2)
-         text += " However, it did represent a medium-sized effect (" + effectSizetype + "= " + effectSize.toFixed(2) + ").";
+         text += " However, it did represent a medium-sized effect (" + effectSizetype + "= " + effectSizeRounded + ").";
       else if (effectSizeAmount == 3)
-         text += " However, it did represent a large-sized effect (" + effectSizeType + "= " + effectSize.toFixed(2) + ").";
+         text += " However, it did represent a large-sized effect (" + effectSizeType + "= " + effectSizeRounded + ").";
       //in case that effect size is smaller than medium, it is not remarkable as no signifikant results
    }
    
