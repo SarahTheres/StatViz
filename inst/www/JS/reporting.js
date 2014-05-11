@@ -353,9 +353,9 @@ function getEffectSizeReportingText(p, effectSize)
    {
       //add effect size text depending on amount of effect
       if (effectSizeAmount == 0)
-         text += " However, it did represent nearly no effect";
+         text += " However, there is nearly no effect";
       else if (effectSizeAmount == 1)
-         text += " However, it did only represent a small-sized effect";
+         text += " However, it only represents a small-sized effect";
       else if (effectSizeAmount == 2)
          text += " The differences constitute a medium effect size";
       else if (effectSizeAmount == 3)
@@ -370,9 +370,9 @@ function getEffectSizeReportingText(p, effectSize)
    {
            //add effect size text depending on amount of effect
       if (effectSizeAmount == 2)
-         text += " However, it did represent a medium-sized effect (" + effectSizetype + "= " + effectSize + ").";
+         text += " However, it represents a medium-sized effect (" + effectSizetype + "= " + effectSize + ").";
       else if (effectSizeAmount == 3)
-         text += " However, it did represent a large-sized effect (" + effectSizeType + "= " + effectSize + ").";
+         text += " However, it represents a large-sized effect (" + effectSizeType + "= " + effectSize + ").";
       //in case that effect size is smaller than medium, it is not remarkable as no signifikant results
    }
    
