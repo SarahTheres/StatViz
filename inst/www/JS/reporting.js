@@ -228,7 +228,9 @@ function getSignificanceTest2WayReportingText(method)
       {
          //get current level of current IV
          currentIVlevel = variableList["independent-levels"][i][j]; 
+         vconsole.log(currentIVlevel);
          text += getVariableCharacteristicsReportingText(currentIVlevel, variableList);
+         
          /*
          //add IV i: level j 
          text +=  currentIVlevel + " (";
@@ -375,6 +377,7 @@ function getVariableCharacteristicsReportingText(IVlevel, variableList)
 {
    var text;
    
+   console.log(IVlevel);
    //add IV i: level j 
    text +=  IVlevel + " (";
          
