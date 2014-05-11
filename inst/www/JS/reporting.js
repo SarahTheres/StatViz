@@ -170,7 +170,7 @@ function getSignificanceTestReportingText(method)
       text += " The descriptive difference is not significant ";
    
    //add results of test to text
-   text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"], testResults["parameter"], testResults["p"]);
+   text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"], testResults["parameter"], p);
    //add effect size to text
    text += getEffectSizeReportingText(p, testResults["effect-size"]);
    
@@ -239,7 +239,7 @@ function getSignificanceTest2WayReportingText(method)
       }
       
       //add results of test to text
-      text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"][i], testResults["parameter"][i], testResults["p"][i]);
+      text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"][i], testResults["parameter"][i], p);
       
       //add effect size to text
       text += getEffectSizeReportingText(p, testResults["effect-size"][i]);
@@ -268,7 +268,7 @@ function getPostHocReportingText(method)
    text += variableList["independent-levels"][0] + " and " + variableList["independent-levels"][1] + ", ";
    
    //add results of test to text
-   text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"][i], testResults["parameter"][i], testResults["p"][i]);
+   text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"][i], testResults["parameter"][i], p);
          
    //add effect size to text
    text += getEffectSizeReportingText(p, testResults["effect-size"]);
@@ -310,11 +310,13 @@ function getTestResultsReportingText(parameterType, df, parameter, p)
    if (parameterType == "cS")
       parameterType = String.fromCharCode(967) + String.fromCharCode(178);
 
+   //complement text and give parameter result and degrees of freedom (if parameter has some) 
+   text += parameterType + (hasDF[parameterType] ? "(" + df + ") " : "") + " = " + parameter + ", ";
+
    //change p-value notation so that first zero is omitted
    p = omitZeroPValueNotation(p);
-   
-   //complement text and give parameter result and degrees of freedom (if parameter has some) and exact p-value 
-   text += parameterType + (hasDF[parameterType] ? "(" + df + ") " : "") + " = " + parameter + ", " + p + ".";
+   //add exact p-value (unless smaller than 0.001)
+   text += (p < 0.001 ? "p < " : "p = ") + p + ".";
    
    return text;
 }
