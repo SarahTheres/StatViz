@@ -223,13 +223,14 @@ function getSignificanceTest2WayReportingText(method)
       for (var j = 0; j<variableList["independent-levels"].length; j++)
       {
          //currentIVlevel = variableList["independent-levels"][j].split("-")[i];
-         currentIVlevel = variableList["independent-levels"][j].split("-");
+         //currentIVlevel = variableList["independent-levels"][j].split("-");
+         currentIVlevel = variableList["independent-levels"][0][i];
          //TEST = colourBoxPlotData[0][1];
         // TEST = colourBoxPlotData[currentIVlevel];
          test = splitThisLevelBy(variableList["independent"][0], variableList["independent"][1], variableList["dependent"][0]);
-         //console.log("CurrentIVLevel:" + currentIVlevel);
+         console.log("CurrentIVLevel:" + currentIVlevel);
          //console.log("BoxPlotData IV-level" + colourBoxPlotData[currentIVlevel]);
-         console.log("BoxPlotData 0-1-2 " + test[0][0]);
+         console.log("BoxPlotData 0-1-2 " + test);
 
          //add IV i: level 1 
          //text +=  currentIVlevel + " (";
