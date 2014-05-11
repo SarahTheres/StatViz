@@ -170,7 +170,7 @@ function getSignificanceTestReportingText(method)
       text += " The descriptive difference is not significant ";
    
    //add results of test to text
-   text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"], testResults["parameter"], p);
+   text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"], testResults["parameter"], testResults["p"]);
    //add effect size to text
    text += getEffectSizeReportingText(p, testResults["effect-size"]);
    
@@ -239,7 +239,7 @@ function getSignificanceTest2WayReportingText(method)
       }
       
       //add results of test to text
-      text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"][i], testResults["parameter"][i], p);
+      text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"][i], testResults["parameter"][i], testResults["p"]);
       
       //add effect size to text
       text += getEffectSizeReportingText(p, testResults["effect-size"][i]);
@@ -268,7 +268,7 @@ function getPostHocReportingText(method)
    text += variableList["independent-levels"][0] + " and " + variableList["independent-levels"][1] + ", ";
    
    //add results of test to text
-   text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"][i], testResults["parameter"][i], p);
+   text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"][i], testResults["parameter"][i], testResults["p"]);
          
    //add effect size to text
    text += getEffectSizeReportingText(p, testResults["effect-size"]);
@@ -316,7 +316,7 @@ function getTestResultsReportingText(parameterType, df, parameter, p)
    //change p-value notation so that first zero is omitted
    p = omitZeroPValueNotation(p);
    //add exact p-value (unless smaller than 0.001)
-   text += (p <= 0.001 ? "p < " : "p = ") + p + ".";
+   text += p + ".";
    
    return text;
 }
