@@ -107,15 +107,10 @@ function changePValueNotation(p)
         return "p = " + p;
 }
 
-//returns the p-value but with omitted zero
+//returns p-text but with omitted first zero
 function omitZeroPValueNotation(p)
 {
-    //find position of first 0.
-   // var position = p.indexOf("0");
-    //var newP = p.substring(position);
-    var newP = p;
-    newP = newP.replace("0", '');
-    console.log(newP);
+    var newP = p.replace("0", '');
     return newP;
 }
 
