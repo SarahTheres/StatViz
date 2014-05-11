@@ -228,7 +228,7 @@ function getSignificanceTest2WayReportingText(method)
       {
          //get current level of current IV
          currentIVlevel = variableList["independent-levels"][i][j]; 
-         text += getVariableCharacteristicsReportingText(currentIVlevel);
+         text += getVariableCharacteristicsReportingText(currentIVlevel, variableList);
          /*
          //add IV i: level j 
          text +=  currentIVlevel + " (";
@@ -371,7 +371,7 @@ function getEffectSizeReportingText(p)
 }
 
 //function returns reporting text for given independent variable's level and its characteristics (m, sd, n, ci)
-function getVariableCharacteristicsReportingText(IVlevel)
+function getVariableCharacteristicsReportingText(IVlevel, variableList)
 {
    var text;
    
