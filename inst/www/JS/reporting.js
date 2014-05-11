@@ -210,8 +210,6 @@ function getSignificanceTest2WayReportingText(method)
    //add DV and method
    text += " on " + variableList["dependent"] + ", a " + testResults["method"] + " has been conducted. ";
    var currentIVlevel;
-   //TODO:remove
-   var TEST;
    
    for (var i=0; i<variableList["independent"].length; i++)
    {
@@ -219,15 +217,17 @@ function getSignificanceTest2WayReportingText(method)
       var p = getPurePValue(testResults["p"][i]);
       text += "There is " + (p < 0.05 ? "a" : "no") + " signifcant difference between ";
       
-      console.log(colourBoxPlotData);
+      //console.log(colourBoxPlotData);
       for (var j = 0; j<variableList["independent-levels"].length; j++)
       {
          //currentIVlevel = variableList["independent-levels"][j].split("-")[i];
          currentIVlevel = variableList["independent-levels"][j].split("-");
          //TEST = colourBoxPlotData[currentIVlevel[0]][currentIVlevel[1]];
-         TEST = colourBoxPlotData[currentIVlevel];
-         console.log(currentIVlevel);
-         console.log(TEST);
+        // TEST = colourBoxPlotData[currentIVlevel];
+         console.log("CurrentIVLevel:" + currentIVlevel);
+         console.log("BoxPlotData IV-level" + colourBoxPlotData[currentIVlevel]);
+         console.log("BoxPlotData 0-1-2" + colourBoxPlotData[0]);
+
          //add IV i: level 1 
          //text +=  currentIVlevel + " (";
          
