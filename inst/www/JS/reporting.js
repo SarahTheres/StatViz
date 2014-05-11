@@ -237,7 +237,7 @@ function getSignificanceTest2WayReportingText(method)
       }
       
       //add results of test to text
-      text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"][i], testResults["parameter"][i], testResults["p"]);
+      text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"][i], testResults["parameter"][i], testResults["p"][i]);
       
       //add effect size to text
       text += getEffectSizeReportingText(p, testResults["effect-size"][i]);
