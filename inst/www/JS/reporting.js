@@ -207,9 +207,9 @@ function getSignificanceTest2WayReportingText(method)
    var variableList = sort(currentVariableSelection);
    
    //add both IVs
-   text += "In order to compare the effect of " + variableList["independent"][0] + " and " + variableList["independent"][1] + " and their interaction ";
+   text += "In order to compare the effect of " + variableList["independent"][0] + " and " + variableList["independent"][1] + " as well as their interaction ";
    //add DV and method
-   text += " on " + variableList["dependent"] + ", a " + testResults["method"] + " has been conducted. ";
+   text += " on " + variableList["dependent"] + ", a " + testResults["method"] + " has been conducted.\n";
    var currentIVlevel;
    
    //add main effects of each independent variable
@@ -219,7 +219,7 @@ function getSignificanceTest2WayReportingText(method)
       var p = getPurePValue(testResults["p"][i]);
       
       //varying text so that text is more fluent: start
-      if (i%2)
+      if (i%2 == 0)
          text += "There is " + (p < 0.05 ? "a" : "no") + " signifcant difference between ";
       else
          text += "Comparing  "
@@ -249,22 +249,23 @@ function getSignificanceTest2WayReportingText(method)
          text += "95% CI [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "]" + ")";
             
          //add komma between each variable, add "and" for one before last, add nothing for last one
-         if (i < variableList["independent-levels"].length - 2)
+         if (i < variableList["independent-levels"][i].length - 2)
             text += ", ";
-         else if (i == variableList["independent-levels"].length - 2)
+         else if (i == variableList["independent-levels"][i].length - 2)
             text += " and ";
          
       }
       
       
        //varying text so that text is more fluent: end
-      if (i%2)
+      if (i%2 == 0)
          //add dependent variable
          text += " on " + variableList["dependent"];
       else
          //add dependent variable and whether signifcant
          text += ", a " + (p > 0.05 ? "non" : "") + " significant main effect on " + variableList["dependent"] + " has been determined." 
       
+      text += "\n",
    }
    
    return text;
