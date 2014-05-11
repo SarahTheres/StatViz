@@ -288,7 +288,7 @@ function getVariableCharacteristicsReportingText(dependentVariable, IVlevel, var
    if (variableTypes[dependentVariable] == "ordinal")
    {
       mdn = median(distribution);
-      text += "Mdn = " + m.toFixed(3) + ", ";
+      text += "Mdn = " + mdn.toFixed(3) + ", ";
    }
    else
    {
