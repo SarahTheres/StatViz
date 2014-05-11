@@ -252,15 +252,8 @@ function getSignificanceTest2WayReportingText(method)
    //adding text for interaction
    text += "Investigating the interaction between " + variableList["independent"][0] + " and " + variableList["independent"][1] + ", "; 
    text += (p < 0.05 ? "a " : "no ") + "sigifnicant difference could have been identified "
-   
-   //if parameter type is cS, the letters have to be changed to display correctly
-   var parameterType = testResults["parameter-type"];
-   if (parameterType == "cS")
-         parameterType = "𝝌" +String.fromCharCode(178);
-   
-   
-   //complement text and give parameter result and degrees of freedom (if parameter has some) and exact p-value 
-   text += parameterType + (hasDF[testResults["parameter-type"]] ? "(" + testResults["df"][i] + ") " : "") + " = " + testResults["parameter"][i] + ", " + testResults["p"][i] + ".";
+ 
+   text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"][i], testResults["parameter"][i], testResults["p"][i]);
    //add effect size to text
    text += getEffectSizeReportingText(p, testResults["effect-size"][i]);
       
@@ -363,3 +356,17 @@ function getVariableCharacteristicsReportingText(IVlevel, variableList)
 
    return text;
 }   
+
+//returns reporting text for results of test
+function getTestResultsReportingText(parameterType, df, parameter, p)
+{
+   var text = "";
+   //if parameter type is cS, the letters have to be changed to display correctly
+   if (parameterType == "cS")
+      parameterType = String.fromCharCode(967) + String.fromCharCode(178);
+
+   //complement text and give parameter result and degrees of freedom (if parameter has some) and exact p-value 
+   text += parameterType + (hasDF[parameterType] ? "(" + df + ") " : "") + " = " + parameter + ", " + p + ".";
+   
+   return text;
+}
