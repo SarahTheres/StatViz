@@ -80,6 +80,8 @@ function setReportingTextbox()
 
 }
 
+//----------------------------------------------------START COPYING FROM HERE--------------------------------------------------------
+
 /* test methods:
    upT = unpaired t-test
    pT = paired t-test
@@ -161,9 +163,9 @@ function getSignificanceTestReportingText(method)
    //check whether p is significant
    if (p <= 0.05)
     
-      text += " A significant difference could be reported ";
+      text += " A significant difference could be reported";
    else
-      text += " The descriptive difference is not significant ";
+      text += " The descriptive difference is not significant";
    
    //add results of test to text
    text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"], testResults["parameter"], testResults["p"]);
@@ -221,10 +223,10 @@ function getSignificanceTest2WayReportingText(method)
           //varying text so that text is more fluent: end
          if (i%2 == 0)
             //add dependent variable
-            text += " on " + variableList["dependent"] + " ";
+            text += " on " + variableList["dependent"];
          else
             //add dependent variable and whether signifcant
-            text += ", a " + (p < 0.05 ? "" : "non-") + "significant main effect on " + variableList["dependent"] + " has been determined " 
+            text += ", a " + (p < 0.05 ? "" : "non-") + "significant main effect on " + variableList["dependent"] + " has been determined" 
             
       }
       //results for interaction
@@ -261,10 +263,10 @@ function getPostHocReportingText(method)
    text += "A " + testResults["method"] + " revealed that there is " + (p < 0.05 ? "a" : "no") + " significant difference between "; 
    
    //add conditions of indepdent variable (there can only be two due to pairwise)
-   text += variableList["independent-levels"][0] + " and " + variableList["independent-levels"][1] + ", ";
+   text += variableList["independent-levels"][0] + " and " + variableList["independent-levels"][1];
    
    //add results of test to text
-   text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"][i], testResults["parameter"][i], testResults["p"]);
+   text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"], testResults["parameter"], testResults["p"]);
          
    //add effect size to text
    text += getEffectSizeReportingText(p, testResults["effect-size"]);
