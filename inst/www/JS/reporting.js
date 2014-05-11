@@ -144,7 +144,7 @@ function getSignificanceTestReportingText(method)
    //add each condition of IV its mean, standard deviation and n have to be reported
    for (var i=0; i<variableList["independent-levels"].length; i++)
    {
-      //add indepdent variable
+      //add independent variable
       text += variableList["independent-levels"][i] + " (";
       
       //add mean and round it to 3 decimals places
@@ -211,8 +211,6 @@ function getSignificanceTest2WayReportingText(method)
    //add DV and method
    text += " on " + variableList["dependent"] + ", a " + testResults["method"] + " has been conducted. ";
    var currentIVlevel;
-   //TODO: remove
-   var test;
    
    for (var i=0; i<variableList["independent"].length; i++)
    {
@@ -220,23 +218,15 @@ function getSignificanceTest2WayReportingText(method)
       var p = getPurePValue(testResults["p"][i]);
       text += "There is " + (p < 0.05 ? "a" : "no") + " signifcant difference between ";
       
-      //console.log(colourBoxPlotData);
+      //TODO: Kommentar
       for (var j = 0; j<variableList["independent-levels"][i].length; j++)
       {
-         //currentIVlevel = variableList["independent-levels"][j].split("-")[i];
-         //currentIVlevel = variableList["independent-levels"][j].split("-");
-         //currentIVlevel = variableList["independent-levels"][j];
-         //TEST = colourBoxPlotData[0][1];
-        // TEST = colourBoxPlotData[currentIVlevel];
-         test = variableList["independent-levels"][i][j]; 
-         //console.log("CurrentIVLevel:" + currentIVlevel);
-         //console.log("BoxPlotData IV-level" + colourBoxPlotData[currentIVlevel]);
-         console.log("2. Test " + test);
+         //get current level of current IV
+         currentIVlevel = variableList["independent-levels"][i][j]; 
 
-         //add IV i: level 1 
-         //text +=  currentIVlevel + " (";
+         //add IV i: level j 
+         text +=  currentIVlevel + " (";
          
-         /*
          //add mean and round it to 3 decimals places
          m = mean(variables[variableList["dependent"]][currentIVlevel]);
          text += "M = " + m.toFixed(3) + ", ";
@@ -257,7 +247,7 @@ function getSignificanceTest2WayReportingText(method)
             text += ", ";
          else if (i == variableList["independent-levels"].length - 2)
             text += " and ";
-            */
+         
       }
       
       
