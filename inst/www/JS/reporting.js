@@ -224,7 +224,7 @@ function getSignificanceTest2WayReportingText(method)
       {
          //currentIVlevel = variableList["independent-levels"][j].split("-")[i];
          //currentIVlevel = variableList["independent-levels"][j].split("-");
-         currentIVlevel = variableList["independent-levels"][0][i];
+         currentIVlevel = variableList["independent-levels"][j];
          //TEST = colourBoxPlotData[0][1];
         // TEST = colourBoxPlotData[currentIVlevel];
          test = splitThisLevelBy(variableList["independent"][0], variableList["independent"][1], variableList["dependent"][0]);
