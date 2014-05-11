@@ -123,7 +123,7 @@ function getReportingText(method)
       //reset ANOVA results text
       resultsFromANOVA = "";
    }
-   console.log(reportingText);
+  
    return reportingText;
 }
 
@@ -194,7 +194,9 @@ function getSignificanceTest2WayReportingText(method)
    for (var i=0; i<=variableList["independent"].length; i++)
    {
        //differ text between significant and non-significant p
+      console.log("p 1: " + testResults["p"][i]);
       var p = getPurePValue(testResults["p"][i]);
+      console.log("p" + p);
       
       //results of each independent variable
       if (i<variableList["independent"].length)
@@ -335,7 +337,6 @@ function getTestResultsReportingText(parameterType, df, parameter, p)
 function getEffectSizeReportingText(p, effectSize)
 {
    var text = "";
-   console.log(effectSize);
    //round effect size to 2 decimal places (effectSize is currently an array)
    var effectSizeRounded = effectSize[0].toFixed(2);
    
