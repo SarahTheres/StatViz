@@ -363,16 +363,16 @@ function getEffectSizeReportingText(p, effectSize)
       //else: TODO error handling => no effect size
       
       //add effect-size value
-      text += " (" + effectSizeType + " = " + effectSizeRounded + "). ";
+      text += " (" + effectSizeType + " = " + effectSize + "). ";
    }
    //p > 0.05 (not significant)
    else 
    {
            //add effect size text depending on amount of effect
       if (effectSizeAmount == 2)
-         text += " However, it did represent a medium-sized effect (" + effectSizetype + "= " + effectSizeRounded + ").";
+         text += " However, it did represent a medium-sized effect (" + effectSizetype + "= " + effectSize + ").";
       else if (effectSizeAmount == 3)
-         text += " However, it did represent a large-sized effect (" + effectSizeType + "= " + effectSizeRounded + ").";
+         text += " However, it did represent a large-sized effect (" + effectSizeType + "= " + effectSize + ").";
       //in case that effect size is smaller than medium, it is not remarkable as no signifikant results
    }
    
