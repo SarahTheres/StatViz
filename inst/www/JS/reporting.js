@@ -324,7 +324,9 @@ function getTestResultsReportingText(parameterType, df, parameter, p)
    text += ", " + parameterType + (hasDF[parameterType] ? "(" + df + ") " : "") + " = " + parameter + ", ";
 
    //change p-value notation so that first zero is omitted
+   console.log(p);
    p = omitZeroPValueNotation(p);
+   console.log(p);
    //add exact p-value (unless smaller than 0.001)
    text += p + ".";
    
@@ -336,7 +338,8 @@ function getEffectSizeReportingText(p, effectSize)
 {
    var text = "";
    //round effect size to 2 decimal places (effectSize is currently an array)
-   var effectSizeRounded = effectSize[0].toFixed(2);
+   //TODO
+   //var effectSizeRounded = effectSize[0].toFixed(2);
    
    //depending on type of effect size the amount (small, medium, large) is measured and is returned here
    //0 = small; 1 = small-medium; 2 = medium-large; 3: large effect; 99 = error
