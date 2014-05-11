@@ -203,8 +203,8 @@ function getSignificanceTest2WayReportingText(method)
    var text = "";
    
    //get current variables
-   var variableList = getSelectedVariables();
-   var variableList2 = sort(currentVariableSelection);
+   //var variableList = getSelectedVariables();
+   var variableList = sort(currentVariableSelection);
    
    //add both IVs
    text += "In order to compare the effect of " + variableList["independent"][0] + " and " + variableList["independent"][1] + " and their interaction ";
@@ -221,15 +221,15 @@ function getSignificanceTest2WayReportingText(method)
       text += "There is " + (p < 0.05 ? "a" : "no") + " signifcant difference between ";
       
       //console.log(colourBoxPlotData);
-      for (var j = 0; j<variableList["independent-levels"].length; j++)
+      for (var j = 0; j<variableList["independent-levels"][i].length; j++)
       {
-         currentIVlevel = variableList["independent-levels"][j].split("-")[i];
+         //currentIVlevel = variableList["independent-levels"][j].split("-")[i];
          //currentIVlevel = variableList["independent-levels"][j].split("-");
          //currentIVlevel = variableList["independent-levels"][j];
          //TEST = colourBoxPlotData[0][1];
         // TEST = colourBoxPlotData[currentIVlevel];
          test = variableList2["independent-levels"][i][j]; 
-         console.log("CurrentIVLevel:" + currentIVlevel);
+         //console.log("CurrentIVLevel:" + currentIVlevel);
          //console.log("BoxPlotData IV-level" + colourBoxPlotData[currentIVlevel]);
          console.log("2. Test " + test);
 
