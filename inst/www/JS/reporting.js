@@ -322,7 +322,8 @@ function getEffectSizeReportingText(p, effectSize)
       //else: TODO error handling => no effect size
       
       //add effect-size value
-      text += " (" + effectSizeType + "= " + effectSize;
+      text += " (" + effectSizeType + " = " + effectSize;
+   }
    //p > 0.05 (not significant)
    else 
    {
