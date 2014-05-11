@@ -178,10 +178,9 @@ function getSignificanceTestReportingText(method)
    //if parameter type is cS, the letters have to be changed to display correctly
    var parameterType = testResults["parameter-type"];
    if (parameterType == "cS")
-   {
       parameterType = "𝝌" +String.fromCharCode(178);
-   }
-   
+
+
    //check whether p is significant
    if (p <= 0.05)
     
@@ -249,9 +248,9 @@ function getSignificanceTest2WayReportingText(method)
          text += "95% CI [" + ci[0].toFixed(3) + "," + ci[1].toFixed(3) + "]" + ")";
             
          //add komma between each variable, add "and" for one before last, add nothing for last one
-         if (i < variableList["independent-levels"][i].length - 2)
+         if (j < variableList["independent-levels"][j].length - 2)
             text += ", ";
-         else if (i == variableList["independent-levels"][i].length - 2)
+         else if (j == variableList["independent-levels"][j].length - 2)
             text += " and ";
          
       }
