@@ -179,9 +179,8 @@ function getSignificanceTestReportingText(method)
 function getSignificanceTest2WayReportingText(method)
 {
    var text = "";
-   console.log("bin in 2way drin");
+ 
    //get current variables
-   //var variableList = getSelectedVariables();
    var variableList = sort(currentVariableSelection);
    
    //add both IVs
@@ -324,9 +323,7 @@ function getTestResultsReportingText(parameterType, df, parameter, p)
    text += ", " + parameterType + (hasDF[parameterType] ? "(" + df + ") " : "") + " = " + parameter + ", ";
 
    //change p-value notation so that first zero is omitted
-   console.log(p);
    p = omitZeroPValueNotation(p);
-   console.log(p);
    //add exact p-value (unless smaller than 0.001)
    text += p + ".";
    
@@ -338,6 +335,7 @@ function getEffectSizeReportingText(p, effectSize)
 {
    var text = "";
    //round effect size to 2 decimal places (effectSize is currently an array)
+   console.log(effectSize);
    var effectSizeRounded = effectSize[0].toFixed(2);
    
    //depending on type of effect size the amount (small, medium, large) is measured and is returned here
@@ -374,7 +372,7 @@ function getEffectSizeReportingText(p, effectSize)
          text += " However, it represents a medium-sized effect (" + effectSizetype + "= " + effectSizeRounded + ").";
       else if (effectSizeAmount == 3)
          text += " However, it represents a large-sized effect (" + effectSizeType + "= " + effectSizeRounded + ").";
-      //in case that effect size is smaller than medium, it is not remarkable as no signifikant results
+      //in case that effect size is smaller than medium, it is not remarkable as no significant results
    }
    
    return text;
