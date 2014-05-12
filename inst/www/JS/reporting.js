@@ -82,32 +82,6 @@ function setReportingTextbox()
 
 //----------------------------------------------------START COPYING FROM HERE--------------------------------------------------------
 
-/* test methods:
-   - Significance Tests -
-   upT = unpaired t-test
-   pT = paired t-test
-   wT = Wilcoxon test
-   mwT = Mann-Whitney test
-   owA = one-way ANOVA
-   WA = Welch's ANOVA
-   kwT = Kruskall Wallis test
-   owrA = one-way repeated measure ANOVA
-   fT = Friedmann Test
-   - 2 or more IVs - 
-   twA = two-way ANOVA
-   fA = Mixed Design ANOVA
-   - Post-Hoc Tests - 
-   ptT = pairwise t-test
-   pwT = pairwise Wilcox test
-   - Correlations - 
-   pC = Pearson's Correlation
-   kC = Kendall's Correlation
-   bC = Biserial Correlation
-   - Regressions -
-   linR = Linear Regression Model
-   mulR = Multiple Regression
-*/   
-
 //returns the reporting text for each method, attribute method (in general testResults[test-type])
 function getReportingText(method)
 {
@@ -141,9 +115,8 @@ function getReportingText(method)
       reportingText = getRegressionReportingText(method);      
    
    else
-   {
-      alert("No Method selected");
-   }
+      console.log("Error: No Method selected");
+   
    return reportingText;
 }
 
@@ -160,7 +133,7 @@ function getSignificanceTestReportingText(method)
    //first sentence including method, in case that method is unpaired there has to be an "an" instead of an "a"
    text += (method == "upT" ? "An " : "A ") + testResults["method"] + " was conducted to investigate the effect of ";
   
-    //add independent and dependent variable
+   //add independent and dependent variable
    text += "<i>" + variableList["independent"] + "</i>" + " on " + "<i>" + variableList["dependent"] + "</i>" +".";
    
    //get highest mean 
@@ -200,7 +173,6 @@ function getSignificanceTestReportingText(method)
    
    //check whether p is significant
    if (p <= 0.05)
-    
       text += " A significant difference could be reported";
    else
       text += " This difference was not significant";
@@ -297,7 +269,7 @@ function getPostHocReportingText(method)
    var p = getPurePValue(testResults["p"]);
    var variableList = getSelectedVariables();
    
-   text += "A " + testResults["method"] + " revealed that there is " + (p < 0.05 ? "a" : "no") + " significant difference between "; 
+   text += "A " + testResults["method"] + " revealed that there was " + (p < 0.05 ? "a" : "no") + " significant difference between "; 
    
    //add conditions of indepdent variable (there can only be two due to pairwise)
    text += "<i>" + variableList["independent-levels"][0] + "</i>" + "and " + "<i>" + variableList["independent-levels"][1] + "</i>";
@@ -409,7 +381,12 @@ function getEffectSizeReportingText(p, effectSize)
          text += " The differences constitute a medium effect size";
       else if (effectSizeAmount == 3)
          text += " The differences constitute a large effect size";
-      //else: TODO error handling => no effect size
+      //there is no effect size (should not happen)
+      else
+      {
+         console.log("Error: no effect size");
+         return "";
+      }
       
       //add effect-size value
       text += " (" + "<i>" + effectSizeType + "</i>" + " = " + effectSizeRounded + "). ";
