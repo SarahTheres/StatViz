@@ -102,5 +102,6 @@ var STATES = new Object();
 
 //reporting 
 var reportingTextField;
+//--------COPY THIS (you don't need the textfield for pure text)
 //reporting results from ANOVA are saved as a text for post-hoc analysis
 var resultsFromANOVA;
