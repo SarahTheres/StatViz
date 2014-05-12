@@ -158,25 +158,42 @@ function getSignificanceTestReportingText(method)
    var currentIVlevel;
    
    //first sentence including method, in case that method is unpaired there has to be an "an" instead of an "a"
-   text += (method == "upT" ? "An " : "A ") + testResults["method"] + " has been conducted to investigate the effect of ";
+   text += (method == "upT" ? "An " : "A ") + testResults["method"] + " was conducted to investigate the effect of ";
+  
+    //add independent and dependent variable
+   text += "<i>" + variableList["independent"] + "</i>" + " on " + "<i>" + variableList["dependent"] + "</i>" +".";
    
-   //add each condition of IV its mean, standard deviation and n have to be reported
+   //get highest mean 
+   var index = getHighestMean();
+   text += " The results indicated a higher " + "<i>" + variableList["dependent"] + "</i>" + "for ";
+   //add condition of IV with highest mean and its characteristics mean, standard deviation, n and Confidence intervals
+   currentIVlevel = variableList["independent-levels"][index]; 
+   text += getVariableCharacteristicsReportingText(variableList["dependent"], currentIVlevel, variableList);
+   
+   text += " than for ";   
+   
+   //this variables counts the number of levels that have already been reported for language issues (insertig komma or "and")
+   var nrOfLevels = 1;
+   //add each condition of IV its mean, confidence intervals standard deviation and n have to be reported
    for (var i=0; i<variableList["independent-levels"].length; i++)
    {
+      //for index (level with highest mean) results have already been reported
+      if (i != index)
+      {
+         currentIVlevel = variableList["independent-levels"][i]; 
+         text += getVariableCharacteristicsReportingText(variableList["dependent"], currentIVlevel, variableList);
       
-      currentIVlevel = variableList["independent-levels"][i]; 
-      text += getVariableCharacteristicsReportingText(variableList["dependent"], currentIVlevel, variableList);
-      
-      //add komma between each variable, add "and" for one before last, add nothing for last one
-      if (i < variableList["independent-levels"].length - 2)
-         text += ", ";
-      else if (i == variableList["independent-levels"].length - 2)
-         text += " and ";
+         nrOfLevels++;
+         //add komma between each variable, add "and" for one before last, add nothing for last one
+         if (nrOfLevels < variableList["independent-levels"].length - 2)
+            text += ", ";
+         else if (nrOfLevels == variableList["independent-levels"].length - 2)
+            text += " and ";
+      }
    }
+   
+   text += ".";
   
-    //add dependent variable
-   text += " on " + "<i>" + variableList["dependent"] + "</i>" +".";
-
    //get pure p value without letter p or any operators
    var p = getPurePValue(testResults["p"]);
    
@@ -408,4 +425,25 @@ function getEffectSizeReportingText(p, effectSize)
    }
    
    return text;
+}
+
+//returns the index of the highest mean for levels of independenvt variable for one way significance tests
+function getHighestMean()
+{
+   var index = 0;
+   var highestMean = 0;
+   var currentMean = 0;
+   
+   var variableList = getSelectedVariables();
+   
+   for (var i=0; i<variableList["independent-levels"].length; i++)
+   {
+      currentMean = mean(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
+      if (currentMean > highestMean)
+      {
+         index = i;
+         currentMean = highestMean;
+      }
+   }
+   return index;
 }
