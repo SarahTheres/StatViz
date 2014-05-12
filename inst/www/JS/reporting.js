@@ -83,6 +83,7 @@ function setReportingTextbox()
 //----------------------------------------------------START COPYING FROM HERE--------------------------------------------------------
 
 /* test methods:
+   - Significance Tests -
    upT = unpaired t-test
    pT = paired t-test
    wT = Wilcoxon test
@@ -90,12 +91,21 @@ function setReportingTextbox()
    owA = one-way ANOVA
    WA = Welch's ANOVA
    kwT = Kruskall Wallis test
-   twA = two-way ANOVA
    owrA = one-way repeated measure ANOVA
    fT = Friedmann Test
+   - 2 or more IVs - 
+   twA = two-way ANOVA
    fA = Mixed Design ANOVA
+   - Post-Hoc Tests - 
    ptT = pairwise t-test
    pwT = pairwise Wilcox test
+   - Correlations - 
+   pC = Pearson's Correlation
+   kC = Kendall's Correlation
+   bC = Biserial Correlation
+   - Regressions -
+   linR = Linear Regression Model
+   mulR = Multiple Regression
 */   
 
 //returns the reporting text for each method, attribute method (in general testResults[test-type])
@@ -110,9 +120,7 @@ function getReportingText(method)
    
    //significance tests with two IVs
    else if (method == "twA" || method == "fA")
-   {
-      reportingText = getSignificanceTest2WayReportingText;
-   }
+      reportingText = getSignificanceTest2WayReportingText(method);
    
    //post-hoc tests
    else if (method == "ptT" || method == "pwT")
@@ -123,7 +131,19 @@ function getReportingText(method)
       //reset ANOVA results text
       resultsFromANOVA = "";
    }
+   
+   //correlations
+   else if (method == "pC" || method == "kC" || method == "bC")
+      reportingText = getCorrelationReportingText(method);
   
+   //regressions
+   else if (method == "linR" || method == "mulR")
+      reportingText = getRegressionReportingText(method);      
+   
+   else
+   {
+      alert("No Method selected");
+   }
    return reportingText;
 }
 
@@ -273,6 +293,20 @@ function getPostHocReportingText(method)
    return text;
 }
 
+//TODO: returns reporting text for correlation
+function getCorrelationReportingText(method)
+{
+   var text = "";
+   return text;
+}
+
+//TODO: returns reporting text for regression
+function getRegressionReportingText(method)
+{
+   var text = "";
+   return text;
+}
+
 //function returns reporting text for given independent variable's level and its characteristics (m/mdn, sd, n, ci)
 function getVariableCharacteristicsReportingText(dependentVariable, IVlevel, variableList)
 {
@@ -347,8 +381,6 @@ function getEffectSizeReportingText(p, effectSize)
       effectSizeType = "η" + String.fromCharCode(178);
    else if (effectSizeType == "RS")
       effectSizeType = "r" + String.fromCharCode(178);
-   
-   console.log(effectSizeType);
    
    if (p < 0.05)
    {
