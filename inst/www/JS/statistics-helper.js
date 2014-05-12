@@ -150,6 +150,28 @@ function getEffectSizeAmount(effectSizeType, effectSize)
     return 99;
 }
 
+//--------COPY THIS
+//returns the index of the highest mean for levels of independenvt variable for one way significance tests
+function getHighestMean()
+{
+   var index = 0;
+   var highestMean = 0;
+   var currentMean = 0;
+   
+   var variableList = getSelectedVariables();
+   
+   for (var i=0; i<variableList["independent-levels"].length; i++)
+   {
+      currentMean = mean(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
+      if (currentMean > highestMean)
+      {
+         index = i;
+         currentMean = highestMean;
+      }
+   }
+   return index;
+}
+
 function getGroupsForColourBoxPlotData()
 {
     var variableList = getSelectedVariables();
