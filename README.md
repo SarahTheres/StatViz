@@ -10,6 +10,7 @@ Apart from reporting.js file, there are some further functions and variables in 
 - Function: <b>function getPurePValue(presult)</b> in <i>statistics_helper.js</i>
 -	Function: <b>function getEffectSizeAmount(effectSizeType, effectSize)</b> in <i>statistics_helper.js</i>
 -	Function: <b>function omitZeroPValueNotation(p)</b> in <i>statistics-helper.js</i>
+-	Function: <b>function getHighestMean()</b> in <i>statistics-helper.js</i>
 - Global Variable: <b>var resultsFromANOVA</b> in <i>global variables.js</i>
 - Copy code to function <i>displaySignificanceResults</i> in <i>drawing.js</i>:
   <b> var testType = testResults["test-type"]; 
