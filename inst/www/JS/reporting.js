@@ -165,7 +165,7 @@ function getSignificanceTestReportingText(method)
    
    //get highest mean 
    var index = getHighestMean();
-   text += " The results indicated a higher " + "<i>" + variableList["dependent"] + "</i>" + "for ";
+   text += " The results indicated a higher " + "<i>" + variableList["dependent"] + "</i>" + " for ";
    //add condition of IV with highest mean and its characteristics mean, standard deviation, n and Confidence intervals
    currentIVlevel = variableList["independent-levels"][index]; 
    text += getVariableCharacteristicsReportingText(variableList["dependent"], currentIVlevel, variableList);
@@ -201,9 +201,9 @@ function getSignificanceTestReportingText(method)
    //check whether p is significant
    if (p <= 0.05)
     
-      text += " A significant difference can be reported";
+      text += " A significant difference could be reported";
    else
-      text += " The observed difference is not significant";
+      text += " This difference was not significant";
    
    //add results of test to text
    text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"], testResults["parameter"], p);
@@ -224,7 +224,7 @@ function getSignificanceTest2WayReportingText(method)
    //add both IVs
    text += "In order to compare the effect of " + "<i>" + variableList["independent"][0] + "</i>" + " and " + "<i>" + variableList["independent"][1] + "</i>" + " as well as their interaction ";
    //add DV and method
-   text += " on " + "<i>" + variableList["dependent"] + "</i>" + ", a " + testResults["method"] + " has been conducted.\n";
+   text += " on " + "<i>" + variableList["dependent"] + "</i>" + ", a " + testResults["method"] + " was conducted.\n";
    var currentIVlevel;
    
    //add main effects of each independent variable and for the interaction (therefore, i <= nr. of IV)
@@ -238,7 +238,7 @@ function getSignificanceTest2WayReportingText(method)
       {
             //varying text so that text is more fluent: start
          if (i%2 == 0)
-            text += "There is " + (p < 0.05 ? "a" : "no") + " signifcant difference between ";
+            text += "There was " + (p < 0.05 ? "a" : "no") + " signifcant difference between ";
          else
             text += "Comparing  "
          
@@ -263,14 +263,14 @@ function getSignificanceTest2WayReportingText(method)
             text += " on " + "<i>" + variableList["dependent"] + "</i>";
          else
             //add dependent variable and whether signifcant
-            text += ", a " + (p < 0.05 ? "" : "non-") + "significant main effect on " + "<i>" + variableList["dependent"] + "</i>" + " has been determined" 
+            text += ", a " + (p < 0.05 ? "" : "non-") + "significant main effect on " + "<i>" + variableList["dependent"] + "</i>" + " was determined" 
             
       }
       //results for interaction
       else
       {
          text += "Investigating the interaction between " + "<i>" + variableList["independent"][0] + "</i>" + " and " + "<i>" + variableList["independent"][1] + "</i>" + ", "; 
-         text += (p < 0.05 ? "a " : "no ") + "sigifnicant difference could have been identified ";
+         text += (p < 0.05 ? "a " : "no ") + "sigifnicant difference was identified ";
       }
       
       //add results of test to text
@@ -426,25 +426,4 @@ function getEffectSizeReportingText(p, effectSize)
    }
    
    return text;
-}
-
-//returns the index of the highest mean for levels of independenvt variable for one way significance tests
-function getHighestMean()
-{
-   var index = 0;
-   var highestMean = 0;
-   var currentMean = 0;
-   
-   var variableList = getSelectedVariables();
-   
-   for (var i=0; i<variableList["independent-levels"].length; i++)
-   {
-      currentMean = mean(variables[variableList["dependent"]][variableList["independent-levels"][i]]);
-      if (currentMean > highestMean)
-      {
-         index = i;
-         currentMean = highestMean;
-      }
-   }
-   return index;
 }
