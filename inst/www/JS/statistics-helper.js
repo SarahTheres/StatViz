@@ -107,6 +107,7 @@ function changePValueNotation(p)
         return "p = " + p;
 }
 
+//--------COPY THIS
 //returns p-text but with omitted first zero
 function omitZeroPValueNotation(p)
 {
@@ -121,6 +122,7 @@ function omitZeroPValueNotation(p)
     }
 }
 
+//--------COPY THIS
 //returns the pure p value without p or operators
 function getPurePValue(presult)
 {
@@ -131,6 +133,7 @@ function getPurePValue(presult)
     return pValue;
 }
 
+//--------COPY THIS
 //returns the amount of an effect size depending on its type 
 //0 = no; 1 = small; 2 = medium; 3: large effect; 99 = error
 function getEffectSizeAmount(effectSizeType, effectSize)
