@@ -183,12 +183,13 @@ function getSignificanceTestReportingText(method)
          currentIVlevel = variableList["independent-levels"][i]; 
          text += getVariableCharacteristicsReportingText(variableList["dependent"], currentIVlevel, variableList);
       
-         nrOfLevels++;
          //add komma between each variable, add "and" for one before last, add nothing for last one
          if (nrOfLevels < variableList["independent-levels"].length - 2)
             text += ", ";
          else if (nrOfLevels == variableList["independent-levels"].length - 2)
             text += " and ";
+         
+         nrOfLevels++;
       }
    }
    
