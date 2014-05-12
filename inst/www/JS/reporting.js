@@ -242,7 +242,7 @@ function getSignificanceTest2WayReportingText(method)
       else
       {
          text += "Investigating the interaction between " + "<i>" + variableList["independent"][0] + "</i>" + " and " + "<i>" + variableList["independent"][1] + "</i>" + ", "; 
-         text += (p < 0.05 ? "a " : "no ") + "sigifnicant difference was identified ";
+         text += (p < 0.05 ? "a " : "no ") + "significant difference was identified ";
       }
       
       //add results of test to text
