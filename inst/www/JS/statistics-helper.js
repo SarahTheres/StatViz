@@ -111,7 +111,7 @@ function changePValueNotation(p)
 function omitZeroPValueNotation(p)
 {
     //only in case that p is one, first digit shouldn't be omitted
-    if (getPurePValue(p) == 1)
+    if (p == 1)
         return p;
     else
     {
