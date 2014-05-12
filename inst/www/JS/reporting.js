@@ -210,7 +210,7 @@ function getSignificanceTest2WayReportingText(method)
       {
             //varying text so that text is more fluent: start
          if (i%2 == 0)
-            text += "There was " + (p < 0.05 ? "a" : "no") + " signifcant difference between ";
+            text += "There was " + (p < 0.05 ? "a" : "no") + " significant difference between ";
          else
             text += "Comparing  "
          
