@@ -188,7 +188,7 @@ function getSignificanceTestReportingText(method)
       text += " The observed difference is not significant";
    
    //add results of test to text
-   text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"], testResults["parameter"], testResults["p"]);
+   text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"], testResults["parameter"], p);
    //add effect size to text (testResults["effect-size"] is an array)
    text += getEffectSizeReportingText(p, testResults["effect-size"][0]);
    
@@ -256,7 +256,7 @@ function getSignificanceTest2WayReportingText(method)
       }
       
       //add results of test to text
-      text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"][i], testResults["parameter"][i], testResults["p"][i]);
+      text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"][i], testResults["parameter"][i], p);
       
       //add effect size to text
       text += getEffectSizeReportingText(p, testResults["effect-size"][i]);
@@ -285,7 +285,7 @@ function getPostHocReportingText(method)
    text += "<i>" + variableList["independent-levels"][0] + "</i>" + "and " + "<i>" + variableList["independent-levels"][1] + "</i>";
    
    //add results of test to text
-   text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"], testResults["parameter"], testResults["p"]);
+   text += getTestResultsReportingText(testResults["parameter-type"], testResults["df"], testResults["parameter"], p);
          
    //add effect size to text (testResults["effect-size"] is an array)
    text += getEffectSizeReportingText(p, testResults["effect-size"][0]);
@@ -356,10 +356,8 @@ function getTestResultsReportingText(parameterType, df, parameter, p)
    //complement text and give parameter result and degrees of freedom (if parameter has some) 
    text += ", " + "<i>" + parameterType + "</i>" + (hasDF[parameterType] ? "(" + df + ") " : "") + " = " + parameter + ", ";
 
-   //change p-value notation so that first zero is omitted
-   p = omitZeroPValueNotation(p);
-   //add exact p-value (unless smaller than 0.001)
-   text += "<i>" + p + "</i>" + ".";
+   //add exact p-value (unless smaller than 0.001) and omit first zero
+   text += "<i>" + "p" + "</i>" + (p < 0.001 ? " < " : " = ") + omitZeroPValueNotation(p) + ".";
    
    return text;
 }
