@@ -50,7 +50,7 @@ function reportingResults()
    //draws the reporting textbox as the position is the same for every test
    setReportingTextbox();
    //calls appropriate reporting method depending on used test method
-   var text = getReportingText(testResults["test-type"]);
+   var text = getReportingText(testResults["formula"]);
    reportingTextField.append("label")
                 .attr("align", "left")
                 .attr("vertical-align", "middle")
@@ -82,42 +82,49 @@ function setReportingTextbox()
 
 //----------------------------------------------------START COPYING FROM HERE--------------------------------------------------------
 
-//returns the reporting text for each method, attribute method (in general testResults[test-type])
-function getReportingText(method)
+//--------------- COPY THIS NEW 
+//returns the reporting text for a given formula
+function getReportingText(formula)
 {
-   var reportingText = "";
+   return reportingTextsArray["formula"];
+}
+
+//--------------- COPY THIS NEW 
+//sets the reporting text by calling the appropriate function depending on test-type, stores text for formula in reportingTextsArray
+function setReportingText(formula)
+{
+   var method = testResults["test-type"];
    
    //significance tests with one IV
    if (method == "upT" || method == "pT" || method == "wT" || method == "mwT" || method == "owA" || method == "WA" 
    || method == "kwT" || method == "owrA" || method == "fT" )
-      reportingText = getSignificanceTestReportingText(method);
+      reportingTextsArray["formula"] = getSignificanceTestReportingText(method);
    
    //significance tests with two IVs
    else if (method == "twA" || method == "fA")
-      reportingText = getSignificanceTest2WayReportingText(method);
+      reportingTextsArray["formula"] = getSignificanceTest2WayReportingText(method);
    
    //post-hoc tests
    else if (method == "ptT" || method == "pwT")
    {
       //display reporting text from ANOVA before and add post-hoc reporting text
-      reportingText = resultsFromANOVA + "\n";
-      reportingText += getPostHocReportingText(method);
+      reportingTextsArray["formula"] = resultsFromANOVA + "\n" + getPostHocReportingText(method);
       //reset ANOVA results text
       resultsFromANOVA = "";
    }
    
    //correlations
    else if (method == "pC" || method == "kC" || method == "bC")
-      reportingText = getCorrelationReportingText(method);
+      reportingTextsArray["formula"] = getCorrelationReportingText(method);
   
    //regressions
    else if (method == "linR" || method == "mulR")
-      reportingText = getRegressionReportingText(method);      
+      reportingTextsArray["formula"] = getRegressionReportingText(method);      
    
    else
       console.log("Error: No Method selected");
    
-   return reportingText;
+   console.log(reportingTextsArray["formula"]);
 }
 
 //returns reporting text for significance tests
