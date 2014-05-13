@@ -86,6 +86,8 @@ function setReportingTextbox()
 //returns the reporting text for a given formula
 function getReportingText(formula)
 {
+   console.log("Bin in getReportingText");
+   console.log(reportingTextsArray["formula"]);
    return reportingTextsArray["formula"];
 }
 
@@ -93,8 +95,6 @@ function getReportingText(formula)
 //sets the reporting text by calling the appropriate function depending on test-type, stores text for formula in reportingTextsArray
 function setReportingText(formula)
 {
-   console.log(formula);
-   console.log(reportingTextsArray);
    var method = testResults["test-type"];
    
    //significance tests with one IV
