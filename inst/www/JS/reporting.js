@@ -98,33 +98,33 @@ function setReportingText(formula)
    //significance tests with one IV
    if (method == "upT" || method == "pT" || method == "wT" || method == "mwT" || method == "owA" || method == "WA" 
    || method == "kwT" || method == "owrA" || method == "fT" )
-      reportingTextsArray["formula"] = getSignificanceTestReportingText(method);
+      reportingTextsArray[formula] = getSignificanceTestReportingText(method);
    
    //significance tests with two IVs
    else if (method == "twA" || method == "fA")
-      reportingTextsArray["formula"] = getSignificanceTest2WayReportingText(method);
+      reportingTextsArray[formula] = getSignificanceTest2WayReportingText(method);
    
    //post-hoc tests 
    else if (method == "ptT" || method == "pwT")
    {
       //display reporting text from ANOVA before and add post-hoc reporting text
-      reportingTextsArray["formula"] = resultsFromANOVA + "\n" + getPostHocReportingText(method);
+      reportingTextsArray[formula] = resultsFromANOVA + "\n" + getPostHocReportingText(method);
       //reset ANOVA results text
       resultsFromANOVA = "";
    }
    
    //correlations
    else if (method == "pC" || method == "kC" || method == "bC")
-      reportingTextsArray["formula"] = getCorrelationReportingText(method);
+      reportingTextsArray[formula] = getCorrelationReportingText(method);
   
    //regressions
    else if (method == "linR" || method == "mulR")
-      reportingTextsArray["formula"] = getRegressionReportingText(method);      
+      reportingTextsArray[formula] = getRegressionReportingText(method);      
    
    else
       console.log("Error: No Method selected");
    
-   console.log(reportingTextsArray["formula"]);
+   console.log(reportingTextsArray[formula]);
 }
 
 //returns reporting text for significance tests
