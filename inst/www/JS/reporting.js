@@ -165,7 +165,7 @@ function getSignificanceTestReportingText(method)
          if (nrOfLevels < variableList["independent-levels"].length - 2)
             text += ", ";
          else if (nrOfLevels == variableList["independent-levels"].length - 2)
-            text += " and ";
+            text += " and for ";
          
          nrOfLevels++;
       }
@@ -199,7 +199,7 @@ function getSignificanceTest2WayReportingText(method)
    var variableList = sort(currentVariableSelection);
    
    //add both IVs
-   text += "In order to compare the effect of " + "<i>" + variableList["independent"][0] + "</i>" + " and " + "<i>" + variableList["independent"][1] + "</i>" + " as well as their interaction ";
+   text += "To compare the effect of " + "<i>" + variableList["independent"][0] + "</i>" + " and " + "<i>" + variableList["independent"][1] + "</i>" + " as well as their interaction ";
    //add DV and method
    text += " on " + "<i>" + variableList["dependent"] + "</i>" + ", a " + testResults["method"] + " was conducted.\n";
    var currentIVlevel;
@@ -246,8 +246,8 @@ function getSignificanceTest2WayReportingText(method)
       //results for interaction
       else
       {
-         text += "Investigating the interaction between " + "<i>" + variableList["independent"][0] + "</i>" + " and " + "<i>" + variableList["independent"][1] + "</i>" + ", "; 
-         text += (p < 0.05 ? "a " : "no ") + "significant difference was identified ";
+         text += "The interaction effect between " + "<i>" + variableList["independent"][0] + "</i>" + " and " + "<i>" + variableList["independent"][1] + "</i>" + " was "; 
+         text += (p < 0.05 ? "" : "not ") + "significant";
       }
       
       //add results of test to text
