@@ -67,6 +67,7 @@ function performTTest(groupA, groupB, varianceEqual, paired)
         //drawing stuff
         removeElementsByClassName("completeLines");
 
+        //--------COPY THIS NEW 
         displaySignificanceTestResults();
         
     });
