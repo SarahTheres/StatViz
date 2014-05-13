@@ -200,10 +200,10 @@ function performOneWayANOVA(dependentVariable, independentVariable)
         removeElementsByClassName("completeLines");           
         
         //--------COPY THIS NEW 
-        //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
-        resultsFromANOVA = setReportingText(testResults["formula"]);
         //stores reporting test for this formula in reportingTextsArray
         setReportingText(testResults["formula"]);
+        //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
+        resultsFromANOVA = getReportingText(testResults["formula"]);
         //--------END OF COPY
         
         displaySignificanceTestResults();      
@@ -249,10 +249,10 @@ function performWelchANOVA(dependentVariable, independentVariable)
         removeElementsByClassName("completeLines"); 
         
         //--------COPY THIS NEW 
-        //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
-        resultsFromANOVA = setReportingText(testResults["formula"]);
         //stores reporting test for this formula in reportingTextsArray
         setReportingText(testResults["formula"]);
+        //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
+        resultsFromANOVA = getReportingText(testResults["formula"]);
         //--------END OF COPY
         
         displaySignificanceTestResults();
@@ -297,10 +297,10 @@ function performKruskalWallisTest(dependentVariable, independentVariable)
         removeElementsByClassName("completeLines");   
 
         //--------COPY THIS NEW 
-        //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
-        resultsFromANOVA = setReportingText(testResults["formula"]);
         //stores reporting test for this formula in reportingTextsArray
         setReportingText(testResults["formula"]);
+        //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
+        resultsFromANOVA = getReportingText(testResults["formula"]);
         //--------END OF COPY
         
         displaySignificanceTestResults();
@@ -357,11 +357,11 @@ function performTwoWayANOVA(dependentVariable, betweenGroupVariableA, betweenGro
         drawButtonInSideBar("SHOW INTERACTION PLOT", "interactionEffect");               
         removeElementsByClassName("completeLines");           
     
-           //--------COPY THIS NEW 
-        //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
-        resultsFromANOVA = setReportingText(testResults["formula"]);
+        //--------COPY THIS NEW 
         //stores reporting test for this formula in reportingTextsArray
         setReportingText(testResults["formula"]);
+        //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
+        resultsFromANOVA = getReportingText(testResults["formula"]);
         //--------END OF COPY
         
         displayANOVAResults();  
@@ -409,10 +409,10 @@ function performOneWayRepeatedMeasuresANOVA(dependentVariable, independentVariab
         removeElementsByClassName("completeLines");
 
         //--------COPY THIS NEW 
-        //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
-        resultsFromANOVA = setReportingText(testResults["formula"]);
         //stores reporting test for this formula in reportingTextsArray
         setReportingText(testResults["formula"]);
+        //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
+        resultsFromANOVA = getReportingText(testResults["formula"]);
         //--------END OF COPY
         
         displaySignificanceTestResults();               
@@ -458,10 +458,10 @@ function performFriedmanTest(dependentVariable, independentVariable)
         removeElementsByClassName("completeLines");           
         
         //--------COPY THIS NEW 
-        //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
-        resultsFromANOVA = setReportingText(testResults["formula"]);
         //stores reporting test for this formula in reportingTextsArray
         setReportingText(testResults["formula"]);
+        //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
+        resultsFromANOVA = getReportingText(testResults["formula"]);
         //--------END OF COPY
         
         displaySignificanceTestResults();   
@@ -517,10 +517,10 @@ function performMixedDesignANOVA(dependentVariable, withinGroupVariable, between
         removeElementsByClassName("completeLines");
         
          //--------COPY THIS NEW 
-        //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
-        resultsFromANOVA = setReportingText(testResults["formula"]);
         //stores reporting test for this formula in reportingTextsArray
         setReportingText(testResults["formula"]);
+        //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
+        resultsFromANOVA = getReportingText(testResults["formula"]);
         //--------END OF COPY
         
         displayANOVAResults();                 
