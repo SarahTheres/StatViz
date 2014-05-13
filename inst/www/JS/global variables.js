@@ -105,3 +105,6 @@ var reportingTextField;
 //--------COPY THIS (you don't need the textfield for pure text)
 //reporting results from ANOVA are saved as a text for post-hoc analysis
 var resultsFromANOVA;
+//--------COPY THIS NEW
+//all the reporting texts are stored in this array with their formula
+var allReportingTexts;
