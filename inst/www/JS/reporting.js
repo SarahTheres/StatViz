@@ -93,6 +93,7 @@ function getReportingText(formula)
 //sets the reporting text by calling the appropriate function depending on test-type, stores text for formula in reportingTextsArray
 function setReportingText(formula)
 {
+   console.log(formula);
    var method = testResults["test-type"];
    
    //significance tests with one IV
