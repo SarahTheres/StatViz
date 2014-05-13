@@ -1213,12 +1213,6 @@ function displaySignificanceTestResults()
       //add reporting button
       drawReportingButton();
       
-      //--------COPY THIS
-      //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
-      var testType = testResults["test-type"];
-      if (testType == "owA" || testType == "kwT" || testType == "WA" || testType == "owrA" || testType == "fT")
-            resultsFromANOVA = getReportingText(testType);
-      
 }
 
 function displayANOVAResults()
@@ -1396,10 +1390,6 @@ function displayANOVAResults()
     
     //add reporting button
     drawReportingButton();
-
-    //--------COPY THIS
-    //save reporting text for ANOVAs so that it can be displayed again for post-hoc tests
-    resultsFromANOVA = getReportingText(testResults["test-type"]);
 }
 
 function displayCorrelationResults()
