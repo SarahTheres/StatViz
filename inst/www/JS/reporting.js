@@ -94,6 +94,7 @@ function getReportingText(formula)
 function setReportingText(formula)
 {
    console.log(formula);
+   console.log(reportingTextArray);
    var method = testResults["test-type"];
    
    //significance tests with one IV
