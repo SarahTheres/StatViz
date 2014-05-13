@@ -86,8 +86,6 @@ function setReportingTextbox()
 //returns the reporting text for a given formula
 function getReportingText(formula)
 {
-   console.log("Bin in getReportingText");
-   console.log(reportingTextsArray[formula]);
    return reportingTextsArray[formula];
 }
 
@@ -125,8 +123,6 @@ function setReportingText(formula)
    
    else
       console.log("Error: No Method selected");
-   
-   console.log(reportingTextsArray[formula]);
 }
 
 //returns reporting text for significance tests
