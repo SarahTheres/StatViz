@@ -107,4 +107,4 @@ var reportingTextField;
 var resultsFromANOVA;
 //--------COPY THIS NEW
 //all the reporting texts are stored in this array with their formula
-var allReportingTexts;
+var reportingTextsArray;
