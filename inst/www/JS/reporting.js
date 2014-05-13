@@ -104,7 +104,7 @@ function setReportingText(formula)
    else if (method == "twA" || method == "fA")
       reportingTextsArray["formula"] = getSignificanceTest2WayReportingText(method);
    
-   //post-hoc tests
+   //post-hoc tests 
    else if (method == "ptT" || method == "pwT")
    {
       //display reporting text from ANOVA before and add post-hoc reporting text
