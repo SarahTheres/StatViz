@@ -87,8 +87,8 @@ function setReportingTextbox()
 function getReportingText(formula)
 {
    console.log("Bin in getReportingText");
-   console.log(reportingTextsArray["formula"]);
-   return reportingTextsArray["formula"];
+   console.log(reportingTextsArray[formula]);
+   return reportingTextsArray[formula];
 }
 
 //--------------- COPY THIS NEW 
