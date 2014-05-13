@@ -68,6 +68,9 @@ function performTTest(groupA, groupB, varianceEqual, paired)
         removeElementsByClassName("completeLines");
 
         //--------COPY THIS NEW 
+        //stores reporting test for this formula in reportingTextsArray
+        setReportingText(testResults["formula"]);
+        
         displaySignificanceTestResults();
         
     });
@@ -105,7 +108,11 @@ function performMannWhitneyTest(groupA, groupB)
 
         //drawing stuff
         removeElementsByClassName("completeLines");           
-
+        
+        //--------COPY THIS NEW 
+        //stores reporting test for this formula in reportingTextsArray
+        setReportingText(testResults["formula"]);
+        
         displaySignificanceTestResults();                      
     });
     
@@ -145,6 +152,10 @@ function performWilcoxonTest(groupA, groupB)
         //drawing stuff
         removeElementsByClassName("completeLines");           
 
+        //--------COPY THIS NEW 
+        //stores reporting test for this formula in reportingTextsArray
+        setReportingText(testResults["formula"]);
+        
         displaySignificanceTestResults();                     
     });
     
@@ -187,7 +198,11 @@ function performOneWayANOVA(dependentVariable, independentVariable)
     
         //drawing stuff
         removeElementsByClassName("completeLines");           
-
+        
+        //--------COPY THIS NEW 
+        //stores reporting test for this formula in reportingTextsArray
+        setReportingText(testResults["formula"]);
+        
         displaySignificanceTestResults();      
         drawButtonInSideBar("DO PAIRWISE POST-HOC TEST", "pairwisePostHoc");
         drawButtonInSideBar("DO TUKEY'S HSD TEST", "tukeyHSD",1);        
@@ -229,7 +244,11 @@ function performWelchANOVA(dependentVariable, independentVariable)
       
         //drawing stuff
         removeElementsByClassName("completeLines"); 
-    
+        
+        //--------COPY THIS NEW 
+        //stores reporting test for this formula in reportingTextsArray
+        setReportingText(testResults["formula"]);
+        
         displaySignificanceTestResults();
         drawButtonInSideBar("DO PAIRWISE POST-HOC TEST", "pairwisePostHoc");          
     });
@@ -271,7 +290,12 @@ function performKruskalWallisTest(dependentVariable, independentVariable)
         //drawing stuff
         removeElementsByClassName("completeLines");   
 
+        //--------COPY THIS NEW 
+        //stores reporting test for this formula in reportingTextsArray
+        setReportingText(testResults["formula"]);
+        
         displaySignificanceTestResults();
+        
         drawButtonInSideBar("DO PAIRWISE POST-HOC TEST", "pairwisePostHoc");
         drawButtonInSideBar("DO TUKEY'S HSD TEST", "tukeyHSD",1);        
     });
@@ -324,6 +348,10 @@ function performTwoWayANOVA(dependentVariable, betweenGroupVariableA, betweenGro
         drawButtonInSideBar("SHOW INTERACTION PLOT", "interactionEffect");               
         removeElementsByClassName("completeLines");           
     
+        //--------COPY THIS NEW 
+        //stores reporting test for this formula in reportingTextsArray
+        setReportingText(testResults["formula"]);
+        
         displayANOVAResults();  
         
     });
@@ -368,6 +396,10 @@ function performOneWayRepeatedMeasuresANOVA(dependentVariable, independentVariab
         //drawing stuff
         removeElementsByClassName("completeLines");
 
+        //--------COPY THIS NEW 
+        //stores reporting test for this formula in reportingTextsArray
+        setReportingText(testResults["formula"]);
+        
         displaySignificanceTestResults();               
         drawButtonInSideBar("DO PAIRWISE POST-HOC TEST", "pairwisePostHoc");
         
@@ -409,7 +441,11 @@ function performFriedmanTest(dependentVariable, independentVariable)
 
         //drawing stuff
         removeElementsByClassName("completeLines");           
-
+        
+        //--------COPY THIS NEW 
+        //stores reporting test for this formula in reportingTextsArray
+        setReportingText(testResults["formula"]);
+        
         displaySignificanceTestResults();   
         drawButtonInSideBar("DO PAIRWISE POST-HOC TEST", "pairwisePostHoc");  
         
@@ -461,6 +497,11 @@ function performMixedDesignANOVA(dependentVariable, withinGroupVariable, between
 
         //drawing stuff
         removeElementsByClassName("completeLines");
+        
+        //--------COPY THIS NEW 
+        //stores reporting test for this formula in reportingTextsArray
+        setReportingText(testResults["formula"]);
+        
         displayANOVAResults();                 
     });
     
@@ -629,7 +670,11 @@ function performPairwiseTTest(varianceEqual, paired)
         logResult();
         //drawing stuff
         removeElementsByClassName("completeLines");
-
+        
+        //--------COPY THIS NEW 
+        //stores reporting test for this formula in reportingTextsArray
+        setReportingText(testResults["formula"]);
+        
         displaySignificanceTestResults();
         
     });
@@ -673,7 +718,11 @@ function performPairwiseWilcoxTest(varianceEqual, paired) //groupA, groupB, pair
         logResult();
         //drawing stuff
         removeElementsByClassName("completeLines");           
-
+        
+        //--------COPY THIS NEW 
+        //stores reporting test for this formula in reportingTextsArray
+        setReportingText(testResults["formula"]);
+        
         displaySignificanceTestResults(); 
         
     });
