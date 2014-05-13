@@ -64,6 +64,10 @@ function getCorrelationCoefficient(variableA, variableB, method)
             drawButtonInSideBar("FIT MODEL FOR PREDICTION", "regression");
         }
 
+        //--------COPY THIS NEW 
+        //stores reporting test for this formula in reportingTextsArray
+        setReportingText(testResults["formula"]);
+        
         displayCorrelationResults();
     });
     
@@ -92,6 +96,11 @@ function getBiserialCorrelationCoefficient(continuousVariable, binaryVariable)
         testResults["formula"] = continuousVariable + " : " + binaryVariable;
     
         logResult();
+        
+        //--------COPY THIS NEW 
+        //stores reporting test for this formula in reportingTextsArray
+        setReportingText(testResults["formula"]);
+        
         displayBiserialCorrelationResults();                    
     });
     
@@ -162,7 +171,11 @@ function getLinearModelCoefficients(outcome, explanatory)
         
             removeElementsByClassName("significanceTest");
             drawRegressionLine(output.intercept, output.coefficients);                
-
+            
+            //--------COPY THIS NEW 
+            //stores reporting test for this formula in reportingTextsArray
+            setReportingText(testResults["formula"]);
+        
             displaySimpleRegressionResults();                    
         }
     });
@@ -225,6 +238,10 @@ function performMultipleRegression(outcomeVariable, explanatoryVariables)
         testResults["coefficients"] = output.coefficients;                
         testResults["intercept"] = output.intercept;
         testResults["intercepts"] = intercepts;
+        
+        //--------COPY THIS NEW 
+        //stores reporting test for this formula in reportingTextsArray
+        setReportingText(testResults["formula"]);
         
         makeScatterplotMatrixForMultipleRegression(outcomeVariable);
         displayMultipleRegressionResults();
